@@ -1,0 +1,79 @@
+---
+layout: post
+title: Zyring Day 7 - displaying lists of apartments
+date: 2015-04-21 14:36:07.000000000 +01:00
+categories: []
+tags:
+- Angular
+- JavaScript
+- Zyring
+status: publish
+type: post
+published: true
+meta:
+  _wpcom_is_markdown: '1'
+  _publicize_pending: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+author:
+  login: wotidun
+  email: wotidunread@gmail.com
+  display_name: wotidun
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Getting a list of all apartments for a city</h2>
+<p>The aim of this tutorial was to retrieve the list of apartment data for each city and show it on the city page. This took me a little bit of time but there were no major problems, the instructions were clear. Just some syntax errors to fix and some reading up on <code>$resource</code>.</p>
+<p>I now have some beautiful pages like this:</p>
+
+<figure>
+    <img src='/assets/redmond_screenshot.png' alt="Screenshot for Redmond with a list of data" />
+    <figcaption>List of data for Redmond</figcaption>
+</figure>
+
+<h2>Display a list of all apartments in each city</h2>
+<p>Unsurprisingly, in the next tutorial I have to clean up this mess I've vomited onto the HTML file, and display it in a more useful format. This uses the <code>ng-repeat</code> command I met in an earlier tutorial.</p>
+<p>First I made a simple list of apartment titles, just to check I knew what I was doing:</p>
+
+{% highlight html %}
+
+<ul>
+    <li ng-repeat="apartment in getApartments"> {{apartment.title}} </li>		
+</ul>
+
+
+{% endhighlight %}
+
+<p>Then I had a think about what I'd actually want to display for each apartment. For a start, I went with:</p>
+<ul>
+<li>title</li>
+<li>thumbnail</li>
+<li>floorplan</li>
+<li>price</li>
+<li>contact details</li>
+<li>list of features</li>
+</ul>
+<p>... basically everything except the location data, which I'll think about how to display when I get on to the map stuff later.</p>
+<p>This mostly went ok, except I need to work out how to extract all the list of features properly. At the moment I'm just extracting the first four items on the list:</p>
+
+{% highlight html %}
+
+<ul ng-repeat="n in [0,1,2,3]">
+    <li> {{apartment.features[n]}} </li>
+</ul>
+
+{% endhighlight %}
+
+<p>This might be a better way to go anyway as the lists are quite long, but I still want to figure out how to extract all the items each time.</p>
+<p>My pages now look like this:</p>
+
+<figure>
+    <img src='/assets/redmond_screenshot_2.png' alt="List of data for Redmond, tidied up" />
+    <figcaption>Much tidier</figcaption>
+</figure>
+
+<p>A definite improvement on last time.</p>
+<p>After this I seem to have a choice of four different tutorials to tackle next! This will have to wait for a couple of days though.</p>

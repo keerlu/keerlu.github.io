@@ -1,0 +1,31 @@
+---
+layout: post
+title: Zyring Day 6 - something to do with the $resource function
+date: 2015-04-21 14:28:22.000000000 +01:00
+categories: []
+tags:
+- Angular
+- JavaScript
+- Zyring
+status: publish
+type: post
+published: true
+meta:
+  _wpcom_is_markdown: '1'
+  _publicize_pending: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+author:
+  login: wotidun
+  email: wotidunread@gmail.com
+  display_name: wotidun
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Using dependency injection in Angular</h2>
+<p>Hm, this one is still pretty abstract too. I'm apparently going to want to use something called the <code>$resource</code> function to connect with the backend server, and I want to refer to it using my factory defined in the previous tutorial. I'm still very unclear on what any of this stuff actually <em>is</em>, though, so hopefully things will start being connected up to the rest of the application soon.</p>
+<h2>Attaching a $resource to all apartments URL</h2>
+<p>Bit of a weird title, but this looks like what I was hoping for, a concrete connection to what I'm doing in the app. I connected up <code>$resource</code> to the backend server URL <code>spidey.zyring.com/cities</code> so I can use it to get apartment data. Still a bit confused about the connection to the previous tutorial on dependency injection, but hopefully I've got it right.</p>

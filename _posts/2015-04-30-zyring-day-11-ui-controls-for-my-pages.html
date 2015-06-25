@@ -1,0 +1,38 @@
+---
+layout: post
+title: Zyring Day 11 - UI controls for my pages
+date: 2015-04-30 17:52:00.000000000 +01:00
+categories: []
+tags:
+- Angular
+- JavaScript
+- Zyring
+status: publish
+type: post
+published: true
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '67112767'
+  geo_public: '0'
+  _publicize_pending: '1'
+author:
+  login: wotidun
+  email: wotidunread@gmail.com
+  display_name: wotidun
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>"Add a pager UI elements"</h2>
+<p>Oddly phrased title, but this tutorial involves adding some UI controls for the pagination I did in the last tutorial - the usual "Previous | 1 | 2 | 3 | Next" type stuff. This can be done through an external library, <a href="http://angular-ui.github.io/bootstrap/#/top">Angular UI Bootstrap</a>, which I install through <code>bower</code>.</p>
+<p>That goes ok, but then I forget to add the dependency to my <code>app.js</code> file and don't figure out what the problem is for ages... I can see this becoming a theme. Even after this I get some errors, and discover I've loaded the wrong version of the library through <code>bower</code>: I need to install 'angular-bootstrap' rather than <code>ui.bootstrap</code>.</p>
+<p>Once again, Stack Overflow <a href="http://stackoverflow.com/questions/22178753/adding-ui-bootstrap-dependency-with-bower">comes to the rescue</a>. After this, I have a nice bar of page numbers to click on:<br />
+
+<figure>
+    <img src='/assets/pagination_ui.png' alt="UI element for changing pages" />
+    <figcaption>UI element for changing pages</figcaption>
+</figure>
+
+<p>Of course, it doesn't actually <em>do</em> anything, yet, but it looks like that'll be the next tutorial...</p>

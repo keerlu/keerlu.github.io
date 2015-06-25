@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Zyring Day 10 - Callback Tuesday</title>
+<!--  <meta name="description" content="{"options"=>{}}">-->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/solarized-light.css">
+<!--  <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet"></link>-->
+  <link rel="canonical" href="https://localhost/4000/2015/04/30/zyring-day-10-callback-tuesday.html">
+  <link rel="alternate" type="application/rss+xml" title="Stuff Wot I Dun" href="https://localhost/4000/feed.xml" />
+
+</head>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Stuff Wot I Dun</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+   <header class="post-header">
+
+   <h2> Zyring Day 10 - Callback Tuesday </h2>
+   <p class="post-meta">Apr 30, 2015 </p>
+<!--   <p class="post-meta">Apr 30, 2015 • {"login"=>"wotidun", "email"=>"wotidunread@gmail.com", "display_name"=>"wotidun", "first_name"=>"", "last_name"=>""} • {"_wpcom_is_markdown"=>"1", "_edit_last"=>"67112767", "geo_public"=>"0", "_publicize_pending"=>"1"}</p>-->
+<!--  </header>-->
+
+  <article class="post-content">
+    <p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Divide apartments in a city into pages, part 1</h2>
+<p>This tutorial has a nice innocuous title but actually stumped me for ages. I spent all day on this but learnt some very useful stuff about JavaScript in the process (see later).</p>
+<p>The idea of the tutorial is exactly what it says - divide up the list of apartments so that instead of vomiting a hundred or so apartments onto one page, it splits them into more user-friendly batches of 9. This also allows faster loading speeds and a less cluttered map. Seems reasonable.</p>
+<p>The tutorial goes into very thorough detail on the process of how to split an array of data into sub-arrays. I think I could have worked this out OK on my own but I'm not complaining. The problem I had was how to adapt this method for getting my array from the backend server instead of one I've got saved in my current file. First I needed to understand a bit more about  <code>$resource</code> and its <code>query</code> method, as I'd copied it in kind of mindlessly. I read some of the information on the previously linked (and very useful) tutorial on <a href="http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/">creating a CRUD app</a>, and got my head around the syntax a bit better.</p>
+<p>However, I was still confused: I tried printing my <code>query({cityName: $routeParams.cityName})</code> to <code>console.log</code> and it was coming up empty. However, I'd used this in the previous tutorial and it definitely had some data stored in it. This looks like some kind of asynchronous thingy (to use the technical term).</p>
+<p>:( Time for some research.</p>
+<h2>Callback Tuesdays</h2>
+<p>At this point I should admit that I've been treating JavaScript as some version of Python, except it has the wrong syntax and runs in the browser. This approach was starting to fall apart a little...</p>
+<p>I looked at Zyring's own documentation on the <code>$resource</code> service and read the sentence</p>
+<blockquote><p>
+  "If you like to be notified exactly when the results become available, you can pass in a function callback to the get and query methods"
+</p></blockquote>
+<p>I realised I didn't really know what a callback is, and that I probably should if I was going to do anything time-dependent. Luckily when I googled it there were several decent introductions. I ended up playing with some examples based on this <a href="http://www.impressivewebs.com/callback-functions-javascript/">nice tutorial</a> and <a href="http://jsbin.com/ozuloq/1/edit?html,js,output">runnable example</a>. Below are my notes on this for future reference.</p>
+<p>Their example is something like:</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">mySandwich</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Started eating my sandwich.nIt has &#39;</span> <span class="o">+</span> <span class="nx">param1</span> <span class="o">+</span> <span class="s1">&#39; and &#39;</span> <span class="o">+</span> <span class="nx">param2</span> <span class="o">+</span> <span class="s1">&#39; in it.&#39;</span><span class="p">);</span>
+<span class="nx">callback</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">mySandwich</span><span class="p">(</span><span class="s1">&#39;ham&#39;</span><span class="p">,</span> <span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Finished eating my sandwich.&#39;</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+<p>This produces:</p>
+<blockquote><p>
+  "Started eating my sandwich.<br />
+  It has ham and cheese in it."<br />
+  "Finished eating my sandwich."
+</p></blockquote>
+<p>We have freedom to change the function:</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">mySandwich</span><span class="p">(</span><span class="s1">&#39;tuna&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Bleeeurgh...&#39;</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+<p>This gives</p>
+<blockquote><p>
+  "Started eating my sandwich.<br />
+  It has tuna and banana in it."<br />
+  "Bleeeurgh..."
+</p></blockquote>
+<p>Or here's an example with a callback function with a parameter:</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">anotherSandwich</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Time for another sandwich.nnIt has &#39;</span> <span class="o">+</span> <span class="nx">param1</span> <span class="o">+</span> <span class="s1">&#39; and &#39;</span> <span class="o">+</span> <span class="nx">param2</span> <span class="o">+</span> <span class="s1">&#39; in it.&#39;</span><span class="p">);</span>
+<span class="nx">callback</span><span class="p">(</span><span class="nx">param2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">anotherSandwich</span><span class="p">(</span><span class="s1">&#39;ham&#39;</span><span class="p">,</span> <span class="s1">&#39;mustard&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Shame I hate &#39;</span> <span class="o">+</span> <span class="nx">param</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+<p>which gives</p>
+<blockquote><p>
+  "Time for another sandwich.<br />
+  It has ham and mustard in it."<br />
+  "Shame I hate mustard."
+</p></blockquote>
+<h2>Divide apartments in a city into pages, part 1</h2>
+<p>So this gave me some basic idea about callbacks, including the idea that I might want to implement my pagination algorithm in a function callback to <code>$resource.query</code>, so that the array has been fetched from the server before I start doing anything with it. I don't know if this is the 'proper' way to do it, but it worked anyway.</p>
+<p>Finally, writing the pagination algorithm based on the example went pretty smoothly, and I had my big array of apartment data split into a bunch of smaller arrays. I wasn't whether I was supposed to do anything else with it right now, like connect it up to the html file somehow, but I thought I'd keep going and see what the later tutorials said... I can always go back if necessary.</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Stuff Wot I Dun</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Stuff Wot I Dun</li>
+          <li><a href="mailto:wotidunread[at]gmail[dot]com">wotidunread[at]gmail[dot]com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">I dun this
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

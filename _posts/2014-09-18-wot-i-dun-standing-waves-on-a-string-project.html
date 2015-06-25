@@ -1,0 +1,708 @@
+---
+layout: post
+title: ! 'Wot I dun: standing waves on a string project'
+date: 2014-09-18 17:55:37.000000000 +01:00
+categories: []
+tags:
+- physics visualisation
+- Pygame
+- Python
+- standing wave
+status: publish
+type: post
+published: true
+meta:
+  _wpas_skip_google_plus: '1'
+  _wpas_skip_facebook: '1'
+  _wpcom_is_markdown: '1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+  _wpas_skip_linkedin: '1'
+  _wpas_skip_twitter: '1'
+  _edit_last: '67112767'
+  geo_public: '0'
+  _publicize_pending: '1'
+author:
+  login: wotidun
+  email: wotidunread@gmail.com
+  display_name: wotidun
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<h2>Wot I'm doing</h2>
+<p>I was originally inspired to try Pygame for physics visualisations by <a href="http://petercollingridge.co.uk/pygame-physics-simulation">Peter Collingridge's excellent physics tutorials</a> which I worked through a while ago to start getting the idea of Python. I'm not too sure it's the best tool for producing the kind of thing I want (I will definitely be considering redoing this particular project as an interactive web visualisation in d3.js), but it's been good for learning the language.</p>
+<p>My original idea for a Pygame project was to produce some demonstrations relating to <a href="http://en.wikipedia.org/wiki/Weak_measurement">weak measurements in quantum mechanics,</a> a subject I'm currently trying to learn more about. Despite the rather dry and factual name, the theory of weak measurement has led to all kinds of strange experiments that are bizarre even by quantum standards (e.g. the recent <a href="http://www.bbc.co.uk/news/science-environment-28543990">Quantum Cheshire Cat experiment</a>). In particular, I wanted to create my own version of the model in <a href="mafija.fmf.uni-lj.si/seminar/files/2012_2013/Weak_koncni.pdf">this master's project paper</a>. I have a few notes on this, but mainly I just found myself going down the rabbit hole of trying to understand weak measurement and not doing much coding.</p>
+<p>Then I needed to earn some more money and got a temp job for a couple of months, scanning and sorting post in a law firm, so I decided to give weak measurement a rest for a bit and pick a relatively straightforward project that I could work on half asleep in the library some evenings. After all, I wanted to be able to say I done <em>something</em> with my week other than scanning post. I still wanted something physics-y, so decided to make my own version of this nice <a href="http://www.phy.hk/wiki/englishhtm/StatWave.htm">Java applet</a> I'd come across demonstrating resonance on a string as the frequency of vibration changes.</p>
+<p>The maths is in a pdf <a href="http://www.phy.hk/wiki/applets/StatWave/WaveOnRope.pdf">here</a> -- the main reason I picked this project is that I hadn't actually seen this exact problem solved before, with the oscillating boundary for the string. I started by just using Pygame to model the function given in the pdf (which is pretty terse) and will get round to deriving the maths for myself later.</p>
+<h2>Contents:</h2>
+<ul>
+<li><a href="#18Aug">Monday 18th August:</a> Install pygame, run someone else's code to produce an animated sine function</li>
+<li><a href="#19Aug">Tuesday 19th August:</a> Try and plot the function I wanted... slightly broken</li>
+<li><a href="#21Aug">Thursday 21st August:</a> Fix the function </li>
+<li><a href="#24Aug">Sunday 24th August:</a> Make the animation prettier: change colours and line thickness</li>
+<li><a href="#26Aug">Tuesday 26th August:</a> Add basic keyboard interactivity</li>
+<li><a href="#1Sep">Monday 1st and Tuesday 2nd September:</a> Play around with a GUI library</li>
+<li><a href="#7Sep">Sunday 7th September:</a> Oh shit, the code is broken! Check that the maths is correct in Mathematica</li>
+<li><a href="#8Sep">Monday 8th September:</a> Problem is something to do with integers and floats...</li>
+<li><a href="#9Sep">Tuesday 9th September:</a> More confused than ever.</li>
+<li><a href="#15Sep">Monday 15th September:</a> Something to do with the wrong parameter range?</li>
+<li><a href="#17Sep">Wednesday 17th September:</a> Played around in Mathematica again... seems to be a parameter range problem</li>
+<li><a href="#18Sep">Thursday 18th September:</a> Picked some parameter values that give a decent animation</li>
+</ul>
+<p><!--more--></p>
+<p><a id="18Aug"></a></p>
+<h2>Monday 18th August</h2>
+<p>First I found a <a href="http://ericeastwood.com/blog/7/animated-sine-wave-two-ways-with-pygame-and-tkinter">pygame project</a> that just plots an animated sine wave running, so that I had something to build on. This took a while as I only had my netbook on me, which was missing pygame and some other stuff... but I got it working.</p>
+<p>Then I mucked about for a while, trying to implement the function inside the sum in the equation for \( y \) <a href="http://www.phy.hk/wiki/applets/StatWave/WaveOnRope.pdf">here</a>. I don't care about damping so I set \( b=0 \), i.e. I tried to plot the function \( f(x, t) = \frac{k^2}{n}\frac{1}{k_n^2-k^2}\cos\omega t \) (I also relabelled \( z \) as \( x \) because I preferred that).</p>
+<p>It didn't quite work, but that was enough for one evening.</p>
+<p><a id="19Aug"></a></p>
+<h2>Tuesday 19th August</h2>
+<p>I found my silly errors from the previous day and got going. I ended up with this function definition for \( y(x,t) \):</p>
+
+{% highlight python %}
+# Define standing wave function
+
+amplitude = 50 # in px
+speed = 1
+
+def k(n):
+    return n*math.pi/canvas_width
+
+def ysummand(x, n, frequency):
+    return (frequency**2/(k(n)**2-frequency**2))*math.sin(k(n)*(float(x)))*math.cos(frequency*(speed*time.time()))
+
+def ysum(x, frequency):
+    for i in range (1, 10):
+        sum = 0
+        sum = sum + ysummand(x, i, frequency)
+        return sum
+
+# some more irrelevant stuff...
+
+for x in range(0, canvas_width):
+    y = int((canvas_height/2) + amplitude*ysum(x, 12))
+    surface.set_at((x, y), color)
+
+{% endhighlight %}
+<p>Seems to work nicely, as far as I can tell by just playing with different numbers for the frequency! Will be able to test it better once I've implemented some kind of interactive way to change the frequency... that is definitely a problem for another day when I'm less tired.</p>
+<p>Then I remembered I need \( \psi\), not \( y\)... I started to add this, ending up with:</p>
+
+{% highlight python %}
+
+import pygame
+import time
+import math
+
+# Some config width height settings
+canvas_width = 640
+canvas_height = 480
+
+# Just define some colors we can use
+color = pygame.Color(255, 255, 0, 0)
+background_color = pygame.Color(0, 0, 0, 0)
+
+pygame.init()
+# Set the window title
+pygame.display.set_caption("Standing wave demonstration")
+
+# Make a screen to see
+screen = pygame.display.set_mode((canvas_width, canvas_height))
+screen.fill(background_color)
+
+# Make a surface to draw on
+surface = pygame.Surface((canvas_width, canvas_height))
+surface.fill(background_color)
+
+# Define standing wave function
+
+amplitude = 50 # in px
+speed = 1
+
+def k(n):
+    return n*math.pi/canvas_width
+
+def ysummand(x, n, frequency):
+    return (frequency**2/(k(n)**2-frequency**2))*math.sin(k(n)*(float(x)))*math.cos(frequency*(speed*time.time()))
+
+def ysum(x, frequency):
+    for i in range (1, 10):
+        sum = 0
+        sum = sum + ysummand(x, i, frequency)
+        return sum
+
+def y(x, frequency):
+    return int((2/math.pi)*amplitude*ysum(x, frequency))
+
+# y = int((canvas_height/2) + amplitude*math.sin(frequency*((float(x)/canvas_width)*(2*math.pi) + (speed*time.time()))))
+
+# Simple main loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+# Redraw the background
+surface.fill(background_color)
+
+for x in range(0, canvas_width):
+psi = int((canvas_height/2) + y(x, 3) + (1 - (x/canvas_width))*amplitude*math.cos(3*(speed*time.time())))
+surface.set_at((x, psi), color)
+
+# Put the surface we draw on, onto the screen
+screen.blit(surface, (0, 0))
+
+# Show it.
+pygame.display.flip()
+
+pygame.quit ()
+
+{% endhighlight %}
+
+<p>This is definitely broken (the right end isn't fixed and should be), but I am tired and hungry so will leave it there for now.</p>
+<p><a id="21Aug"></a></p>
+<h2>Thursday 21st August</h2>
+<p>Tidied the code up a bit and got it working in the process (as far as I can see - the right end is now fixed). Here it is:</p>
+
+{% highlight python %}
+import pygame
+import time
+import math
+
+# Size of window
+canvas_width = 640
+canvas_height = 480
+
+# Define colours
+color = pygame.Color(255, 255, 0, 0)
+background_color = pygame.Color(0, 0, 0, 0)
+
+pygame.init()
+# Set the window title
+pygame.display.set_caption("Standing wave demonstration")
+
+# Make a screen to see
+screen = pygame.display.set_mode((canvas_width, canvas_height))
+screen.fill(background_color)
+
+# Make a surface to draw on
+surface = pygame.Surface((canvas_width, canvas_height))
+surface.fill(background_color)
+
+# Define standing wave function
+
+amplitude = 50 # in px
+speed = 1
+
+def k(n):
+    return n*math.pi/canvas_width
+
+def ysummand(x, n, frequency):
+    return (frequency**2/(k(n)**2-frequency**2))*math.sin(k(n)*(float(x)))*math.cos(frequency*(speed*time.time()))
+
+def ysum(x, frequency):
+    for i in range (1, 10):
+        sum = 0
+        sum = sum + ysummand(x, i, frequency)
+        return sum
+
+def y(x, frequency):
+    return (2/math.pi)*amplitude*ysum(x, frequency)
+
+def psi(x, frequency):
+    return y(x, frequency) + amplitude*(1 - (float(x)/canvas_width))*math.cos(frequency*(speed*time.time()))
+
+# Main loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+# Redraw background
+surface.fill(background_color)
+
+for xrange in range(0, canvas_width):
+    yrange = int((canvas_height/2) + psi(xrange, 23))
+    surface.set_at((xrange, yrange), color)
+
+# Add surface to screen
+screen.blit(surface, (0, 0))
+
+# Display
+pygame.display.fliphttp://www.pygame.org/docs/ref/draw.html()
+
+pygame.quit ()
+
+{% endhighlight %}
+
+<p><a id="24Aug"></a></p>
+<h2>Sunday 24th August</h2>
+<p>Now the maths was sorted, I wanted to make the animation look prettier. This involved changing the colours (easy) and the thickness of the curve (not quite so easy, as the very simple code I followed worked by changing the colour of single pixels). Time to use the draw function, following this <a href="http://www.pygame.org/docs/ref/draw.html">Pygame drawing tutorial</a> to rewrite code.</p>
+<p>First I made a simple sine curve (<code>drawsin.py</code>):</p>
+
+{% highlight python %}
+# Draw sine curve with pygame
+
+import pygame
+import time
+import math
+
+# Window size
+canvas_width = 640
+canvas_height = 480
+
+# Define colours
+line_colour = pygame.Color(55, 115, 212, 0)
+background_colour = pygame.Color(255, 255, 255, 0)
+
+# Make screen
+screen = pygame.display.set_mode((canvas_width, canvas_height))
+screen.fill(background_colour)
+
+# Sine curve properties:
+amplitude = 80
+
+xpoints = [i for i in range(canvas_width)]
+ypoints = []
+for x in xpoints:
+    ypoints.append(int((canvas_height/2) + amplitude*math.sin((float(x)/canvas_width)*2*math.pi)))
+
+coords = []
+for i in range(canvas_width):
+    coords.append([xpoints[i], ypoints[i]])
+
+print ypoints[1:10]
+
+# Main loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+# Draw sine curve
+
+pygame.draw.lines(screen, line_colour, False, coords, 3)
+
+pygame.display.flip()
+
+pygame.quit()
+
+{% endhighlight %}
+ 
+Then I added this to my file (`standing_wave_2.py`):
+
+{% highlight python %}
+
+## Standing wave demonstration with pygame
+
+import pygame
+import time
+import math
+
+# Window size
+canvas_width = 640
+canvas_height = 480
+
+# Define colours
+line_colour = pygame.Color(55, 115, 212, 0)
+background_colour = pygame.Color(255, 255, 255, 0)
+
+# Make screen
+screen = pygame.display.set_mode((canvas_width, canvas_height))
+screen.fill(background_colour)
+
+# Make drawing surface
+surface = pygame.Surface((canvas_width, canvas_height))
+surface.fill(background_colour)
+
+# Define standing wave function
+
+amplitude = 50 # in px
+speed = 1
+
+def k(n):
+    return n*math.pi/canvas_width
+
+def ysummand(x, n, frequency):
+    return (frequency**2/(k(n)**2-frequency**2))*math.sin(k(n)*(float(x)))*math.cos(frequency*(speed*time.time()))
+
+def ysum(x, frequency):
+    for i in range (1, 10):
+        sum = 0
+        sum = sum + ysummand(x, i, frequency)
+        return sum
+
+def y(x, frequency):
+    return (2/math.pi)*amplitude*ysum(x, frequency)
+
+def psi(x, frequency):
+    return y(x, frequency) + amplitude*(1 - (float(x)/canvas_width))*math.cos(frequency*(speed*time.time()))
+
+# Main loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+             running = False
+
+# Redraw background
+surface.fill(background_colour)
+
+xpoints = [i for i in range(canvas_width)]
+ypoints = []
+for x in xpoints:
+    ypoints.append(int((canvas_height/2) + psi(x,32)))
+
+coords = []
+for i in range(len(xpoints)):
+    coords.append([xpoints[i], ypoints[i]])
+
+# Draw curve
+pygame.draw.lines(surface, line_colour, False, coords, 3)
+
+# Add surface to screen
+screen.blit(surface, (0, 0))
+
+pygame.display.flip()
+
+pygame.quit()
+
+{% endhighlight %}
+
+<p>It works fine, but it's kind of slow... after a bit of searching around I decided to go back to the pixel-updating method of the example I followed. Here's the code (<code>standing_wave_4.py</code>):</p>
+
+{% highlight python %}
+## Standing wave demonstration with pygame
+
+import pygame
+import time
+import math
+
+# Window size
+canvas_width = 640
+canvas_height = 480
+
+# Define colours
+line_colour = pygame.Color(55, 115, 212, 0)
+background_colour = pygame.Color(255, 255, 255, 0)
+
+# Make screen
+screen = pygame.display.set_mode((canvas_width, canvas_height))
+screen.fill(background_colour)
+
+# Make drawing surface
+surface = pygame.Surface((canvas_width, canvas_height)).convert()
+surface.fill(background_colour)
+
+# Define standing wave function
+
+amplitude = 50 # in px
+frequency = 45
+
+def k(n):
+    return n*math.pi/canvas_width
+
+def ysummand(x, n):
+    return (frequency**2/(k(n)**2-frequency**2))*math.sin(k(n)*(float(x)))
+
+def ysum(x):
+    for i in range (1, 10):
+        sum = 0
+        sum = sum + ysummand(x, i)
+        return sum
+
+def y(x):
+    return (2/math.pi)*amplitude*ysum(x)
+
+def psi(x):
+    return y(x) + amplitude*(1 - (float(x)/canvas_width))
+
+#pygame.init()
+
+# Main loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+# Redraw background
+surface.fill(background_colour)
+
+for xrange in range(0, canvas_width):
+    yrange = int((canvas_height/2) + psi(xrange)*math.cos(frequency*time.time()))
+    for i in range(0, 4):
+        surface.set_at((xrange, yrange + i), line_colour)
+
+# Add surface to screen
+screen.blit(surface, (0, 0))
+
+# Display
+pygame.display.flip()
+
+pygame.quit()
+
+{% endhighlight %}
+
+<p>It worked OK, so my next plan was to add some interactivity.</p>
+
+<p><a id="26Aug"></a></p>
+<h2>Tuesday 26th August</h2>
+<p>I added some very crude interactivity, using left and right arrows to control frequency (using <a href="http://stackoverflow.com/questions/16044229/how-to-get-keyboard-input-in-pygame">this example</a> as a guide), plus some text at the top of the screen displaying the current frequency (based on <a href="http://www.pygame.org/docs/tut/tom/games2.html">this example</a>).</p>
+<p>The full code is (<code>standing_wave_5.py</code>):</p>
+
+{% highlight python %}
+I added some very crude interactivity, using left and right arrows to control frequency (using [this example][keys] as a guide), plus some text at the top of the screen displaying the current frequency (based on [this example][text]).
+
+[keys]:http://stackoverflow.com/questions/16044229/how-to-get-keyboard-input-in-pygame
+[text]:http://www.pygame.org/docs/tut/tom/games2.html
+
+The full code is (`standing_wave_5.py`):
+
+```python
+
+## Standing wave demonstration with pygame
+
+import pygame
+import time
+import math
+
+# Window size
+canvas_width = 640
+canvas_height = 480
+
+# Define colours
+line_colour = pygame.Color(55, 115, 212, 0)
+background_colour = pygame.Color(255, 255, 255, 0)
+slider_colour = pygame.Color(0, 0, 0, 0)
+
+# Make screen
+screen = pygame.display.set_mode((canvas_width, canvas_height))
+screen.fill(background_colour)
+
+# Make drawing surface
+surface = pygame.Surface((canvas_width, canvas_height)).convert()
+surface.fill(background_colour)
+
+# Define standing wave function
+
+amplitude = 80 # in px
+frequency = 200
+speed = 0.1
+
+def k(n):
+return n*math.pi/canvas_width
+
+def ysummand(x, n):
+return (frequency**2/(k(n)**2-frequency**2))*math.sin(k(n)*(float(x)))
+
+def ysum(x):
+for i in range (1, 10):
+sum = 0
+sum = sum + ysummand(x, i)
+return sum
+
+def y(x):
+return (2/math.pi)*amplitude*ysum(x)
+
+def psi(x):
+return y(x) + amplitude*(1 - (float(x)/canvas_width))
+
+pygame.init()
+
+# Main loop
+running = True
+while running:
+for event in pygame.event.get():
+if event.type == pygame.QUIT:
+running = False
+
+# Redraw background
+surface.fill(background_colour)
+
+for xrange in range(0, canvas_width):
+yrange = int((canvas_height/2) + psi(xrange)*math.cos(speed*frequency*time.time()))
+for i in range(0, 4):
+surface.set_at((xrange, yrange + i), line_colour)
+
+# Display some text
+font = pygame.font.Font(None, 36)
+text = font.render("Frequency is "+str(abs(frequency)), 1, (10, 10, 10))
+textpos = text.get_rect()
+textpos.centerx = surface.get_rect().centerx
+surface.blit(text, textpos)
+
+# Add surface to screen
+screen.blit(surface, (0, 0))
+
+# Display
+pygame.display.flip()
+
+move_ticker = 0
+keys=pygame.key.get_pressed()
+if keys[pygame.K_LEFT]:
+if move_ticker == 0:
+move_ticker = 10
+frequency -= 0.1
+if keys[pygame.K_RIGHT]:
+if move_ticker == 0:
+move_ticker = 10
+frequency += 0.1
+
+pygame.quit()
+
+{% endhighlight %}
+
+<p>Took a screenshot (<code>screenshot1</code>)<br />
+This could do with some improvements:</p>
+<ul>
+<li>It would be worth making it easier to change the frequency a large amount... maybe with an editable text box</li>
+<li>At the moment when I change the frequency the curve is 'resetting' somehow so that the movement is not smooth. Definitely need to fix this one!</li>
+</ul>
+<p><a id="28Aug"></a></p>
+<h2>Thursday 28 August</h2>
+<p>Got out a pen and paper and actually started working through the maths. Will write this up some other time when it's finished.</p>
+<p><a id="1Sep"></a></p>
+<h2>Monday 1 September</h2>
+<p>Wrote up some of this post and started thinking about how to change the frequency... a slider might be good. I played for a bit with a GUI library for Pygame, <a href="http://www.pygame.org/project-PGU+-+Phil's+pyGame+Utilities-108-.html">PGU</a>.</p>
+<p><a id="2Sep"></a></p>
+<h2>Tuesday 2 September</h2>
+<p>Bit more playing with the GUI library, went home early as getting a cold. Not really sure this is the way I want to go - I think I will keep it simple for now and consider interactive options if I decide to implement this in d3.js instead of Python.</p>
+<p><a id="7Sep"></a></p>
+<h2>Sunday 7th September</h2>
+<p>Oh shit! I realised the code was wrong -- the curve wasn't changing shape with increasing frequency. I didn't remember it always being wrong -- had I broken it? I found one problem: <code>ysummand</code> was not summing correctly. I fixed that, but it was still wrong.</p>
+<p>I decided to reproduce \( \psi \) as a simple animation in Mathematica, a program where I actually know what I'm doing. I soon convinced myself the solution was correct -- just not my implementation!</p>
+<p><a id="8Sep"></a></p>
+<h2>Monday 8th September</h2>
+<p>I found the problem after testing various things -- it's something to do with integers and floats. Currently if the frequency increment is a float it breaks, if it is an integer it doesn't. I must have had everything as integers to start with, which is why I didn't spot the problem. I can also break it by defining the amplitude and speed as floats. Need to go through carefully and work out what needs to be what... tomorrow!</p>
+<p><a id="9Sep"></a></p>
+<h2>Tuesday 9th September</h2>
+<p>GAH I STILL CAN'T FIX IT. :(</p>
+<p><a id="15Sep"></a></p>
+<h2>Monday 15th September</h2>
+<p>I'm more confused than before. I fixed one small problem and the code is now consistent whether I use floats or integers (i.e. values of \( psi\) are the same whether the frequency is 3 or 3.0). But it still doesn't work, and moreover, \( psi\) barely changes with frequency.</p>
+<p>I think the best option will be to play with the Mathematica animation for a bit with different parameter ranges.</p>
+<p><a id="17Sep"></a></p>
+<h2>Wednesday 17th September</h2>
+<p>Quick play around in Mathematica. Realised that the code is working but nothing much is really happening for the parameter range I chose -- the interesting stuff is going on at much lower frequencies!</p>
+<p>This actually makes sense. The equation for \( psi\) is going to produce sensible results if parameters like the length of the string around unity, but I have a canvas length of 640 pixels. So it was never going to be a great success!</p>
+<p><a id="18Sep"></a></p>
+<h2>Thursday 18th September</h2>
+<p>Picked some parameters that make the interactivity nice --  the waves on the string change at a sensible rate as you adjust the frequency, not too rapidly or too irritatingly slowly.</p>
+<p>The frequencies are currently annoyingly small numbers -- sure I can scale things better when my brain is working. But anyway, here is the current version:</p>
+
+{% highlight python %}
+## Standing wave demonstration with pygame
+
+import pygame
+import time
+import math
+
+# Window size
+canvas_width = 640
+canvas_height = 480
+
+# Define colours
+line_colour = pygame.Color(55, 115, 212, 0)
+background_colour = pygame.Color(255, 255, 255, 0)
+slider_colour = pygame.Color(0, 0, 0, 0)
+
+
+# Make screen
+screen = pygame.display.set_mode((canvas_width, canvas_height))
+screen.fill(background_colour)
+
+# Make drawing surface
+surface = pygame.Surface((canvas_width, canvas_height)).convert()
+surface.fill(background_colour)
+
+# Define standing wave function
+
+amplitude = 3 # in px
+speed = 1
+
+def k(n):
+	return n*math.pi/canvas_width
+
+def ysummand(x, n, frequency):
+	return ((float(frequency)/speed)**2/n)*(1/(k(n)**2-(float(frequency)/speed)**2))*math.sin(k(n)*(float(x)))
+
+def ysum(x, Nmax, frequency):
+	sumList = [0]*Nmax
+	for i in range(1, Nmax):
+		sumList[i] = ysummand(x, i, frequency)
+
+	return sum(sumList)
+
+def y(x, frequency):
+	return (2/math.pi)*amplitude*ysum(x, 10, frequency)
+
+def psi(x, frequency):
+	return y(x, frequency) + amplitude*(1 - (float(x)/float(canvas_width)))
+
+
+
+
+pygame.init()
+
+# Main loop
+running = True
+
+freq = 0.01 # set initial frequency
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+	# Redraw background
+    surface.fill(background_colour)
+
+    for xrange in range(0, canvas_width):
+	yrange = int((canvas_height/2) + psi(xrange, freq)*math.cos(1000*speed*freq*time.time()))
+	for i in range(0, 4):
+		surface.set_at((xrange, yrange + i), line_colour)
+
+    # Display some text
+    font = pygame.font.Font(None, 36)
+    text = font.render("Frequency is "+str(abs(freq)), 1, (10, 10, 10))
+    textpos = text.get_rect()
+    textpos.centerx = surface.get_rect().centerx
+    surface.blit(text, textpos)
+
+    move_ticker = 0
+    keys=pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        if move_ticker == 0:
+            move_ticker = 20
+            freq -= 0.0001
+    if keys[pygame.K_RIGHT]:
+        if move_ticker == 0:   
+            move_ticker = 20     
+            freq += 0.0001
+
+
+
+
+    # Add surface to screen
+    screen.blit(surface, (0, 0))
+
+    # Display 
+    pygame.display.flip()
+	
+pygame.quit()
+
+
+{% endhighlight %}
+
+<p>Things I could/should still do include:</p>
+<ul>
+<li>Adding a slider... or just moving straight to d3.js and trying to produce an interactive web page version</li>
+<li>Scaling the equations nicely</li>
+<li>(related) Working through the maths and understanding it properly.</li>
+</ul>
+<p>But right now it's time to give this a rest for a week or two and switch focus. I have exciting paper corrections to make!</p>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Zyring Day 18 - Off By One Day</title>
+<!--  <meta name="description" content="{"options"=>{}}">-->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/solarized-light.css">
+<!--  <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet"></link>-->
+  <link rel="canonical" href="https://localhost/4000/2015/06/12/zyring-day-18-off-by-one-day.html">
+  <link rel="alternate" type="application/rss+xml" title="Stuff Wot I Dun" href="https://localhost/4000/feed.xml" />
+
+</head>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Stuff Wot I Dun</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+   <header class="post-header">
+
+   <h2> Zyring Day 18 - Off By One Day </h2>
+   <p class="post-meta">Jun 12, 2015 </p>
+<!--   <p class="post-meta">Jun 12, 2015 • {"login"=>"wotidun", "email"=>"wotidunread@gmail.com", "display_name"=>"wotidun", "first_name"=>"", "last_name"=>""} • {"_wpcom_is_markdown"=>"1", "_rest_api_published"=>"1", "_rest_api_client_id"=>"-1", "_publicize_job_id"=>"11599714278"}</p>-->
+<!--  </header>-->
+
+  <article class="post-content">
+    <p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Using the pager element to navigate (cont'd)</h2>
+<p>OK, I'm awake, reasonably alert, and well-fortified by the supermarket garlic naan I ate cold out of the bag on a bench in the shopping centre. Apparently this is not what the well-dressed ladies of Clifton generally do for breakfast, or so I gather from the odd looks, but hopefully it's helped put me in the right frame of mind for going back and looking at the off-by-one error I had <a href="https://wotidun.wordpress.com/2015/05/27/zyring-day-12-notes-from-ages-ago/">weeks ago</a>.</p>
+<p>First, let's work out exactly what the problem is. Take Seattle as an example. There are 165 apartments listed, so that should make 18 pages of 9 apartments plus a 19th page with 3 apartments. Looking at the backend data, the first apartment on each page should be:</p>
+<p>Page 1: Avalon Kirkland<br />
+Page 2: Kerry Park Apartments<br />
+Page 3: Lexicon<br />
+...<br />
+Page 17: The Dakota at Rainier Court<br />
+Page 18: The Century<br />
+Page 19: Alcyone</p>
+<p>However what's actually happening is this:</p>
+<ul>
+<li>On first loading <code>cities/Seattle</code>, I get Avalon Kirkland as expected.</li>
+<li>But if I now click on page 2, I get Lexicon which should be page 3...</li>
+<li>...and if I click back to 1 I get Kerry Park Apartments. :(</li>
+<li>Also, the list of pages only goes up to 17, The Dakota. The pages above that are just not displayed.</li>
+</ul>
+<p>Same stuff if I click on 'Next' and 'Previous' instead of the page numbers. So I'm initialising it correctly, which makes sense as I'm explicitly setting <code>$scope.currentPage = 0;</code>, but then it's off by one after that. Not sure what's going on with the last pages missing.</p>
+<p>Looking at the <a href="https://angular-ui.github.io/bootstrap/">AngularUI Bootstrap documentation</a>, I see that <code>ng-model</code> expects the first page to be 1, whereas mine start at 0, so that is one of the problems, so I fix that. After fixing this Avalon Kirkland is consistently the first page as expected, which is good, but I now have a "TypeError: Cannot read property 'push' of undefined" message, and the pager element loads stuck on page 17, which is still the last page. So I've fixed one thing and now something else is broken - progress of a sort.</p>
+<p>OK, now I'm having a look at the array of pages <code>$scope.pages</code>. It looks OK before I push any information into it, but then there's a problem. It should look like <code>[Array[9], Array[9], Array[9],...]</code> but instead there's an <code>Array[0]</code> at the beginning. Bummer. This might explain why I'm getting the 'TypeError' message, though, as there isn't enough space in the array for everything I want to push to it, so I'm making progress.</p>
+<p>Indeed, I find my <code>while</code> loop goes one too high, and I get rid of the TypeError problem and the carousel loads at the first page with Avalon Kirkland as expected. STILL having the problem with the highest pages missing though.</p>
+<p>Let's look at all the cities...</p>
+<ul>
+<li>Seattle: 165 apartments, should be 19 pages, displaying 17, out by -2</li>
+<li>Redmond: 65 apartments, should be 8 pages, displaying 7, out by -1</li>
+<li>Bellevue: 164 apartments, should be 19 pages, displaying 17, out by -2</li>
+<li>Kirkland: 172 apartments, should be 20 pages, displaying 18, out by -2</li>
+<li>Tacoma: 141 apartments, should be 16 pages, displaying 15, out by -1</li>
+<li>Olympia: 52 apartments, should be 6 pages, displaying 6, correct</li>
+</ul>
+<p>So it seems to be more wrong the larger the number of apartments, but why is not obvious to me.</p>
+<p>I also find another problem, possibly related. When I click on some apartments, the data doesn't load. Instead I get an empty page like this:</p>
+
+<figure>
+    <img src='/assets/empty_page.png' alt="Page with no data loaded" />
+    <figcaption>Not very helpful</figcaption>
+</figure>
+
+<p>This happens only with apartments on later pages.</p>
+<p>I fiddle about with this all day but cannot work out what the problem is. It might finally be time to ask for help... but I want to finish off the remaining bits of styling first.</p>
+
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Stuff Wot I Dun</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Stuff Wot I Dun</li>
+          <li><a href="mailto:wotidunread[at]gmail[dot]com">wotidunread[at]gmail[dot]com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">I dun this
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

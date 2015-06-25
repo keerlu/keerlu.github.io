@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Zyring Day 1 - getting started</title>
+<!--  <meta name="description" content="{"options"=>{}}">-->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/solarized-light.css">
+<!--  <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet"></link>-->
+  <link rel="canonical" href="https://localhost/4000/2015/04/15/zyring-day-1-getting-started.html">
+  <link rel="alternate" type="application/rss+xml" title="Stuff Wot I Dun" href="https://localhost/4000/feed.xml" />
+
+</head>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Stuff Wot I Dun</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+   <header class="post-header">
+
+   <h2> Zyring Day 1 - getting started </h2>
+   <p class="post-meta">Apr 15, 2015 </p>
+<!--   <p class="post-meta">Apr 15, 2015 • {"login"=>"wotidun", "email"=>"wotidunread@gmail.com", "display_name"=>"wotidun", "first_name"=>"", "last_name"=>""} • {"_wpcom_is_markdown"=>"1", "_publicize_pending"=>"1", "_rest_api_published"=>"1", "_rest_api_client_id"=>"-1"}</p>-->
+<!--  </header>-->
+
+  <article class="post-content">
+    <p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Setting up my development environment</h2>
+<p>This involved installing Node.js - this took me a couple of goes as I didn't read the list of prerequisites properly and didn't have g++ installed. Overall not too much hassle, though I think this step would be highly intimidating for a beginner not used to installing packages from the command line.</p>
+<p>I think it's sensible that they added the 'What To Expect' section ('Setting up a development environment is one of the most difficult and frustrating tasks that one faces as a software engineer'), but it's at the bottom of the page so I only read it after I'd managed to install everything.</p>
+<p>Next up, I installed <code>grunt</code> and <code>bower</code> using the instructions (apparently I don't really need to know what these are right now). This used the package manager <code>npm</code>. The first time, this came up with a bunch of errors including some 'permission denied' stuff, so I added <code>sudo</code> at the beginning even though that was only in the Mac version instructions. This appears to have worked.</p>
+<p>I also had to install <code>git</code> as it is not included in my version of Linux Mint... so that part of the instructions is not just for Windows.</p>
+<h2>Bringing up my website</h2>
+<p>OK, so in this part I should find out a bit more about what <code>grunt</code> and <code>bower</code> do.</p>
+<p>First I ran the command <code>npm install</code>, which installs all the libraries that my tools require to work. This took ages, so I have plenty of time to stare at the ominous advice: 'In case of any errors during the execution of this command, read the error messages and try to look for a solution by Googling the errors. If you have no idea how to tackle the errors, use the discussion board or the help button on the top right of the screen to get assistance'.</p>
+<p>As it happened, I got nothing scarier than a couple of warnings. Although Dropbox started ranting about 'cannot monitor the filesystem', which from googling looks fixable. No problems with <code>bower install</code>.</p>
+<p>The next step is supposed to bring up a browser window with my amazing website on it! Unfortunately, I got <a href="https://github.com/gruntjs/grunt-contrib-watch/issues/236">this Warning: watch ENOSPC" problem</a> instead.</p>
+<p>This also seems to be related to the Dropbox issue. In hindsight, it was probably a bit stupid to put the project into Dropbox as I'm only planning to use the files on this development machine where I've installed all the relevant stuff.<br />
+I just tend stick everything there by default.</p>
+<p>I may move everything out of Dropbox next and hope nothing breaks. Anyway, at this point I've kind of had enough for one morning and so have a break.</p>
+<p><em>Later</em>: moved the folder out of Dropbox and ran <code>grunt serve</code> again. Success!</p>
+<h2>How to use Zyring</h2>
+<p>This section just has some bumf to read about what Zyring is.</p>
+<h2>Communicating with Controllers</h2>
+<p>To start, there's some information on the Model-View-Controller pattern.</p>
+<p>This is the first step where I start adding to the project. First I did the easy bit: finding images of the six cities given and adding them to the Images file. For most of these there are multiple cities with the same name, but I'm going to guess that in each case I want the one near Seattle.</p>
+<p>Then it's time to write some actual JavaScript. First I have to add some data with the names of the cities and their image URLS to the controller. I kind of bodge that but get on to the next lesson anyway where I work out the syntax and fix it...</p>
+<h2>Displaying a List of Cities</h2>
+<p>Here I update the HTML for my main page, displaying the names of each city with the image below. These are taken from the data stored in the controller, using <code>ng-repeat</code> as suggested.</p>
+<p>After a bit of trial, error, reading the help given, and more error, I get something working. This produces a list of big pictures of the cities with their names above them. I don't make any effort to make this look pretty, since I can see the next lesson is about styling with Bootstrap anyway. I think I'll leave it here for today!</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Stuff Wot I Dun</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Stuff Wot I Dun</li>
+          <li><a href="mailto:wotidunread[at]gmail[dot]com">wotidunread[at]gmail[dot]com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">I dun this
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

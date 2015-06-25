@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Zyring Day 8 - Google Maps time!</title>
+<!--  <meta name="description" content="{"options"=>{}}">-->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/solarized-light.css">
+<!--  <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet"></link>-->
+  <link rel="canonical" href="https://localhost/4000/2015/04/25/zyring-day-8-google-maps-time.html">
+  <link rel="alternate" type="application/rss+xml" title="Stuff Wot I Dun" href="https://localhost/4000/feed.xml" />
+
+</head>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Stuff Wot I Dun</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+   <header class="post-header">
+
+   <h2> Zyring Day 8 - Google Maps time! </h2>
+   <p class="post-meta">Apr 25, 2015 </p>
+<!--   <p class="post-meta">Apr 25, 2015 • {"login"=>"wotidun", "email"=>"wotidunread@gmail.com", "display_name"=>"wotidun", "first_name"=>"", "last_name"=>""} • {"_wpcom_is_markdown"=>"1", "_publicize_pending"=>"1", "_rest_api_published"=>"1", "_rest_api_client_id"=>"-1"}</p>-->
+<!--  </header>-->
+
+  <article class="post-content">
+    <p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Google Maps API key</h2>
+<p>Nice easy step here - obtain a key for the Google Maps API. OK, this was actually slightly more complicated than expected as Google's instructions appear to be out of date, and the actual process was a bit different... not too much of a challenge though.</p>
+<h2>Installing a Google Maps directive</h2>
+<p>Another setup-type tutorial here, though again somewhat confusing. The particular page of of documentation linked to was for something called the <a href="http://angular-ui.github.io/angular-google-maps/#!/api">Google Maps Asynchronous Loader</a>, but I don't know whether that is something to install on its own or as part of the <code>angular-google-maps</code> package. Anyway I just installed <code>angular-google-maps</code> with bower using the <a href="http://angular-ui.github.io/angular-google-maps/#!/use">instructions</a> on the Quickstart page. I originally didn't read the bit about not needing to update <code>index.html</code> manually but that didn't really matter, it was kind of useful to dig around the files and see where everything was saved anyway.</p>
+<p>After that it was time to actually include some maps! Again, I followed the Quickstart instructions, using my API key from the previous step, and it went pretty smoothly - I now have a map (of Montreal) at the top of the page for each city.</p>
+
+<figure>
+    <img src='/assets/google_maps_screenshot.png' alt="A map (of Montreal, not Olympia)" />
+    <figcaption>Not a map of Olympia.</figcaption>
+</figure>
+
+<h2>Centring Google Maps</h2>
+<p>This just involved moving the map from Montreal to Seattle. I was mildly surprised that Seattle is a good way north of Montreal, but other than that not much to report here.</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Stuff Wot I Dun</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Stuff Wot I Dun</li>
+          <li><a href="mailto:wotidunread[at]gmail[dot]com">wotidunread[at]gmail[dot]com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">I dun this
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

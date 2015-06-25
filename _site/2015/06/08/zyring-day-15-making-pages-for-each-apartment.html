@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Zyring Day 15 - Making pages for each apartment</title>
+<!--  <meta name="description" content="{"options"=>{}}">-->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/solarized-light.css">
+<!--  <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet"></link>-->
+  <link rel="canonical" href="https://localhost/4000/2015/06/08/zyring-day-15-making-pages-for-each-apartment.html">
+  <link rel="alternate" type="application/rss+xml" title="Stuff Wot I Dun" href="https://localhost/4000/feed.xml" />
+
+</head>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Stuff Wot I Dun</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+   <header class="post-header">
+
+   <h2> Zyring Day 15 - Making pages for each apartment </h2>
+   <p class="post-meta">Jun 8, 2015 </p>
+<!--   <p class="post-meta">Jun 8, 2015 • {"login"=>"wotidun", "email"=>"wotidunread@gmail.com", "display_name"=>"wotidun", "first_name"=>"", "last_name"=>""} • {"_wpcom_is_markdown"=>"1", "_rest_api_published"=>"1", "_rest_api_client_id"=>"-1", "_publicize_job_id"=>"11460334174"}</p>-->
+<!--  </header>-->
+
+  <article class="post-content">
+    <p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Creating new pages for your apartments</h2>
+<p>This took me a while, as it was some time since I'd done the routing for the city pages. I had to create my new view (<code>apartments.html</code>), my new controller (<code>apartments.js</code>) and then sort out the routing in <code>app.js</code>. Then I made links from each apartment in the map and listings to the new page. Think I'm starting to get the hang of how routing works!</p>
+<h2>Backend endpoints for individual apartment API</h2>
+<p>Nice short tutorial, just having a look at what information the backend server has for each apartment (quite a lot, as it turns out).</p>
+<h2>Single apartment factory</h2>
+<p>This is an odd tutorial. The text looks unfinished, and says 'Similar to the previous step, create another factory for the last backend call inside the script you created.' I have no idea what step this is referring to. I decide to go for my standby method of just guessing what to do, and then hoping the next tutorial makes more sense...</p>
+<p>My guess is that I need to wire things up to the backend server using the <code>$resource</code> object, as I did for the apartment lists for each city. After a lot of fiddling around trying to remember how to do this, I manage to dump all the apartment data into my view for each apartment:</p>
+
+<figure>
+    <img src='/assets/single_apartment_page.png' alt="Data for the single apartment view" />
+    <figcaption>Data for the single apartment view</figcaption>
+</figure>
+
+<p>Not pretty. But it works!</p>
+<h2>Getting information for individual apartments</h2>
+<p>Hang on, turns out that the next tutorial is exactly what I just did. So I've now got <em>no idea</em> what the 'Single Apartment Factory' tutorial is about. Never mind, if it's important I'm sure I'll find out later. I'm also feeling quite smug that I figured out to use a <code>get</code> rather than <code>query</code> method by myself, with no help from the tutorial (it took me a while though).</p>
+<p>Wow, there's only one tutorial left now (as well as going back and working out what my off-by-one problem with 'Using the pager element to navigate' is). Will leave this for another day, as I expect it will take some time to do all the styling and so on.</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Stuff Wot I Dun</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Stuff Wot I Dun</li>
+          <li><a href="mailto:wotidunread[at]gmail[dot]com">wotidunread[at]gmail[dot]com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">I dun this
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

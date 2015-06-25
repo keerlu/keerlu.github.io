@@ -1,0 +1,53 @@
+---
+layout: post
+title: Zyring Day 19 - Tidying up
+date: 2015-06-12 13:59:35.000000000 +01:00
+categories: []
+tags:
+- Angular
+- Bootstrap
+- JavaScript
+- Zyring
+status: publish
+type: post
+published: true
+meta:
+  _wpcom_is_markdown: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '11599903762'
+author:
+  login: wotidun
+  email: wotidunread@gmail.com
+  display_name: wotidun
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Display information about a single apartment on a page (continued)</h2>
+<p>Time for a final bit of styling of the indivdual apartments. I added a grey background to the apartment title to be consistent with the styling list of apartments, and did a few other small changes. Again, I don't want to spend huge amounts of time on styling for this project, that isn't the focus for me.</p>
+<p>I ended up with this:</p>
+
+<figure>
+    <img src='/assets/theas_landing.png' alt="Grey background to the title for consistency" />
+    <figcaption>Grey background to the title for consistency</figcaption>
+</figure>
+
+<h2>Pedantry</h2>
+<p>Woohoo! Everything's done now apart from the <a href="https://wotidun.wordpress.com/2015/06/12/zyring-day-18-off-by-one-day/">page navigation problem from yesterday</a> that I'm going to have to ask about. Now to tidy up a bit... fixing problems, with indentation, comments, adding some <code>ngdocs</code> documentation and renaming my two Angular factories to more informative names. Also cleaned up my mess of a CSS file a bit using tips from <a href="http://code.tutsplus.com/tutorials/30-css-best-practices-for-beginners--net-6741">this tutorial.</a></p>
+<h2>Things I could add</h2>
+<p>That's where I'm leaving it for now (apart from the page navigation problem), but I may as well list a few minor annoyances I'd like to fix if I feel like it later:</p>
+<ul>
+<li>Map displays same area each time: would like to focus in on particular areas</li>
+<li>Maybe have a map on individual apartment pages as well</li>
+<li>Add navigation to go back to list of apartments from an individual apartments page</li>
+<li>Currently if I do this by clicking 'Back', it always takes me to page 1 of the list of apartments rather than the one I was on</li>
+<li>Carousel only works with mouse, not left and right arrow keys</li>
+<li>Would be good to show the apartment thumbnail for apartments where there are no other images on the backend server</li>
+<li>Write something more helpful in the 'About' view</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Finally...</h2>
+<p>I still need to write a big old post summarising how I found the project. Coming soon...</p>

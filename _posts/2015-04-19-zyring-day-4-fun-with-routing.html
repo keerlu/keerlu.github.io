@@ -1,0 +1,49 @@
+---
+layout: post
+title: Zyring Day 4 - fun with routing
+date: 2015-04-19 18:23:34.000000000 +01:00
+categories: []
+tags:
+- Angular
+- JavaScript
+- Zyring
+status: publish
+type: post
+published: true
+meta:
+  _wpcom_is_markdown: '1'
+  _publicize_pending: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _edit_last: '67112767'
+  geo_public: '0'
+author:
+  login: wotidun
+  email: wotidunread@gmail.com
+  display_name: wotidun
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<p>Today's tutorial successfully unconfused me on a variety of things. It took me <em>ages</em> to figure out, but I was happy when I got there and finally started to understand some basic things about Angular. The key for me was the <a href="https://zyring.com/#/tracks/frontend/prereq/angular#angularhash">'How do views get displayed in Angular?'</a> part of the help documentation, which gives more of a high-level overview of what's going on.</p>
+<p>The idea for this tutorial is to be able to click on each city and go to some information for it. However, AngularJS is a single page application framework which loads a single HTML page once. So when we navigate to, say, the Seattle page, instead of loading a completely new page we just swap to another view. Also, there's no need to have a separate view and controller for each city - we want to make generic ones (which I called <code>cities.js</code> and <code>cities.html</code>), and then parametrise the URLs so there is a separate page for each city.</p>
+<p>At this point I was starting to lose track of how all these javascript and html files related to other, so I decided to draw some pictures. Here's the file tree with all the bits I've been using so far included. There's <code>index.html</code>, <code>app.js</code>, and one example view and controller, <code>example.html</code> and <code>example.js</code>.</p>
+
+<figure>
+    <img src='/assets/files_tree1.jpg' alt="File tree with an example view and controller" />
+    <figcaption>File tree with an example view and controller</figcaption>
+</figure>
+
+<p>And here's some notes on each one.</p>
+
+<figure>
+    <img src='/assets/files_diagram.jpg' alt="File tree again with notes on each file added" />
+    <figcaption>File tree again with notes on each file added</figcaption>
+</figure>
+
+<p>I haven't added anything on parametrising URLs yet, may put up a further picture at some point when I understand it better.</p>
+<p>Now I had the diagrams, it was easier to keep in my head what was what. First I had to edit <code>app.js</code> to route to the page for each city using the parametrised URLs. My next task was to retrieve the city name stored in $routeParams and display it in the HTML view as the title for the page (instead of my previous standby, 'BANANAS!!!'). This caused me a load more confusion but I got there in the end.</p>
+<p>At this point I found <a href="http://viralpatel.net/blogs/angularjs-routing-and-views-tutorial-with-example/">this tutorial on routing</a> helpful (the one linked to in the Zyring documentation was a video tutorial, which I never get on with, and also required you to sign up to something).</p>
+<p>After I succeeded with all this I was feeling pretty pleased with myself given my complete lack of familiarity with Angular.</p>

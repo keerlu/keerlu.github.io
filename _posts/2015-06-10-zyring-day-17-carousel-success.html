@@ -1,0 +1,42 @@
+---
+layout: post
+title: Zyring Day 17 - Carousel Success
+date: 2015-06-10 12:28:33.000000000 +01:00
+categories: []
+tags:
+- Angular
+- Bootstrap
+- JavaScript
+- Zyring
+status: publish
+type: post
+published: true
+meta:
+  _wpcom_is_markdown: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: '-1'
+  _publicize_job_id: '11527488891'
+author:
+  login: wotidun
+  email: wotidunread@gmail.com
+  display_name: wotidun
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p><em>[Note: These are more in-depth (read: tedious) write-ups of my experience with each section of the Zyring project, leading on from my <a href="https://wotidun.wordpress.com/2015/04/14/wot-i-dun-zyring-project/">intro post</a> on Zyring. This is mostly for my own benefit but could conceivably be of use to someone doing the project.]</em></p>
+<h2>Display information about a single apartment on a page (continued)</h2>
+<p>Boom! Used <code>simonykq</code>'s solution on this <a href="https://github.com/angular-ui/bootstrap/issues/1350">thread</a> and it worked beautifully. Nice to start the day with something working immediately.</p>
+<p>I then ran into another issue that needed fixing - a problem with duplicate items in lists when using <code>ng-repeat</code>. This could <a href="https://docs.angularjs.org/error/ngRepeat/dupes">be fixed</a> by using the <code>track by $index</code> option, tracking by an object's position in an array rather than its value. I'd seen this error come up before, nice to understand it!</p>
+<p>OK, finally time to style the information a bit. I get as far as this:</p>
+
+<figure>
+    <img src='/assets/abbey_rowe.png' alt="Example apartment listing" />
+    <figcaption>Example apartment listing</figcaption>
+</figure>
+
+<p>Next time I plan to make this a bit fancier and more consistent with the styling of the previous pages. And hopefully find that off-by-one error... very close to finishing now!</p>
+
+
+

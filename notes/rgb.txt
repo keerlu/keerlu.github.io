@@ -1,0 +1,17 @@
+Olive green
+#8A9663
+
+Sea green
+#1F6B63
+
+Dark burgundy
+#73343A
+
+Pinkish red
+#B82A39
+
+Dark green
+#071F19
+
+Orange
+#ed6409

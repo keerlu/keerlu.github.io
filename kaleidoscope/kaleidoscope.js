@@ -11,6 +11,8 @@ var by = 260;
 var cx = 150;
 var cy = 0;
 
+// Small triangle coords
+
 function parametriseTriangle(param) {
   u = param[0];
   v = param[1];
@@ -32,24 +34,44 @@ function randomTrianglePoint() {
   return parametriseTriangle(randomParam());
 }
 
-var smallTriangleData = [
-  {"fill": "green", 
-   "stroke": "black", 
-   "stroke-width": 2, 
-   "points": randomTrianglePoint() + randomTrianglePoint() + randomTrianglePoint()}
-];
+// Small triangle colours
 
-var smallTriangle = svg.selectAll(".small-triangle")
-		     .data(smallTriangleData);
+colours = ["#8A9663", // olive green
+           "#1F6B63", // sea green
+           "#071F19", // dark green
+           "#73343A", //dark burgundy
+           "#B82A39", // pinkish red
+           "#ed6409"]; // orange
 
-var smallTriangleEnter = smallTriangle.enter().append("polygon");
+function randomColour() {
+  return colours[Math.floor(Math.random() * colours.length)];
+}
 
-smallTriangleEnter.attr("points", function(d) { return d.points });
-smallTriangleEnter.attr("fill", function(d) {return d.fill });
-smallTriangleEnter.attr("stroke", function(d) {return d.stroke });
+function smallTriangleData() {
 
+  return {"fill": randomColour(), 
+          "opacity": 0.8, 
+          "points": randomTrianglePoint() + randomTrianglePoint() + randomTrianglePoint()};
 
-// next: vary number of triangles, and/or work out how to get nicer shapes
+}
+
+// add 7 to 9 triangles
+
+var allSmallTrianglesData = [];
+
+for(var i=0; i<(10 - (Math.floor(Math.random()*3))); i++){
+  allSmallTrianglesData.push(smallTriangleData());
+}
+
+var smallTriangles = svg.selectAll(".small-triangle")
+		     .data(allSmallTrianglesData);
+
+var smallTrianglesEnter = smallTriangles.enter().append("polygon");
+
+smallTrianglesEnter.attr("points", function(d) { return d.points });
+smallTrianglesEnter.attr("fill", function(d) {return d.fill });
+smallTrianglesEnter.attr("opacity", function(d) {return d.opacity });
+
 
 
 

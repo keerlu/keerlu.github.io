@@ -1,0 +1,32 @@
+<svg width="1100" height="1000">
+  <defs>
+    <g id="grouped-triangle">
+      <polygon id="background-triangle" fill="white" stroke="black" stroke-width="1" points="75,0
+                     0,130
+                     150,130"></polygon>
+    <polygon points="75.20969984992733,106.51345925487527 85.97952421784481,76.84528821493694 42.000055820863054,58.71248966946058 " fill="#8A9663" opacity="0.8"></polygon><polygon points="78.20881698664247,121.9932792641463 108.77955947755912,100.66332487896248 96.33318111372674,93.43845456036911 " fill="#1F6B63" opacity="0.8"></polygon><polygon points="133.4195208235629,105.33961174081817 85.37301591246184,115.11516121192787 14.727522672101967,123.62290539747232 " fill="#ed6409" opacity="0.8"></polygon><polygon points="24.117588740047413,99.6142027970348 43.57219672240945,111.23086459969498 47.743609720769285,48.621375194942495 " fill="#ed6409" opacity="0.8"></polygon><polygon points="8.933942373335753,123.16010441641365 73.38215923708249,114.60344891518844 130.58141579757955,127.57433712613341 " fill="#ed6409" opacity="0.8"></polygon><polygon points="98.06097241816565,48.622391011062405 55.71222596715101,121.16058304802539 53.32794246311744,71.6792195012122 " fill="#73343A" opacity="0.8"></polygon><polygon points="64.89310251305774,102.62916518054044 43.871116489662406,129.47433836559222 8.518919092611991,124.38743301111391 " fill="#B82A39" opacity="0.8"></polygon><polygon points="26.427251143413294,95.98765404034728 96.85940357424812,95.21373514546659 19.397900702585105,114.61418945559117 " fill="#ed6409" opacity="0.8"></polygon><polygon points="30.448251507861983,124.48622486423412 59.11065392576457,79.8211107150143 65.21836933415089,114.31691876147133 " fill="#B82A39" opacity="0.8"></polygon></g>
+
+  <g id="hexagon">
+    <g id="half-hexagon-1">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#grouped-triangle" transform="translate(-75)"></use>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#grouped-triangle" transform="rotate(120) translate(-75)"></use> 
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#grouped-triangle" transform="rotate(240) translate(-75)"></use> 
+    </g>
+    <g id="half-hexagon-2">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#half-hexagon-1" transform="rotate(60) scale(-1,1)"></use> 
+    </g>
+  </g>
+  </defs>
+
+  <g id="kaleidoscope">
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(225, 130)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(450, 260)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(225, 390)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(450, 520)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(675, 130)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(675, 390)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(900, 260)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(900, 520)"></use>
+  </g>
+
+</svg>

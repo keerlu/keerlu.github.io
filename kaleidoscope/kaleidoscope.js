@@ -1,15 +1,6 @@
 var svg = d3.select("svg");
 
-bigTriangleCoords = [[0,260], [300, 260], [150, 0]];
-
-var ax = 0;
-var ay = 260;
-
-var bx = 300;
-var by = 260;
-
-var cx = 150;
-var cy = 0;
+bigTriangleCoords = [[0,130], [150, 130], [75, 0]];
 
 // Small triangle coords
 
@@ -38,7 +29,6 @@ function randomTrianglePoint() {
 
 colours = ["#8A9663", // olive green
            "#1F6B63", // sea green
-           "#071F19", // dark green
            "#73343A", //dark burgundy
            "#B82A39", // pinkish red
            "#ed6409"]; // orange
@@ -63,7 +53,7 @@ for(var i=0; i<(10 - (Math.floor(Math.random()*3))); i++){
   allSmallTrianglesData.push(smallTriangleData());
 }
 
-var smallTriangles = svg.selectAll(".small-triangle")
+var smallTriangles = d3.select("#grouped-triangle").selectAll(".small-triangle")
 		     .data(allSmallTrianglesData);
 
 var smallTrianglesEnter = smallTriangles.enter().append("polygon");

@@ -8,14 +8,46 @@
 
 <p>Test</p>
 
-<svg width="800" height="500">
-  <polygon id="background-triangle" fill="white" stroke="black" stroke-width="2"
-           points="150,0
-                   0,260
-                   300,260" />
+<svg width="1100" height="1000">
+  <defs>
+    <g id="grouped-triangle">
+      <polygon id="background-triangle" 
+               fill="white" 
+               stroke="black" 
+               stroke-width="1"
+               points="75,0
+                     0,130
+                     150,130" />
+    </g>
+
+  <g id="hexagon">
+    <g id="half-hexagon-1">
+      <use xlink:href="#grouped-triangle" transform="translate(-75)"/>
+      <use xlink:href="#grouped-triangle" transform="rotate(120) translate(-75)"/> 
+      <use xlink:href="#grouped-triangle" transform="rotate(240) translate(-75)"/> 
+    </g>
+    <g id="half-hexagon-2">
+      <use xlink:href="#half-hexagon-1" transform="rotate(60) scale(-1,1)"/> 
+    </g>
+  </g>
+  </defs>
+
+  <g id="kaleidoscope">
+    <use xlink:href="#hexagon" transform="translate(225, 130)"/>
+    <use xlink:href="#hexagon" transform="translate(450, 260)"/>
+    <use xlink:href="#hexagon" transform="translate(225, 390)"/>
+    <use xlink:href="#hexagon" transform="translate(450, 520)"/>
+    <use xlink:href="#hexagon" transform="translate(675, 130)"/>
+    <use xlink:href="#hexagon" transform="translate(675, 390)"/>
+    <use xlink:href="#hexagon" transform="translate(900, 260)"/>
+    <use xlink:href="#hexagon" transform="translate(900, 520)"/>
+  </g>
+
 </svg>
 
-<script src="kaleidoscope.js?version=29"></script>
+
+
+<script src="kaleidoscope.js?version=34"></script>
 
 </body>
 

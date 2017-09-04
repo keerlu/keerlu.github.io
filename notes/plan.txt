@@ -1,0 +1,12 @@
+
+
+- pick totalNumberSymbols between 6 and 10.
+
+- while symbolList.length() =< totalNumberSymbols:
+
+	1. generate a symbol with arbitrary size + rotation within the bbox of 		the big triangle
+	2. find its (current, rotated) bbox
+        3. find corners of bbox
+	4. if all corners are within the big triangle:	
+		add to symbolList
+           otherwise do nothing

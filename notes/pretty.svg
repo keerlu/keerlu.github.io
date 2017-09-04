@@ -1,0 +1,32 @@
+<svg width="1100" height="1000">
+  <defs>
+    <g id="grouped-triangle">
+      <polygon id="background-triangle" fill="white" stroke="black" stroke-width="1" points="75,0
+                     0,130
+                     150,130"></polygon>
+    <path d="M21.102500581000424,0A21.102500581000424,21.102500581000424,0,1,1,-21.102500581000424,0A21.102500581000424,21.102500581000424,0,1,1,21.102500581000424,0" fill="#ed6409" stroke="black" stroke-width="1" opacity="0.8" transform="translate(55,39) rotate(133)"></path><path d="M-17.67059704707229,-17.67059704707229h35.34119409414458v35.34119409414458h-35.34119409414458Z" fill="#1F6B63" stroke="black" stroke-width="1" opacity="0.8" transform="translate(34,105) rotate(164)"></path><path d="M0,-33.68223981503627L19.44645022412072,0L0,33.68223981503627L-19.44645022412072,0Z" fill="#B82A39" stroke="black" stroke-width="1" opacity="0.8" transform="translate(26,39) rotate(45)"></path><path d="M-13.784048752090222,-13.784048752090222h27.568097504180443v27.568097504180443h-27.568097504180443Z" fill="#73343A" stroke="black" stroke-width="1" opacity="0.8" transform="translate(70,70) rotate(214)"></path><path d="M-18.46889276594566,-6.156297588648554L-6.156297588648554,-6.156297588648554L-6.156297588648554,-18.46889276594566L6.156297588648554,-18.46889276594566L6.156297588648554,-6.156297588648554L18.46889276594566,-6.156297588648554L18.46889276594566,6.156297588648554L6.156297588648554,6.156297588648554L6.156297588648554,18.46889276594566L-6.156297588648554,18.46889276594566L-6.156297588648554,6.156297588648554L-18.46889276594566,6.156297588648554Z" fill="#8A9663" stroke="black" stroke-width="1" opacity="0.8" transform="translate(-40,120) rotate(105)"></path><path d="M0,-26.59967584185729L15.357330007653092,0L0,26.59967584185729L-15.357330007653092,0Z" fill="#ed6409" stroke="black" stroke-width="1" opacity="0.8" transform="translate(-4,29) rotate(24)"></path><path d="M0,-30.54029076279138L17.632445093027044,0L0,30.54029076279138L-17.632445093027044,0Z" fill="#1F6B63" stroke="black" stroke-width="1" opacity="0.8" transform="translate(15,82) rotate(15)"></path><path d="M-20.967832506007863,-6.989277502002621L-6.989277502002621,-6.989277502002621L-6.989277502002621,-20.967832506007863L6.989277502002621,-20.967832506007863L6.989277502002621,-6.989277502002621L20.967832506007863,-6.989277502002621L20.967832506007863,6.989277502002621L6.989277502002621,6.989277502002621L6.989277502002621,20.967832506007863L-6.989277502002621,20.967832506007863L-6.989277502002621,6.989277502002621L-20.967832506007863,6.989277502002621Z" fill="#1F6B63" stroke="black" stroke-width="1" opacity="0.8" transform="translate(54,87) rotate(246)"></path><path d="M18.12445316531431,0A18.12445316531431,18.12445316531431,0,1,1,-18.12445316531431,0A18.12445316531431,18.12445316531431,0,1,1,18.12445316531431,0" fill="#8A9663" stroke="black" stroke-width="1" opacity="0.8" transform="translate(-15,77) rotate(215)"></path></g>
+
+  <g id="hexagon"> 
+    <g id="half-hexagon-1">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#grouped-triangle" transform="translate(-75)"></use>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#grouped-triangle" transform="rotate(120) translate(-75)"></use> 
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#grouped-triangle" transform="rotate(240) translate(-75)"></use> 
+    </g>
+    <g id="half-hexagon-2">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#half-hexagon-1" transform="rotate(60) scale(-1,1)"></use> 
+    </g>
+  </g>
+  </defs>
+
+  <g id="kaleidoscope">
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(225, 130)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(450, 260)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(225, 390)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(450, 520)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(675, 130)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(675, 390)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(900, 260)"></use>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hexagon" transform="translate(900, 520)"></use>
+  </g>
+
+</svg>

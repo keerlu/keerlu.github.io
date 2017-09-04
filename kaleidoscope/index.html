@@ -3,16 +3,17 @@
 <title>Kaleidoscope</title>
 
 <script src="//d3js.org/d3.v4.min.js"></script>
+<script src="scripts/path-data-polyfill.js"></script>
 
-<body>
+<body style="background-color: #9fadae">
 
 <p>Test</p>
 
-<svg width="1100" height="1000">
+<svg width="1302" height="752">
   <defs>
     <g id="grouped-triangle">
       <polygon id="background-triangle" 
-               fill="white" 
+               fill="#695e53" 
                stroke="black" 
                stroke-width="1"
                points="75,0
@@ -20,7 +21,7 @@
                      150,130" />
     </g>
 
-  <g id="hexagon">
+  <g id="unrotated-hexagon"> 
     <g id="half-hexagon-1">
       <use xlink:href="#grouped-triangle" transform="translate(-75)"/>
       <use xlink:href="#grouped-triangle" transform="rotate(120) translate(-75)"/> 
@@ -30,24 +31,30 @@
       <use xlink:href="#half-hexagon-1" transform="rotate(60) scale(-1,1)"/> 
     </g>
   </g>
+
+  <g id="hexagon">
+    <use xlink:href="#unrotated-hexagon" transform="rotate(30)">
+  </g>
   </defs>
 
   <g id="kaleidoscope">
-    <use xlink:href="#hexagon" transform="translate(225, 130)"/>
-    <use xlink:href="#hexagon" transform="translate(450, 260)"/>
-    <use xlink:href="#hexagon" transform="translate(225, 390)"/>
-    <use xlink:href="#hexagon" transform="translate(450, 520)"/>
-    <use xlink:href="#hexagon" transform="translate(675, 130)"/>
-    <use xlink:href="#hexagon" transform="translate(675, 390)"/>
-    <use xlink:href="#hexagon" transform="translate(900, 260)"/>
-    <use xlink:href="#hexagon" transform="translate(900, 520)"/>
+    <use xlink:href="#hexagon" transform="translate(261, 150)"/>
+    <use xlink:href="#hexagon" transform="translate(781, 150)"/>
+    <use xlink:href="#hexagon" transform="translate(131, 375)"/>
+    <use xlink:href="#hexagon" transform="translate(391, 375)"/>
+    <use xlink:href="#hexagon" transform="translate(651, 375)"/>
+    <use xlink:href="#hexagon" transform="translate(911, 375)"/>
+    <use xlink:href="#hexagon" transform="translate(1171, 375)"/>
+    <use xlink:href="#hexagon" transform="translate(1041, 600)"/>
+    <use xlink:href="#hexagon" transform="translate(521, 600)"/>
   </g>
+
 
 </svg>
 
 
 
-<script src="kaleidoscope.js?version=34"></script>
+<script src="/scripts/symbols.js"></script>
 
 </body>
 

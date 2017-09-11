@@ -4,6 +4,7 @@ colours = ["#87984d", // olive green
            "#B82A39", // pinkish red
            "#ed6409"]; // orange
 
+
 function randomColour() {
   return colours[Math.floor(Math.random() * colours.length)];
 }

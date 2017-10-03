@@ -1,4 +1,3 @@
-var svg = d3.select("svg");
 
 bigTriangleCoords = [[0,130], [150, 130], [75, 0]];
 

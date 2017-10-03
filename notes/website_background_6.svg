@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 1344.8743 586.15463"
+   width="942.0318"
+   height="530.33038"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="website_background_6.svg">
+  <metadata
+     id="metadata101">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#2c2335"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="3062"
+     inkscape:window-height="1752"
+     id="namedview99"
+     showgrid="false"
+     inkscape:zoom="2.8105633"
+     inkscape:cx="662.38671"
+     inkscape:cy="400.60022"
+     inkscape:window-x="138"
+     inkscape:window-y="48"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     showguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4275" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4340"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#ffffff;stroke-width:1pt;stroke-opacity:1;fill:#ffffff;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <g
+       id="grouped-triangle">
+      <polygon
+         id="background-triangle"
+         points="0,130 150,130 75,0 "
+         style="fill:#695e53;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="m -17.0147,-17.0147 34.0294,0 0,34.0294 -34.0294,0 z"
+         transform="matrix(-0.9998477,-0.01745241,0.01745241,-0.9998477,72.752354,61.390802)"
+         id="path8"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#87984d;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="m 0,-23.345635 20.217913,35.018452 -40.435826,0 z"
+         transform="matrix(0.8660254,-0.5,0.5,0.8660254,66.463131,104.55763)"
+         id="path10"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#1f6b63;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="m 0,-26.139121 5.8685983,18.0616884 18.9911827,0 L 9.4955915,3.0853047 15.36419,21.146993 0,9.9842557 -15.36419,21.146993 -9.4955915,3.0853047 -24.859781,-8.0774326 l 18.9911827,0 z"
+         transform="matrix(0.20791169,0.9781476,-0.9781476,0.20791169,56.096959,103.45495)"
+         id="path12"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#ed6409;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="M 0,-30.398176 17.550395,0 0,30.398176 -17.550395,0 Z"
+         transform="matrix(-0.99254615,0.12186934,-0.12186934,-0.99254615,104.34997,85.108722)"
+         id="path14"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#1f6b63;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="M 0,-25.873493 14.938068,0 0,25.873493 -14.938068,0 Z"
+         transform="matrix(-0.30901699,0.95105652,-0.95105652,-0.30901699,67.572972,72.249168)"
+         id="path16"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#73343a;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="m -14.097872,-14.097872 28.195744,0 0,28.195744 -28.195744,0 z"
+         transform="matrix(0.69465837,0.7193398,-0.7193398,0.69465837,87.576724,85.585762)"
+         id="path18"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#1f6b63;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="m 0,-31.816465 27.553867,47.724698 -55.107734,0 z"
+         transform="matrix(0.99862953,-0.05233596,0.05233596,0.99862953,72.667599,51.596594)"
+         id="path20"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#b82a39;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="m 0,-25.864194 22.399049,38.796291 -44.798098,0 z"
+         transform="matrix(0.94551858,0.32556815,-0.32556815,0.94551858,92.704725,104.4529)"
+         id="path22"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#1f6b63;stroke:#000000;stroke-width:1" />
+      <path
+         class="symbol"
+         d="m 0,-29.073025 25.177978,43.609538 -50.355956,0 z"
+         transform="matrix(-0.7193398,-0.69465837,0.69465837,-0.7193398,85.307851,95.979074)"
+         id="path24"
+         inkscape:connector-curvature="0"
+         style="opacity:0.8;fill:#73343a;stroke:#000000;stroke-width:1" />
+    </g>
+    <g
+       id="unrotated-hexagon">
+      <g
+         id="half-hexagon-1">
+        <use
+           xlink:href="#grouped-triangle"
+           transform="translate(-75,0)"
+           id="use28"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#grouped-triangle"
+           transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,37.5,-64.951905)"
+           id="use30"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#grouped-triangle"
+           transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,37.5,64.951905)"
+           id="use32"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="half-hexagon-2">
+        <use
+           xlink:href="#half-hexagon-1"
+           transform="matrix(-0.5,-0.8660254,-0.8660254,0.5,0,0)"
+           id="use35"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+    </g>
+    <g
+       id="hexagon">
+      <use
+         xlink:href="#unrotated-hexagon"
+         transform="matrix(0.8660254,0.5,-0.5,0.8660254,0,0)"
+         id="use38"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+  </defs>
+  <rect
+     style="opacity:1;fill:#2c2335;fill-opacity:1;stroke:#2c2335;stroke-width:1.25203276;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect4622"
+     width="1439.579"
+     height="828.26062"
+     x="-35.199284"
+     y="-98.438614" />
+  <g
+     id="kaleidoscope"
+     transform="translate(-37.13821,-219.9405)">
+    <g
+       id="centre">
+      <use
+         xlink:href="#hexagon"
+         transform="translate(391,375)"
+         id="use42"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <g
+       id="ring1"
+       style="opacity:0.75">
+      <use
+         xlink:href="#hexagon"
+         transform="translate(261,150)"
+         id="use45"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(521,150)"
+         id="use47"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(131,375)"
+         id="use49"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(651,375)"
+         id="use51"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(261,600)"
+         id="use53"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(521,600)"
+         id="use55"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <g
+       id="ring2"
+       style="opacity:0.5">
+      <use
+         xlink:href="#hexagon"
+         transform="translate(131,-75)"
+         id="use58"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(391,-75)"
+         id="use60"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(651,-75)"
+         id="use62"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(781,150)"
+         id="use64"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(1,150)"
+         id="use66"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(911,375)"
+         id="use68"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(1,600)"
+         id="use70"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(781,600)"
+         id="use72"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(131,825)"
+         id="use74"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(391,825)"
+         id="use76"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(651,825)"
+         id="use78"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <g
+       id="ring3"
+       style="opacity:0.25">
+      <use
+         xlink:href="#hexagon"
+         transform="translate(911,-75)"
+         id="use81"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(1041,150)"
+         id="use83"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(1171,375)"
+         id="use85"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(1041,600)"
+         id="use87"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(911,825)"
+         id="use89"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(1,1050)"
+         id="use91"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(261,1050)"
+         id="use93"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(521,1050)"
+         id="use95"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon"
+         transform="translate(781,1050)"
+         id="use97"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+  </g>
+  <rect
+     style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.4276315;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect4184"
+     width="1343.4467"
+     height="755.68872"
+     x="0.71381575"
+     y="-87.622314" />
+  <rect
+     style="opacity:0.5;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.4247762;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect4209"
+     width="1342.6046"
+     height="42.386192"
+     x="1.4350107"
+     y="-88.383369" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.91371155px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';letter-spacing:0px;word-spacing:0px;opacity:0.8;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="1211.9255"
+     y="-57.008354"
+     id="text4237"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4239"
+       x="1211.9255"
+       y="-57.008354">ABOUT</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.91371346px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';letter-spacing:0px;word-spacing:0px;opacity:0.8;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="1071.1628"
+     y="-57.412663"
+     id="text4237-6"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4239-7"
+       x="1071.1628"
+       y="-57.412663">NOTES</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.91371346px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';letter-spacing:0px;word-spacing:0px;opacity:0.8;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="871.82001"
+     y="-58.849365"
+     id="text4237-5"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4239-3"
+       x="871.82001"
+       y="-58.849365">QUESTIONS</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.91371346px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';letter-spacing:0px;word-spacing:0px;opacity:0.8;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="743.2348"
+     y="-56.694305"
+     id="text4237-56"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4239-2"
+       x="743.2348"
+       y="-56.694305">BLOG</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:57.10525894px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="613.88153"
+     y="14.924995"
+     id="text4277"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4279"
+       x="613.88153"
+       y="14.924995" /></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.97242928px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';letter-spacing:0px;word-spacing:0px;opacity:0.8;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="1080.2651"
+     y="576.69635"
+     id="text4237-6-9"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4239-7-4"
+       x="1080.2651"
+       y="576.69635">Click to change!</tspan></text>
+  <rect
+     style="opacity:0.5;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.4247762;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect4209-6"
+     width="492.7933"
+     height="130.02521"
+     x="697.79102"
+     y="241.9908" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36.9083519px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';letter-spacing:0px;word-spacing:0px;opacity:0.8;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="729.0152"
+     y="291.17496"
+     id="text4237-6-9-8"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4239-7-4-4"
+       x="729.0152"
+       y="291.17496">Some text about</tspan><tspan
+       sodipodi:role="line"
+       x="729.0152"
+       y="337.31039"
+       id="tspan4317">me me me me me me</tspan></text>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.2520328;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#Arrow1Lstart)"
+     d="m 899.80762,457.67127 c 15.58927,55.60814 9.88558,121.58928 169.11358,112.74245"
+     id="path4334"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+</svg>

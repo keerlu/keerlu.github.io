@@ -8,8 +8,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1302"
-   height="752"
+   width="260"
+   height="301"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -193,39 +193,43 @@
      id="kaleidoscope">
     <use
        xlink:href="#hexagon"
-       transform="translate(261, 150)"
+       transform="translate(0, 0)"
        id="use133" />
     <use
        xlink:href="#hexagon"
-       transform="translate(781, 150)"
+       transform="translate(260, 0)"
+       id="use133" />
+    <use
+       xlink:href="#hexagon"
+       transform="translate(520, 0)"
+       id="use149" />
+    <use
+       xlink:href="#hexagon"
+       transform="translate(780, 0)"
        id="use135" />
     <use
        xlink:href="#hexagon"
-       transform="translate(131, 375)"
-       id="use137" />
-    <use
-       xlink:href="#hexagon"
-       transform="translate(391, 375)"
-       id="use139" />
-    <use
-       xlink:href="#hexagon"
-       transform="translate(651, 375)"
-       id="use141" />
-    <use
-       xlink:href="#hexagon"
-       transform="translate(911, 375)"
-       id="use143" />
-    <use
-       xlink:href="#hexagon"
-       transform="translate(1171, 375)"
-       id="use145" />
-    <use
-       xlink:href="#hexagon"
-       transform="translate(1041, 600)"
+       transform="translate(1040, 0)"
        id="use147" />
     <use
        xlink:href="#hexagon"
-       transform="translate(521, 600)"
-       id="use149" />
+       transform="translate(130, 225)"
+       id="use137" />
+    <use
+       xlink:href="#hexagon"
+       transform="translate(390, 225)"
+       id="use139" />
+    <use
+       xlink:href="#hexagon"
+       transform="translate(650, 225)"
+       id="use141" />
+    <use
+       xlink:href="#hexagon"
+       transform="translate(910, 225)"
+       id="use143" />
+    <use
+       xlink:href="#hexagon"
+       transform="translate(1170, 225)"
+       id="use145" />
   </g>
 </svg>

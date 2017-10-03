@@ -1,0 +1,7 @@
+// pastels
+
+colours = ["#C8E9A0", // green
+           "#92D5E6", // blue
+           "#B5FFE1", // cyan
+           "#F280C0", // pink
+           "#FFFD98"]; // sand

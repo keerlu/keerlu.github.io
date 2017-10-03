@@ -13,7 +13,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="website_background_4.svg">
+   sodipodi:docname="website_background_4.svg"
+   inkscape:export-filename="/home/lucy/Dropbox/Git/keerlu.github.io/notes/website_background_4.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <metadata
      id="metadata151">
     <rdf:RDF>
@@ -27,7 +30,7 @@
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     pagecolor="#695e53"
+     pagecolor="#000000"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"
@@ -40,8 +43,8 @@
      id="namedview149"
      showgrid="false"
      inkscape:zoom="1.3350176"
-     inkscape:cx="651"
-     inkscape:cy="698.75567"
+     inkscape:cx="437.8942"
+     inkscape:cy="827.55609"
      inkscape:window-x="138"
      inkscape:window-y="48"
      inkscape:window-maximized="1"

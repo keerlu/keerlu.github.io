@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 75 1500 844"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="mouseover-image.svg">
+  <metadata
+     id="metadata84">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="3062"
+     inkscape:window-height="1752"
+     id="namedview82"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="4.2986667"
+     inkscape:cx="1207.2893"
+     inkscape:cy="727.71236"
+     inkscape:window-x="138"
+     inkscape:window-y="48"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="kaleidoscope-cover" />
+  <defs
+     id="defs4">
+    <g
+       id="grouped-triangle-cover">
+      <polygon
+         class="background-triangle-cover"
+         fill="red"
+         stroke="none"
+         points="75,0                      0,130                      150,130"
+         id="polygon7" />
+    </g>
+    <g
+       id="unrotated-hexagon-cover">
+      <g
+         id="half-hexagon-1-cover">
+        <use
+           xlink:href="#grouped-triangle-cover"
+           transform="translate(-75)"
+           id="use11" />
+        <use
+           xlink:href="#grouped-triangle-cover"
+           transform="rotate(120) translate(-75)"
+           id="use13" />
+        <use
+           xlink:href="#grouped-triangle-cover"
+           transform="rotate(240) translate(-75)"
+           id="use15" />
+      </g>
+      <g
+         id="half-hexagon-2-cover">
+        <use
+           xlink:href="#half-hexagon-1-cover"
+           transform="rotate(60) scale(-1,1)"
+           id="use18" />
+      </g>
+    </g>
+    <g
+       id="hexagon-cover">
+      <use
+         xlink:href="#unrotated-hexagon-cover"
+         transform="rotate(30)"
+         id="use21" />
+    </g>
+  </defs>
+  <g
+     id="kaleidoscope-cover"
+     opacity="0.5">
+    <g
+       id="centre">
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(391, 375)"
+         id="use25" />
+    </g>
+    <g
+       id="ring1">
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(261, 150)"
+         id="use28" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(521, 150)"
+         id="use30" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(131, 375)"
+         id="use32" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(651, 375)"
+         id="use34" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(261, 600)"
+         id="use36" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(521, 600)"
+         id="use38" />
+    </g>
+    <g
+       id="ring2"
+       transform="translate(0,4)">
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(131,-75)"
+         id="use41"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(391,-75)"
+         id="use43"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(651,-75)"
+         id="use45"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(781,150)"
+         id="use47"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(1,150)"
+         id="use49"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(911,375)"
+         id="use51"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(1,600)"
+         id="use53"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(781,600)"
+         id="use55"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(131,825)"
+         id="use57"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(391,825)"
+         id="use59"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(651,825)"
+         id="use61"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <g
+       id="ring3">
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(911, -75)"
+         id="use64" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(1041, 150)"
+         id="use66" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(1171, 375)"
+         id="use68" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(1041, 600)"
+         id="use70" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(911, 825)"
+         id="use72" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(1, 1050)"
+         id="use74" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(261, 1050)"
+         id="use76" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(521, 1050)"
+         id="use78" />
+      <use
+         xlink:href="#hexagon-cover"
+         transform="translate(781, 1050)"
+         id="use80" />
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1,920 1006,0 34,-20 0,-150 130,-75 0,-150 130,-75 0,-150 -130,-75 0,-150 L 0,75 Z"
+       id="path4220"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

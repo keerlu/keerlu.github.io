@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="130 150 391 450">
+  <defs>
+    <g id="grouped-triangle" fill-opacity="0.4" >
+      <polygon class="background-triangle" 
+               fill="#2c2335"
+               stroke="black" 
+               stroke-width="1"
+               points="75,0
+                     0,130
+                     150,130" />
+      <path class="symbol" d="M0,-29.77935549126719L17.193118909176672,0L0,29.77935549126719L-17.193118909176672,0Z" fill="#B82A39" stroke="black" stroke-width="1" opacity="0.8" transform="translate(73.60727863138683,51.735241635211544) rotate(194)"></path><path class="symbol" d="M-17.124543789543708,-17.124543789543708h34.249087579087416v34.249087579087416h-34.249087579087416Z" fill="#1F6B63" stroke="black" stroke-width="1" opacity="0.8" transform="translate(68.44031666376813,86.63021872732497) rotate(270)"></path><path class="symbol" d="M-14.857657958103626,-14.857657958103626h29.715315916207253v29.715315916207253h-29.715315916207253Z" fill="#1F6B63" stroke="black" stroke-width="1" opacity="0.8" transform="translate(76.12777224373247,64.19248972582848) rotate(291)"></path><path class="symbol" d="M8.469356509063818,4.889785260370905L8.469356509063818,21.828498278498543L-8.469356509063818,21.828498278498543L-8.469356509063818,4.889785260370904L-23.138712290176535,-3.5795712486929148L-14.669355781112715,-18.24892702980563L0,-9.77957052074181L14.669355781112715,-18.24892702980563L23.138712290176535,-3.5795712486929148Z" fill="#1F6B63" stroke="black" stroke-width="1" opacity="0.8" transform="translate(73.52086231905801,57.04470127016979) rotate(16)"></path><path class="symbol" d="M0,-28.04881400016282L24.290985470165623,14.02440700008141L-24.290985470165623,14.02440700008141Z" fill="#1F6B63" stroke="black" stroke-width="1" opacity="0.8" transform="translate(58.95955005594442,108.52835077704754) rotate(221)"></path><path class="symbol" d="M-14.603081866510234,-14.603081866510234h29.206163733020468v29.206163733020468h-29.206163733020468Z" fill="#B82A39" stroke="black" stroke-width="1" opacity="0.8" transform="translate(69.4259479975328,77.53383989757816) rotate(51)"></path><path class="symbol" d="M0,-29.64982310041782L25.67750002267652,14.82491155020891L-25.67750002267652,14.82491155020891Z" fill="#f2692d" stroke="black" stroke-width="1" opacity="0.8" transform="translate(86.2117258622751,81.18927526581588) rotate(46)"></path><path class="symbol" d="M-17.46424919657298,-17.46424919657298h34.92849839314596v34.92849839314596h-34.92849839314596Z" fill="#1F6B63" stroke="black" stroke-width="1" opacity="0.8" transform="translate(44.27274536425444,100.77401429830931) rotate(43)"></path><path class="symbol" d="M0,-25.77288273947376L14.879980787427835,0L0,25.77288273947376L-14.879980787427835,0Z" fill="#B82A39" stroke="black" stroke-width="1" opacity="0.8" transform="translate(90.17119249290701,76.52535363714574) rotate(193)"></path><path class="symbol" d="M0,-28.592446225751832L16.50785652522772,0L0,28.592446225751832L-16.50785652522772,0Z" fill="#f2692d" stroke="black" stroke-width="1" opacity="0.8" transform="translate(53.58534453622515,85.13969862544593) rotate(220)"></path><path class="symbol" d="M-13.435028842544403,-13.435028842544403h26.870057685088806v26.870057685088806h-26.870057685088806Z" fill="#B82A39" stroke="black" stroke-width="1" opacity="0.8" transform="translate(111.23573512667285,100.18852336323496) rotate(157)"></path><path class="symbol" d="M-15.435349040433131,-15.435349040433131h30.870698080866262v30.870698080866262h-30.870698080866262Z" fill="#B82A39" stroke="black" stroke-width="1" opacity="0.8" transform="translate(92.08108530754691,69.3718009377023) rotate(78)"></path>               
+    </g>
+
+    <g id="unrotated-hexagon"> 
+      <g id="half-hexagon-1">
+        <use xlink:href="#grouped-triangle" transform="translate(-75)"/>
+        <use xlink:href="#grouped-triangle" transform="rotate(120) translate(-75)"/> 
+        <use xlink:href="#grouped-triangle" transform="rotate(240) translate(-75)"/> 
+      </g>
+      <g id="half-hexagon-2">
+        <use xlink:href="#half-hexagon-1" transform="rotate(60) scale(-1,1)"/> 
+      </g>
+    </g>
+
+    <g id="hexagon">
+      <use xlink:href="#unrotated-hexagon" transform="rotate(30)"/>
+    </g>
+  </defs>
+
+  <g id="kaleidoscope">
+    <g id="centre">
+      <use xlink:href="#hexagon" transform="translate(130, 150)"/> 
+      <use xlink:href="#hexagon" transform="translate(260, 375)"/>
+      <use xlink:href="#hexagon" transform="translate(130, 600)"/>          
+    </g>
+  </g>
+
+  <path id="kaleidoscope-cover" d="m 260,150 0,75 130,75 0,150 -130,75 0,75" fill="white" stroke="black" stroke-width="3" fill-opacity="0" />
+
+</svg>

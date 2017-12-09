@@ -23,13 +23,10 @@
     </ul>
   </div>
   <div class="push"></div>
-
+  
   <div id="description">
-    <p> Hi! This is my site for notes and thoughts on physics, maths and programming, and anything else I'm interested in.</p>
-  </div>
-
-  <div id="clicktochange">
-    <img src="/images/click_to_change.svg" alt="Click to change!"/>
+    <h1>Hello!</h1>
+    <p>This is my site for notes and thoughts on physics, maths, programming and anything else that interests me.</p>
   </div>
 
   <div id="kaleidoscope-container">
@@ -37,7 +34,7 @@
       <defs>
         <g id="grouped-triangle">
           <polygon class="background-triangle" 
-                   fill="#695e53" 
+                   fill="#2c2335" 
                    stroke="black" 
                    stroke-width="1"
                    points="75,0
@@ -62,10 +59,10 @@
       </defs>
 
       <g id="kaleidoscope">
-        <g id="centre">
+        <g id="centre" fill-opacity="0.7">
           <use xlink:href="#hexagon" transform="translate(391, 375)"/>          
         </g>
-        <g id="ring1" opacity="0.75">
+        <g id="ring1" fill-opacity="0.6" stroke-opacity="0.8">
           <use xlink:href="#hexagon" transform="translate(261, 150)"/>
           <use xlink:href="#hexagon" transform="translate(521, 150)"/>
           <use xlink:href="#hexagon" transform="translate(131, 375)"/>
@@ -73,7 +70,7 @@
           <use xlink:href="#hexagon" transform="translate(261, 600)" />
           <use xlink:href="#hexagon" transform="translate(521, 600)" />
         </g>
-        <g id="ring2" opacity="0.5">
+        <g id="ring2" fill-opacity="0.5" stroke-opacity="0.7">
           <use xlink:href="#hexagon" transform="translate(131, -75)"/>
           <use xlink:href="#hexagon" transform="translate(391, -75)"/>
           <use xlink:href="#hexagon" transform="translate(651, -75)"/>
@@ -86,7 +83,7 @@
           <use xlink:href="#hexagon" transform="translate(391, 825)"/>
           <use xlink:href="#hexagon" transform="translate(651, 825)"/> 
         </g>
-        <g id="ring3" opacity="0.25">
+        <g id="ring3" fill-opacity="0.4" stroke-opacity="0.6">
           <use xlink:href="#hexagon" transform="translate(911, -75)"/>
           <use xlink:href="#hexagon" transform="translate(1041, 150)"/>
           <use xlink:href="#hexagon" transform="translate(1171, 375)"/>
@@ -100,7 +97,7 @@
       </g>
 
       <path id="kaleidoscope-cover" d="m 1,920 1006,0 34,-20 0,-150 130,-75 0,-150 130,-75 0,-150 -130,-75 0,-150 L 0,75 Z" fill="white" stroke="black" stroke-width="3" fill-opacity="0" />
-
+      
     </svg>
   </div>
     

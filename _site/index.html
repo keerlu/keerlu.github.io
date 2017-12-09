@@ -1,306 +1,110 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
+<head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Stuff Wot I Dun</title>
-<!--  <meta name="description" content="I dun this
-">-->
+  <title>Lucy Keer</title>
 
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/solarized-light.css">
-<!--  <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet"></link>-->
-  <link rel="canonical" href="https://localhost/4000/">
-  <link rel="alternate" type="application/rss+xml" title="Stuff Wot I Dun" href="https://localhost/4000/feed.xml" />
-
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif" rel="stylesheet">
+  <link href="css/site.css" rel="stylesheet" type="text/css" />
 </head>
 
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<body id="homepage">
+  <script src="//d3js.org/d3.v4.min.js"></script>
 
-
-
-  <body>
-
-    <header class="site-header">
-
-  <div class="wrapper">
-
-    <a class="site-title" href="/">Stuff Wot I Dun</a>
-
-    <nav class="site-nav">
-      <a href="#" class="menu-icon">
-        <svg viewBox="0 0 18 15">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-        </svg>
-      </a>
-
-      <div class="trigger">
-        
-          
-          <a class="page-link" href="/about/">About</a>
-          
-        
-          
-        
-          
-        
-          
-        
-      </div>
-    </nav>
-
+  <div class="top">
+    <span><a href="index.html">Lucy Keer</span></a>
+    <button class="dropdown">Dropdown</button>
+    <ul>
+      <li><a href="test.html">About</a></li>
+      <li><a href="test.html">Projects</a></li>
+      <li><a href="test.html">Notes</a></li>
+    </ul>
+  </div>
+  <div class="push"></div>
+  
+  <div id="description">
+    <h1>Hello!</h1>
+    <p>This is my site for notes and thoughts on physics, maths, programming and anything else that interests me.</p>
   </div>
 
-</header>
+  <div id="kaleidoscope-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 75 1500 844">
+      <defs>
+        <g id="grouped-triangle">
+          <polygon class="background-triangle" 
+                   fill="#2c2335" 
+                   stroke="black" 
+                   stroke-width="1"
+                   points="75,0
+                         0,130
+                         150,130" />
+        </g>
 
+      <g id="unrotated-hexagon"> 
+        <g id="half-hexagon-1">
+          <use xlink:href="#grouped-triangle" transform="translate(-75)"/>
+          <use xlink:href="#grouped-triangle" transform="rotate(120) translate(-75)"/> 
+          <use xlink:href="#grouped-triangle" transform="rotate(240) translate(-75)"/> 
+        </g>
+        <g id="half-hexagon-2">
+          <use xlink:href="#half-hexagon-1" transform="rotate(60) scale(-1,1)"/> 
+        </g>
+      </g>
 
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="home">
+      <g id="hexagon">
+        <use xlink:href="#unrotated-hexagon" transform="rotate(30)"/>
+      </g>
+      </defs>
 
-  <h1 class="page-heading">Posts</h1>
+      <g id="kaleidoscope">
+        <g id="centre" fill-opacity="0.7">
+          <use xlink:href="#hexagon" transform="translate(391, 375)"/>          
+        </g>
+        <g id="ring1" fill-opacity="0.6" stroke-opacity="0.8">
+          <use xlink:href="#hexagon" transform="translate(261, 150)"/>
+          <use xlink:href="#hexagon" transform="translate(521, 150)"/>
+          <use xlink:href="#hexagon" transform="translate(131, 375)"/>
+          <use xlink:href="#hexagon" transform="translate(651, 375)" />
+          <use xlink:href="#hexagon" transform="translate(261, 600)" />
+          <use xlink:href="#hexagon" transform="translate(521, 600)" />
+        </g>
+        <g id="ring2" fill-opacity="0.5" stroke-opacity="0.7">
+          <use xlink:href="#hexagon" transform="translate(131, -75)"/>
+          <use xlink:href="#hexagon" transform="translate(391, -75)"/>
+          <use xlink:href="#hexagon" transform="translate(651, -75)"/>
+          <use xlink:href="#hexagon" transform="translate(781, 150)"/>
+          <use xlink:href="#hexagon" transform="translate(1, 150)"/>       
+          <use xlink:href="#hexagon" transform="translate(911, 375)"/>
+          <use xlink:href="#hexagon" transform="translate(1, 600)"/>
+          <use xlink:href="#hexagon" transform="translate(781, 600)"/>
+          <use xlink:href="#hexagon" transform="translate(131, 825)"/>
+          <use xlink:href="#hexagon" transform="translate(391, 825)"/>
+          <use xlink:href="#hexagon" transform="translate(651, 825)"/> 
+        </g>
+        <g id="ring3" fill-opacity="0.4" stroke-opacity="0.6">
+          <use xlink:href="#hexagon" transform="translate(911, -75)"/>
+          <use xlink:href="#hexagon" transform="translate(1041, 150)"/>
+          <use xlink:href="#hexagon" transform="translate(1171, 375)"/>
+          <use xlink:href="#hexagon" transform="translate(1041, 600)"/>
+          <use xlink:href="#hexagon" transform="translate(911, 825)"/>
+          <use xlink:href="#hexagon" transform="translate(1, 1050)"/>
+          <use xlink:href="#hexagon" transform="translate(261, 1050)"/>
+          <use xlink:href="#hexagon" transform="translate(521, 1050)"/>
+          <use xlink:href="#hexagon" transform="translate(781, 1050)"/>
+        </g>
+      </g>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jun 16, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/jekyll/update/2015/06/16/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 15, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/06/15/i-dun-it-zyring-project-summary.html">I dun it! Zyring project summary...</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 12, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/06/12/zyring-day-19-tidying-up.html">Zyring Day 19 - Tidying up</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 12, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/06/12/zyring-day-18-off-by-one-day.html">Zyring Day 18 - Off By One Day</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 10, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/06/10/zyring-day-17-carousel-success.html">Zyring Day 17 - Carousel Success</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 9, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/06/09/zyring-day-16-carousel-fail.html">Zyring Day 16 - Carousel Fail</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 8, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/06/08/zyring-day-15-making-pages-for-each-apartment.html">Zyring Day 15 - Making pages for each apartment</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 1, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/06/01/zyring-day-14-masonry-and-responsive-design.html">Zyring Day 14 - Masonry and responsive design.</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 27, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/05/27/zyring-day-13-styling-the-list-of-apartments.html">Zyring Day 13 - styling the list of apartments.</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 27, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/05/27/zyring-day-12-notes-from-ages-ago.html">Zyring Day 12 - notes from ages ago...</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 30, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/30/zyring-day-11-ui-controls-for-my-pages.html">Zyring Day 11 - UI controls for my pages</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 30, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/30/zyring-day-10-callback-tuesday.html">Zyring Day 10 - Callback Tuesday</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 25, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/25/zyring-day-9-more-maps.html">Zyring Day 9 - more maps...</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 25, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/25/zyring-day-8-google-maps-time.html">Zyring Day 8 - Google Maps time!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 21, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/21/zyring-day-7-displaying-lists-of-apartments.html">Zyring Day 7 - displaying lists of apartments</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 21, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/21/zyring-day-6-something-to-do-with-the-resource-function.html">Zyring Day 6 - something to do with the $resource function</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 19, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/19/zyring-day-5-the-backend-server.html">Zyring Day 5 - the backend server</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 19, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/19/zyring-day-4-fun-with-routing.html">Zyring Day 4 - fun with routing</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 15, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/15/zyring-day-3-adding-views-and-controllers-and-getting-confused.html">Zyring Day 3 - adding views and controllers, and getting confused</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 15, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/15/zyring-day-2-styling-with-bootstrap.html">Zyring Day 2 - styling  with Bootstrap</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 15, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/15/zyring-day-1-getting-started.html">Zyring Day 1 - getting started</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 14, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/2015/04/14/wot-i-dun-zyring-project.html">Wot I dun - Zyring project</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 18, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/2014/09/18/wot-i-dun-standing-waves-on-a-string-project.html">Wot I dun: standing waves on a string project</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jul 16, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/2014/07/16/wot-i-dun-map-projections-project.html">Wot I dun: Map projections project</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
-
-      </div>
-    </div>
-
-    <footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">Stuff Wot I Dun</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col  footer-col-1">
-        <ul class="contact-list">
-          <li>Stuff Wot I Dun</li>
-          <li><a href="mailto:wotidunread[at]gmail[dot]com">wotidunread[at]gmail[dot]com</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col  footer-col-2">
-        <ul class="social-media-list">
-          
-
-          
-        </ul>
-      </div>
-
-      <div class="footer-col  footer-col-3">
-        <p class="text">I dun this
-</p>
-      </div>
-    </div>
-
+      <path id="kaleidoscope-cover" d="m 1,920 1006,0 34,-20 0,-150 130,-75 0,-150 130,-75 0,-150 -130,-75 0,-150 L 0,75 Z" fill="white" stroke="black" stroke-width="3" fill-opacity="0" />
+      
+    </svg>
   </div>
+    
+  <script src="scripts/path-data-polyfill.js"></script>
+  <script src="/scripts/kaleidoscope.js"></script>
 
-</footer>
+</body>
 
-
-  </body>
 
 </html>

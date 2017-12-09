@@ -6,18 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Wot I dun: Map projections project</title>
-<!--  <meta name="description" content="{"options"=>{}}">-->
-
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/solarized-light.css">
 <!--  <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet"></link>-->
-  <link rel="canonical" href="https://localhost/4000/2014/07/16/wot-i-dun-map-projections-project.html">
+  <link rel="canonical" href="https://localhost/4000https://localhost/4000">
   <link rel="alternate" type="application/rss+xml" title="Stuff Wot I Dun" href="https://localhost/4000/feed.xml" />
 
 </head>
 
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?...">
+</script>
 
 
 
@@ -42,10 +41,6 @@
         
           
           <a class="page-link" href="/about/">About</a>
-          
-        
-          
-        
           
         
           
@@ -78,7 +73,7 @@
     <figcaption>Screenshot of clickable world map</figcaption>
 </figure>
 
-<p>The map is currently centred on northern Greenland, and I'm moving the cursor to recentre it on Madagascar. A live, working version is also available <a href="http://bl.ocks.org/lucykeer/d9128e307c426613c834">here</a>. I'm pretty happy with it: some time I might try and extend it to make a scrollable version that reprojects as you go, but the current version is more or less what I wanted.</p>
+<p>The map is currently centred on northern Greenland, and I'm moving the cursor to recentre it on Madagascar. A live, working version is also available <a href="http://bl.ocks.org/keerlu/d9128e307c426613c834">here</a>. I'm pretty happy with it: some time I might try and extend it to make a scrollable version that reprojects as you go, but the current version is more or less what I wanted.</p>
 <p>The final code is pretty short. But learning how to do it took AGES... mostly going round in circles figuring out <em>what</em> to do in the first place.</p>
 <p>This project started with some idle scrolling around a very zoomed-out Google Maps view. I was looking at something or other in Northern Canada and obviously the map projection was pretty stupidly distorted at that latitude. It occurred to me that projections wouldn't be so bad if you could recentre them on whatever you were interested in as you went along. So I decided to investigate a bit further...</p>
 <p>I quickly found Bernhard Jenny's paper on Adaptive Composite Map Projections (<a href="http://cartography.oregonstate.edu/publications.html">available here</a>), with the Cartography and Geovisualization Group at Oregon State University. Exactly the kind of thing I was looking for!</p>
@@ -126,28 +121,28 @@
 <p>Next up, I made an extremely cut-down version of the massive <code>mapdata.json</code> file, which I called <code>mapdata_cut.json</code>. It just had the details and coordinates for Aruba, a nice small blob on the map.</p>
 <p>After some trial and error, I made an html page with a script that gets the first set of coordinates out (<code>mapcoords_1.html</code>).</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>Get map coordinates from file<span class="nt">&lt;/h1&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>Get map coordinates from file<span class="nt">&lt;/h1&gt;</span>
 First set of coordinates for Aruba:
 
 <span class="nt">&lt;script&gt;</span>
 <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">[{</span>
-<span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
-<span class="s2">&quot;features&quot;</span><span class="o">:</span> <span class="p">[</span>
-<span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;scalerank&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;featurecla&quot;</span><span class="o">:</span> <span class="s2">&quot;Admin-0 country&quot;</span><span class="p">,</span> <span class="s2">&quot;LABELRANK&quot;</span><span class="o">:</span> <span class="mf">5.000000</span><span class="p">,</span> <span class="s2">&quot;SOVEREIGNT&quot;</span><span class="o">:</span> <span class="s2">&quot;Netherlands&quot;</span><span class="p">,</span> <span class="s2">&quot;SOV_A3&quot;</span><span class="o">:</span> <span class="s2">&quot;NL1&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM0_DIF&quot;</span><span class="o">:</span> <span class="mf">1.000000</span><span class="p">,</span> <span class="s2">&quot;LEVEL&quot;</span><span class="o">:</span> <span class="mf">2.000000</span><span class="p">,</span> <span class="s2">&quot;TYPE&quot;</span><span class="o">:</span> <span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;ADMIN&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM0_A3&quot;</span><span class="o">:</span> <span class="s2">&quot;ABW&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOU_DIF&quot;</span><span class="o">:</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="s2">&quot;GEOUNIT&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;GU_A3&quot;</span><span class="o">:</span> <span class="s2">&quot;ABW&quot;</span><span class="p">,</span> <span class="s2">&quot;SU_DIF&quot;</span><span class="o">:</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="s2">&quot;SUBUNIT&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;SU_A3&quot;</span><span class="o">:</span> <span class="s2">&quot;ABW&quot;</span><span class="p">,</span> <span class="s2">&quot;BRK_DIFF&quot;</span><span class="o">:</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="s2">&quot;NAME&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME_LONG&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;BRK_A3&quot;</span><span class="o">:</span> <span class="s2">&quot;ABW&quot;</span><span class="p">,</span> <span class="s2">&quot;BRK_NAME&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;BRK_GROUP&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;ABBREV&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;POSTAL&quot;</span><span class="o">:</span> <span class="s2">&quot;AW&quot;</span><span class="p">,</span> <span class="s2">&quot;FORMAL_EN&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;FORMAL_FR&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;NOTE_ADM0&quot;</span><span class="o">:</span> <span class="s2">&quot;Neth.&quot;</span><span class="p">,</span> <span class="s2">&quot;NOTE_BRK&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME_SORT&quot;</span><span class="o">:</span> <span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME_ALT&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;MAPCOLOR7&quot;</span><span class="o">:</span> <span class="mf">4.000000</span><span class="p">,</span> <span class="s2">&quot;MAPCOLOR8&quot;</span><span class="o">:</span> <span class="mf">2.000000</span><span class="p">,</span> <span class="s2">&quot;MAPCOLOR9&quot;</span><span class="o">:</span> <span class="mf">2.000000</span><span class="p">,</span> <span class="s2">&quot;MAPCOLOR13&quot;</span><span class="o">:</span> <span class="mf">9.000000</span><span class="p">,</span> <span class="s2">&quot;POP_EST&quot;</span><span class="o">:</span> <span class="mf">103065.000000</span><span class="p">,</span> <span class="s2">&quot;GDP_MD_EST&quot;</span><span class="o">:</span> <span class="mf">2258.000000</span><span class="p">,</span> <span class="s2">&quot;POP_YEAR&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">&quot;LASTCENSUS&quot;</span><span class="o">:</span> <span class="mf">2010.000000</span><span class="p">,</span> <span class="s2">&quot;GDP_YEAR&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">&quot;ECONOMY&quot;</span><span class="o">:</span> <span class="s2">&quot;6. Developing region&quot;</span><span class="p">,</span> <span class="s2">&quot;INCOME_GRP&quot;</span><span class="o">:</span> <span class="s2">&quot;2. High income: nonOECD&quot;</span><span class="p">,</span> <span class="s2">&quot;WIKIPEDIA&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">&quot;FIPS_10_&quot;</span><span class="o">:</span> <span class="s2">&quot;AA&quot;</span><span class="p">,</span> <span class="s2">&quot;ISO_A2&quot;</span><span class="o">:</span> <span class="s2">&quot;AW&quot;</span><span class="p">,</span> <span class="s2">&quot;ISO_A3&quot;</span><span class="o">:</span> <span class="s2">&quot;ABW&quot;</span><span class="p">,</span> <span class="s2">&quot;ISO_N3&quot;</span><span class="o">:</span> <span class="s2">&quot;533&quot;</span><span class="p">,</span> <span class="s2">&quot;UN_A3&quot;</span><span class="o">:</span> <span class="s2">&quot;533&quot;</span><span class="p">,</span> <span class="s2">&quot;WB_A2&quot;</span><span class="o">:</span> <span class="s2">&quot;AW&quot;</span><span class="p">,</span> <span class="s2">&quot;WB_A3&quot;</span><span class="o">:</span> <span class="s2">&quot;ABW&quot;</span><span class="p">,</span> <span class="s2">&quot;WOE_ID&quot;</span><span class="o">:</span> <span class="mf">23424736.000000</span><span class="p">,</span> <span class="s2">&quot;WOE_ID_EH&quot;</span><span class="o">:</span> <span class="mf">23424736.000000</span><span class="p">,</span> <span class="s2">&quot;WOE_NOTE&quot;</span><span class="o">:</span> <span class="s2">&quot;Exact WOE match as country&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM0_A3_IS&quot;</span><span class="o">:</span> <span class="s2">&quot;ABW&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM0_A3_US&quot;</span><span class="o">:</span> <span class="s2">&quot;ABW&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM0_A3_UN&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">&quot;ADM0_A3_WB&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">&quot;CONTINENT&quot;</span><span class="o">:</span> <span class="s2">&quot;North America&quot;</span><span class="p">,</span> <span class="s2">&quot;REGION_UN&quot;</span><span class="o">:</span> <span class="s2">&quot;Americas&quot;</span><span class="p">,</span> <span class="s2">&quot;SUBREGION&quot;</span><span class="o">:</span> <span class="s2">&quot;Caribbean&quot;</span><span class="p">,</span> <span class="s2">&quot;REGION_WB&quot;</span><span class="o">:</span> <span class="s2">&quot;Latin America &amp;#038; Caribbean&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME_LEN&quot;</span><span class="o">:</span> <span class="mf">5.000000</span><span class="p">,</span> <span class="s2">&quot;LONG_LEN&quot;</span><span class="o">:</span> <span class="mf">5.000000</span><span class="p">,</span> <span class="s2">&quot;ABBREV_LEN&quot;</span><span class="o">:</span> <span class="mf">5.000000</span><span class="p">,</span> <span class="s2">&quot;TINY&quot;</span><span class="o">:</span> <span class="mf">4.000000</span><span class="p">,</span> <span class="s2">&quot;HOMEPART&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">99.000000</span> <span class="p">},</span> <span class="s2">&quot;geometry&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.996938</span><span class="p">,</span> <span class="mf">12.577582</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.936391</span><span class="p">,</span> <span class="mf">12.531724</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.924672</span><span class="p">,</span> <span class="mf">12.519232</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.915761</span><span class="p">,</span> <span class="mf">12.497016</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.880198</span><span class="p">,</span> <span class="mf">12.453559</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.876820</span><span class="p">,</span> <span class="mf">12.427395</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.888092</span><span class="p">,</span> <span class="mf">12.417670</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.908803</span><span class="p">,</span> <span class="mf">12.417792</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.930531</span><span class="p">,</span> <span class="mf">12.425971</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.945139</span><span class="p">,</span> <span class="mf">12.440375</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.924672</span><span class="p">,</span> <span class="mf">12.440375</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.924672</span><span class="p">,</span> <span class="mf">12.447211</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.958567</span><span class="p">,</span> <span class="mf">12.463202</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.027659</span><span class="p">,</span> <span class="mf">12.522935</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.048085</span><span class="p">,</span> <span class="mf">12.531155</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.058095</span><span class="p">,</span> <span class="mf">12.537177</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.062408</span><span class="p">,</span> <span class="mf">12.546820</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.060374</span><span class="p">,</span> <span class="mf">12.556952</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.051096</span><span class="p">,</span> <span class="mf">12.574042</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.048736</span><span class="p">,</span> <span class="mf">12.583726</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.052642</span><span class="p">,</span> <span class="mf">12.600002</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.059641</span><span class="p">,</span> <span class="mf">12.614244</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.061106</span><span class="p">,</span> <span class="mf">12.625393</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.048736</span><span class="p">,</span> <span class="mf">12.632148</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.007151</span><span class="p">,</span> <span class="mf">12.585517</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.996938</span><span class="p">,</span> <span class="mf">12.577582</span> <span class="p">]</span> <span class="p">]</span> <span class="p">]</span> <span class="p">}</span> <span class="p">}</span>
+<span class="s2">"type"</span><span class="p">:</span> <span class="s2">"FeatureCollection"</span><span class="p">,</span>
+<span class="s2">"features"</span><span class="p">:</span> <span class="p">[</span>
+<span class="p">{</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span> <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"scalerank"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"featurecla"</span><span class="p">:</span> <span class="s2">"Admin-0 country"</span><span class="p">,</span> <span class="s2">"LABELRANK"</span><span class="p">:</span> <span class="mf">5.000000</span><span class="p">,</span> <span class="s2">"SOVEREIGNT"</span><span class="p">:</span> <span class="s2">"Netherlands"</span><span class="p">,</span> <span class="s2">"SOV_A3"</span><span class="p">:</span> <span class="s2">"NL1"</span><span class="p">,</span> <span class="s2">"ADM0_DIF"</span><span class="p">:</span> <span class="mf">1.000000</span><span class="p">,</span> <span class="s2">"LEVEL"</span><span class="p">:</span> <span class="mf">2.000000</span><span class="p">,</span> <span class="s2">"TYPE"</span><span class="p">:</span> <span class="s2">"Country"</span><span class="p">,</span> <span class="s2">"ADMIN"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"ADM0_A3"</span><span class="p">:</span> <span class="s2">"ABW"</span><span class="p">,</span> <span class="s2">"GEOU_DIF"</span><span class="p">:</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="s2">"GEOUNIT"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"GU_A3"</span><span class="p">:</span> <span class="s2">"ABW"</span><span class="p">,</span> <span class="s2">"SU_DIF"</span><span class="p">:</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="s2">"SUBUNIT"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"SU_A3"</span><span class="p">:</span> <span class="s2">"ABW"</span><span class="p">,</span> <span class="s2">"BRK_DIFF"</span><span class="p">:</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="s2">"NAME"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"NAME_LONG"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"BRK_A3"</span><span class="p">:</span> <span class="s2">"ABW"</span><span class="p">,</span> <span class="s2">"BRK_NAME"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"BRK_GROUP"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"ABBREV"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"POSTAL"</span><span class="p">:</span> <span class="s2">"AW"</span><span class="p">,</span> <span class="s2">"FORMAL_EN"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"FORMAL_FR"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"NOTE_ADM0"</span><span class="p">:</span> <span class="s2">"Neth."</span><span class="p">,</span> <span class="s2">"NOTE_BRK"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"NAME_SORT"</span><span class="p">:</span> <span class="s2">"Aruba"</span><span class="p">,</span> <span class="s2">"NAME_ALT"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"MAPCOLOR7"</span><span class="p">:</span> <span class="mf">4.000000</span><span class="p">,</span> <span class="s2">"MAPCOLOR8"</span><span class="p">:</span> <span class="mf">2.000000</span><span class="p">,</span> <span class="s2">"MAPCOLOR9"</span><span class="p">:</span> <span class="mf">2.000000</span><span class="p">,</span> <span class="s2">"MAPCOLOR13"</span><span class="p">:</span> <span class="mf">9.000000</span><span class="p">,</span> <span class="s2">"POP_EST"</span><span class="p">:</span> <span class="mf">103065.000000</span><span class="p">,</span> <span class="s2">"GDP_MD_EST"</span><span class="p">:</span> <span class="mf">2258.000000</span><span class="p">,</span> <span class="s2">"POP_YEAR"</span><span class="p">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">"LASTCENSUS"</span><span class="p">:</span> <span class="mf">2010.000000</span><span class="p">,</span> <span class="s2">"GDP_YEAR"</span><span class="p">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">"ECONOMY"</span><span class="p">:</span> <span class="s2">"6. Developing region"</span><span class="p">,</span> <span class="s2">"INCOME_GRP"</span><span class="p">:</span> <span class="s2">"2. High income: nonOECD"</span><span class="p">,</span> <span class="s2">"WIKIPEDIA"</span><span class="p">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">"FIPS_10_"</span><span class="p">:</span> <span class="s2">"AA"</span><span class="p">,</span> <span class="s2">"ISO_A2"</span><span class="p">:</span> <span class="s2">"AW"</span><span class="p">,</span> <span class="s2">"ISO_A3"</span><span class="p">:</span> <span class="s2">"ABW"</span><span class="p">,</span> <span class="s2">"ISO_N3"</span><span class="p">:</span> <span class="s2">"533"</span><span class="p">,</span> <span class="s2">"UN_A3"</span><span class="p">:</span> <span class="s2">"533"</span><span class="p">,</span> <span class="s2">"WB_A2"</span><span class="p">:</span> <span class="s2">"AW"</span><span class="p">,</span> <span class="s2">"WB_A3"</span><span class="p">:</span> <span class="s2">"ABW"</span><span class="p">,</span> <span class="s2">"WOE_ID"</span><span class="p">:</span> <span class="mf">23424736.000000</span><span class="p">,</span> <span class="s2">"WOE_ID_EH"</span><span class="p">:</span> <span class="mf">23424736.000000</span><span class="p">,</span> <span class="s2">"WOE_NOTE"</span><span class="p">:</span> <span class="s2">"Exact WOE match as country"</span><span class="p">,</span> <span class="s2">"ADM0_A3_IS"</span><span class="p">:</span> <span class="s2">"ABW"</span><span class="p">,</span> <span class="s2">"ADM0_A3_US"</span><span class="p">:</span> <span class="s2">"ABW"</span><span class="p">,</span> <span class="s2">"ADM0_A3_UN"</span><span class="p">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">"ADM0_A3_WB"</span><span class="p">:</span> <span class="o">-</span><span class="mf">99.000000</span><span class="p">,</span> <span class="s2">"CONTINENT"</span><span class="p">:</span> <span class="s2">"North America"</span><span class="p">,</span> <span class="s2">"REGION_UN"</span><span class="p">:</span> <span class="s2">"Americas"</span><span class="p">,</span> <span class="s2">"SUBREGION"</span><span class="p">:</span> <span class="s2">"Caribbean"</span><span class="p">,</span> <span class="s2">"REGION_WB"</span><span class="p">:</span> <span class="s2">"Latin America &amp;#038; Caribbean"</span><span class="p">,</span> <span class="s2">"NAME_LEN"</span><span class="p">:</span> <span class="mf">5.000000</span><span class="p">,</span> <span class="s2">"LONG_LEN"</span><span class="p">:</span> <span class="mf">5.000000</span><span class="p">,</span> <span class="s2">"ABBREV_LEN"</span><span class="p">:</span> <span class="mf">5.000000</span><span class="p">,</span> <span class="s2">"TINY"</span><span class="p">:</span> <span class="mf">4.000000</span><span class="p">,</span> <span class="s2">"HOMEPART"</span><span class="p">:</span> <span class="o">-</span><span class="mf">99.000000</span> <span class="p">},</span> <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Polygon"</span><span class="p">,</span> <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.996938</span><span class="p">,</span> <span class="mf">12.577582</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.936391</span><span class="p">,</span> <span class="mf">12.531724</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.924672</span><span class="p">,</span> <span class="mf">12.519232</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.915761</span><span class="p">,</span> <span class="mf">12.497016</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.880198</span><span class="p">,</span> <span class="mf">12.453559</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.876820</span><span class="p">,</span> <span class="mf">12.427395</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.888092</span><span class="p">,</span> <span class="mf">12.417670</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.908803</span><span class="p">,</span> <span class="mf">12.417792</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.930531</span><span class="p">,</span> <span class="mf">12.425971</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.945139</span><span class="p">,</span> <span class="mf">12.440375</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.924672</span><span class="p">,</span> <span class="mf">12.440375</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.924672</span><span class="p">,</span> <span class="mf">12.447211</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.958567</span><span class="p">,</span> <span class="mf">12.463202</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.027659</span><span class="p">,</span> <span class="mf">12.522935</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.048085</span><span class="p">,</span> <span class="mf">12.531155</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.058095</span><span class="p">,</span> <span class="mf">12.537177</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.062408</span><span class="p">,</span> <span class="mf">12.546820</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.060374</span><span class="p">,</span> <span class="mf">12.556952</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.051096</span><span class="p">,</span> <span class="mf">12.574042</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.048736</span><span class="p">,</span> <span class="mf">12.583726</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.052642</span><span class="p">,</span> <span class="mf">12.600002</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.059641</span><span class="p">,</span> <span class="mf">12.614244</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.061106</span><span class="p">,</span> <span class="mf">12.625393</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.048736</span><span class="p">,</span> <span class="mf">12.632148</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">70.007151</span><span class="p">,</span> <span class="mf">12.585517</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mf">69.996938</span><span class="p">,</span> <span class="mf">12.577582</span> <span class="p">]</span> <span class="p">]</span> <span class="p">]</span> <span class="p">}</span> <span class="p">}</span>
 <span class="p">]</span>
 <span class="p">}];</span>
 
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">features</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"demo"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">features</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></figure>
 
 <p>That was enough fun for one morning. Later, I finally found data in the simple column format I was originally looking for, from the US <a href="http://www.ngdc.noaa.gov/mgg/coast/">National Geophysical Data Center</a>. Saved it as <code>worldmap.dat</code>.</p>
 <p>I plotted it with my favourite plotting program, <a href="http://pyxplot.org.uk/">Pyxplot</a> (similar to gnuplot but much prettier defaults and extra 
 features). My very basic plot file (`worldmap_basic.ppl') was</p>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">set terminal png
+<figure class="highlight"><pre><code class="language-text" data-lang="text">set terminal png
 set output worldmap_basic.png
 set nokey
-plot worldmap.dat every ::1 with lines</code></pre></div>
+plot worldmap.dat every ::1 with lines</code></pre></figure>
 
 <p>which produced the output</p>
 
@@ -164,21 +159,21 @@ plot worldmap.dat every ::1 with lines</code></pre></div>
 <p>Back to it after a couple of days off the project, which involved a lot of reinstalling my broken old version of Ubuntu and then scavenging free programs from my university before my password ran out. Interesting fact: if you forget to type 'sudo', Mathematica only tells you this twenty minutes into the installation process, and you have to start again.</p>
 <p>This time I was learning something about file input and output in Python (I'm writing up these notes a week later and I no longer remember why that was my priority). I used <a href="http://en.wikibooks.org/wiki/Python_Programming/Input_and_Output">this tutorial</a> and started out with</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">worldmap</span><span class="o">.</span><span class="n">dat</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">worldmap</span><span class="o">.</span><span class="n">dat</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code></pre></figure>
 
 <p>The first thing I learned was not to read in the first character from each file if you have a very long file. I made a cutdown version called <code>shortmap.dat</code>.</p>
 <p>Next up was printing all the data:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">shortmap</span><span class="o">.</span><span class="n">dat</span><span class="p">):</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">shortmap</span><span class="o">.</span><span class="n">dat</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)):</span>
-        <span class="k">print</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code></pre></div>
+        <span class="k">print</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code></pre></figure>
 
 <p>This script is highly useful for anyone who wants their data spat out one character per line. Finally I tried,</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">shortmap</span><span class="o">.</span><span class="n">dat</span><span class="p">):</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">shortmap</span><span class="o">.</span><span class="n">dat</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)):</span>
-        <span class="k">print</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code></pre></div>
+        <span class="k">print</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code></pre></figure>
 
 <p>That was enough for my first foray into the exciting world of Python input and output.</p>
 <p><a id="30June"></a></p>
@@ -189,7 +184,7 @@ plot worldmap.dat every ::1 with lines</code></pre></div>
 <p>First I naively thought that just adding on to both coordinates and replotting would do the trick. So as a first test I tried adding 200 to the longitude (first column of the data file) and 100 to the latitude.</p>
 <p>I did have enough wits make sure I still plotted the same coordinate range: -180 to 180 for longitude, -90 to 90 for latitude. So I included some modulo symbols and typed</p>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">plot worldmap.dat using (($1+200)%360 - 180):(($2+100)%180 - 90) every ::1 with lines</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">plot worldmap.dat using (($1+200)%360 - 180):(($2+100)%180 - 90) every ::1 with lines</code></pre></figure>
 
 <p>and got a big mess (<code>bigmess.png</code>):</p>
 
@@ -202,7 +197,7 @@ plot worldmap.dat every ::1 with lines</code></pre></div>
 <li>The vertical and horizontal lines. These occur if a continent gets chopped in half at the boundaries of the map, and Pyxplot tries to join its coordinates together. I couldn't be bothered to think about that one so just replotted with points instead:</li>
 </ol>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">plot worldmap.dat ... with points pt 1 ps 0.02</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">plot worldmap.dat ... with points pt 1 ps 0.02</code></pre></figure>
 
 <ol>
 <li>More fundamentally, the map is completely borked. Transforming the longitude works as intended - you can easily move the map so that the Pacific is in the middle. However transforming the latitude is not so simple. Moving Antarctica higher up the map will not magically make it the right shape!</li>
@@ -230,16 +225,16 @@ plot worldmap.dat every ::1 with lines</code></pre></div>
 <p>I'd only really used Pyxplot before to plot existing data, not transform it first. So first I needed to learn about <a href="http://pyxplot.org.uk/current/doc/html/sect0022.html">doing numerical calculations with Pyxplot.</a></p>
 <p>It was actually pretty intuitive, except for using degrees instead of radians which was a bit of a faff. Once I'd got it figured out, my final plot file (<code>worldmap_recentre</code>) was</p>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">set terminal png
+<figure class="highlight"><pre><code class="language-text" data-lang="text">set terminal png
 
-set output &#39;worldmap_recentre.png&#39;
+set output 'worldmap_recentre.png'
 set nokey
 
 set unit of angle deg
 set unit angle nodimensionless
 
-set xlabel &quot;$phi$&quot;
-set ylabel &quot;$theta$&quot;
+set xlabel "$phi$"
+set ylabel "$theta$"
 
 # Translate to Cartesians:
 
@@ -265,7 +260,7 @@ z1(theta,phi) = -sin(thetadash)*x(theta,phi) + cos(thetadash)*z(theta,phi)
 theta1(theta,phi) = asin(z1(theta,phi))
 phi1(theta,phi) = (atan2(x1(theta,phi), y1(theta,phi)) + phidash)%(360*unit(deg)) - 180*unit(deg)
 
-plot &#39;worldmap.dat&#39; using (phi1($2*unit(deg),$1*unit(deg))):(theta1($2*unit(deg),$1*unit(deg))) every ::1 with points pt 1 ps 0.02</code></pre></div>
+plot 'worldmap.dat' using (phi1($2*unit(deg),$1*unit(deg))):(theta1($2*unit(deg),$1*unit(deg))) every ::1 with points pt 1 ps 0.02</code></pre></figure>
 
 
 <p>This produces a nice map of the world centred on Antarctica:</p>
@@ -284,24 +279,24 @@ plot &#39;worldmap.dat&#39; using (phi1($2*unit(deg),$1*unit(deg))):(theta1($2*u
 <p>I then played around with Flot for a bit, using some nice tutorials on <a href="http://www.pikemere.co.uk/blog/flot-how-to-create-charts/">getting started</a>, <a href="http://www.pikemere.co.uk/blog/flot-how-to-create-line-graphs/">making line graphs</a> and what I was really interested in, <a href="http://www.pikemere.co.uk/blog/flot-tutorial-how-to-create-scatter-graphs/">making scatter plots</a>.</p>
 <p>I used this to produce my first Flot scatter plot:</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">Scatter plot test
+<figure class="highlight"><pre><code class="language-html" data-lang="html">Scatter plot test
 
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href=</span><span class="s">&quot;flottest.css&quot;</span><span class="nt">&gt;</span> 
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;jquery-1.11.1.js&quot;</span> <span class="na">language=</span><span class="s">&quot;javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;&lt;script </span><span class="na">src=</span><span class="s">&quot;jquery.flot.js&quot;</span> <span class="na">language=</span><span class="s">&quot;javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"flottest.css"</span><span class="nt">&gt;</span> 
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"jquery-1.11.1.js"</span> <span class="na">language=</span><span class="s">"javascript"</span><span class="nt">&gt;&lt;/script&gt;&lt;script </span><span class="na">src=</span><span class="s">"jquery.flot.js"</span> <span class="na">language=</span><span class="s">"javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
 
 <span class="nt">&lt;script&gt;</span><span class="c1">// &lt;![CDATA[</span>
 <span class="kd">var</span> <span class="nx">d1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mf">1.2</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">]];</span>
 
 		<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    			<span class="nx">$</span><span class="p">.</span><span class="nx">plot</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#placeholder&quot;</span><span class="p">),</span> <span class="p">[</span><span class="nx">d1</span><span class="p">],</span> <span class="p">{</span>
-							<span class="nx">series</span><span class="o">:</span> <span class="p">{</span>
-            							<span class="nx">points</span><span class="o">:</span> <span class="p">{</span>
-                						<span class="nx">radius</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
-                						<span class="nx">show</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-                						<span class="nx">fill</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-                						<span class="nx">fillColor</span><span class="o">:</span> <span class="s2">&quot;#058DC7&quot;</span>
+    			<span class="nx">$</span><span class="p">.</span><span class="nx">plot</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#placeholder"</span><span class="p">),</span> <span class="p">[</span><span class="nx">d1</span><span class="p">],</span> <span class="p">{</span>
+							<span class="na">series</span><span class="p">:</span> <span class="p">{</span>
+            							<span class="na">points</span><span class="p">:</span> <span class="p">{</span>
+                						<span class="na">radius</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                						<span class="na">show</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                						<span class="na">fill</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                						<span class="na">fillColor</span><span class="p">:</span> <span class="s2">"#058DC7"</span>
     								<span class="p">},</span>
-            						<span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;#058DC7&quot;</span>
+            						<span class="na">color</span><span class="p">:</span> <span class="s2">"#058DC7"</span>
 							<span class="p">}</span>
         						<span class="p">});</span>
 			<span class="p">});</span>
@@ -309,7 +304,7 @@ plot &#39;worldmap.dat&#39; using (phi1($2*unit(deg),$1*unit(deg))):(theta1($2*u
 <span class="nt">&lt;/script&gt;</span>
 
 <span class="ni">&amp;nbsp;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;placeholder&quot;</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"placeholder"</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></figure>
 
 
 <p><a id="2July"></a></p>
@@ -317,43 +312,43 @@ plot &#39;worldmap.dat&#39; using (phi1($2*unit(deg),$1*unit(deg))):(theta1($2*u
 <h2>Wednesday 2nd July</h2>
 <p>The next task was to get the longitude-latitude data (<code>worldmap.dat</code>) into a Flot-readable format, i.e. a JSON file that looks something like this:</p>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">{
-label: &quot;some stuff&quot;,
+<figure class="highlight"><pre><code class="language-text" data-lang="text">{
+label: "some stuff",
 data: [[0, 3], [10, 3], [20, 7]]
-}</code></pre></div>
+}</code></pre></figure>
 
 <p>First I needed to finally get round to cleaning all the '&gt;' lines out of the data file. Pyxplot complained about them but still ran so I never bothered to remove them. Luckily this is one thing I knew how to do in the terminal:</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">sed -i <span class="s1">&#39;s/&amp;gt;//g&#39;</span> worldmap.dat</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">sed -i <span class="s1">'s/&amp;gt;//g'</span> worldmap.dat</code></pre></figure>
 
 <p>Next, I used my Python file I/O practice to convert to Flot format, again using the shortened file <code>shortmap.dat</code>. My first attempt was</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">coords</span> <span class="o">=</span> <span class="p">[]</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">coords</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;shortmap.dat&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'shortmap.dat'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c"># split each line of data file by whitespace</span>
     <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">coords</span></code></pre></div>
+<span class="k">print</span> <span class="n">coords</span></code></pre></figure>
 
 <p>This gave me a list of strings:</p>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">[[&#39;0.192440&#39;, &#39;5.669954&#39;], [&#39;-0.114995&#39;, &#39;5.515063&#39;], [&#39;-0.391921&#39;, &#39;5.360171&#39;], [&#39;-0.657114&#39;, &#39;5.195893&#39;], [&#39;-0.887104&#39;, &#39;5.151303&#39;], [&#39;-1.262597&#39;, &#39;5.062123&#39;], [&#39;-1.417488&#39;, &#39;5.008146&#39;], [&#39;-1.560645&#39;, &#39;4.874377&#39;], [&#39;-1.736658&#39;, &#39;4.775809&#39;], [&#39;-1.936139&#39;, &#39;4.68663&#39;], [&#39;-2.198985&#39;, &#39;4.787544&#39;]]</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">[['0.192440', '5.669954'], ['-0.114995', '5.515063'], ['-0.391921', '5.360171'], ['-0.657114', '5.195893'], ['-0.887104', '5.151303'], ['-1.262597', '5.062123'], ['-1.417488', '5.008146'], ['-1.560645', '4.874377'], ['-1.736658', '4.775809'], ['-1.936139', '4.68663'], ['-2.198985', '4.787544']]</code></pre></figure>
 
 <p>To fix that, I changed the <code>for</code> loop to</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c"># split each line of data file by whitespace</span>
     <span class="n">longitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">latitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">coordentry</span> <span class="o">=</span> <span class="p">[</span><span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">]</span>
-    <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordentry</span><span class="p">)</span></code></pre></div>
+    <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordentry</span><span class="p">)</span></code></pre></figure>
 
 <p>Probably not the neatest thing but it worked. Next I added the 'label' entry of the JSON format and exported it, giving me the final script</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Get coordinate data and export in Flot-compatible JSON format</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Get coordinate data and export in Flot-compatible JSON format</span>
 
 <span class="kn">import</span> <span class="nn">json</span>
 
@@ -361,7 +356,7 @@ data: [[0, 3], [10, 3], [20, 7]]
 
 <span class="n">coords</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;shortmap.dat&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'shortmap.dat'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
 <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c"># split each line of data file by whitespace</span>
@@ -370,12 +365,12 @@ data: [[0, 3], [10, 3], [20, 7]]
 <span class="n">coordentry</span> <span class="o">=</span> <span class="p">[</span><span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">]</span>
 <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordentry</span><span class="p">)</span>
 
-<span class="n">mapdata</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;label&#39;</span><span class="p">:</span><span class="s">&#39;World map&#39;</span><span class="p">,</span> <span class="s">&#39;coords&#39;</span><span class="p">:</span> <span class="n">coords</span><span class="p">}</span>
+<span class="n">mapdata</span> <span class="o">=</span> <span class="p">{</span><span class="s">'label'</span><span class="p">:</span><span class="s">'World map'</span><span class="p">,</span> <span class="s">'coords'</span><span class="p">:</span> <span class="n">coords</span><span class="p">}</span>
 
 <span class="c"># Encode mapdata in JSON format and print to file</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;shortmap.json&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mapdata</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span></code></pre></div>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"shortmap.json"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mapdata</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span></code></pre></figure>
 
 <p><a id="3July"></a></p>
 <hr />
@@ -388,14 +383,14 @@ data: [[0, 3], [10, 3], [20, 7]]
 <p>What an unmotivated day. I got to 3:14 pm having done nothing remotely useful. Time to work...</p>
 <p>I tried my Python script <code>getdata.py</code> from Wednesday on the longer data list (<code>mapdata.dat</code>) and see how it coped. It didn't work because of whitespace in the data (there is a blank line between each continent/island). The whitespace may be useful later if I plot the data with lines between points, but for now just removed the whitespace:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c"># get rid of blank lines</span>
     <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
         <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c"># split each line of data file by whitespace</span>
         <span class="n">longitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">latitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">coordentry</span> <span class="o">=</span> <span class="p">[</span><span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">]</span>
-        <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordentry</span><span class="p">)</span></code></pre></div>
+        <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordentry</span><span class="p">)</span></code></pre></figure>
 
 
 <p>That gave me a big old list of points.</p>
@@ -403,21 +398,21 @@ data: [[0, 3], [10, 3], [20, 7]]
 <p>After AGES of wondering what could possibly be wrong with it, I thought to try another browser. It worked in Firefox but not Chrome. After googling around I discovered <a href="https://code.google.com/p/chromium/issues/detail?id=40787&amp;q=ajax%20local&amp;colspec=ID%20Stars%20Pri%20Area%20Feature%20Type%20Status%20Summary%20Modified%20Owner%20Mstone%20OS">Chrome doesn't like to load local files for security reasons.</a></p>
 <p>I could apparently get around this by sorting out some kind of local server but didn't want to figure that out right then. So Firefox it is. I got it to work with</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">Scatter plot test
+<figure class="highlight"><pre><code class="language-html" data-lang="html">Scatter plot test
 
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;jquery-1.11.1.js&quot;</span> <span class="na">language=</span><span class="s">&quot;javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;&lt;script </span><span class="na">src=</span><span class="s">&quot;jquery.flot.js&quot;</span> <span class="na">language=</span><span class="s">&quot;javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"jquery-1.11.1.js"</span> <span class="na">language=</span><span class="s">"javascript"</span><span class="nt">&gt;&lt;/script&gt;&lt;script </span><span class="na">src=</span><span class="s">"jquery.flot.js"</span> <span class="na">language=</span><span class="s">"javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
 
 <span class="nt">&lt;script&gt;</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    			<span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s2">&quot;worldmap.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+    			<span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s2">"worldmap.json"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
 
-           		<span class="kd">var</span> <span class="nx">plotarea</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#placeholder&quot;</span><span class="p">);</span>
+           		<span class="kd">var</span> <span class="nx">plotarea</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#placeholder"</span><span class="p">);</span>
            		<span class="kd">var</span> <span class="nx">coords</span><span class="o">=</span><span class="nx">json</span><span class="p">.</span><span class="nx">coords</span><span class="p">;</span>
 
             		<span class="nx">$</span><span class="p">.</span><span class="nx">plot</span><span class="p">(</span><span class="nx">plotarea</span> <span class="p">,</span> <span class="p">[{</span>
 
-    				<span class="nx">data</span><span class="o">:</span> <span class="nx">coords</span><span class="p">,</span>
-				<span class="nx">points</span><span class="o">:</span> <span class="p">{</span><span class="nx">radius</span><span class="o">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="nx">show</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">fill</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">fillColor</span><span class="o">:</span> <span class="s2">&quot;#006600&quot;</span><span class="p">},</span>
+    				<span class="na">data</span><span class="p">:</span> <span class="nx">coords</span><span class="p">,</span>
+				<span class="na">points</span><span class="p">:</span> <span class="p">{</span><span class="na">radius</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="na">show</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">fill</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">fillColor</span><span class="p">:</span> <span class="s2">"#006600"</span><span class="p">},</span>
 
             				<span class="p">}]</span>
         			<span class="p">);</span>
@@ -426,7 +421,7 @@ data: [[0, 3], [10, 3], [20, 7]]
 
 <span class="nt">&lt;/script&gt;</span>
 
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;placeholder&quot;</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></div>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"placeholder"</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></figure>
 
 <p>I took a screenshot of a recognisable world map...</p>
 
@@ -444,7 +439,7 @@ data: [[0, 3], [10, 3], [20, 7]]
 <p>I found a tutorial by Mike Bostock, <a href="http://bost.ocks.org/mike/map/"><em>Let's Build A Map</em></a>, that looked very clear and hopefully useful for my project. I also quickly realised Mike Bostock wrote the <a href="http://bost.ocks.org/mike/algorithms/">Visualising Algorithms</a> post I've seen linked to a couple of times and thought 'that looks really interesting, I'll read it later'. This time I <em>will</em> read that later... but not now, as there has been plenty of procrastination today already.</p>
 <p>I was pleased to see that at least the first steps of the tutorial mentioned things I'd tried on the way - Natural Earth data and using <code>ogr2ogr</code> to convert to JSON form. I then installed Node.js and added <a href="https://github.com/mbostock/topojson">TopoJSON</a> (the specific data format he uses) and <a href="https://github.com/nodeapps/http-server">http-server</a> (a local server like I wanted yesterday, so that I can test the html I write). To start the local server I typed</p>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">http-server -p 8008</code></pre></div>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">http-server -p 8008</code></pre></figure>
 
 <p>in the terminal.</p>
 <p>I plugged my way through the tutorial - can't say I understood everything, but I started to grasp the basics.</p>
@@ -456,13 +451,13 @@ data: [[0, 3], [10, 3], [20, 7]]
 <p>I started off with the <a href="http://www.d3noob.org/2013/03/a-simple-d3js-map-explained.html">d3noob tutorial</a>. It's useful that d3 works out the projection for you and can rotate it arbitrarily... I suppose I won't be needing the maths from earlier. I also found another helpful <a href="http://christopheviau.com/d3list/gallery.html">set of examples</a>, which I've linked here so I don't forget about it.</p>
 <p>It took me a while to get the tutorial to run - eventually I <a href="http://stackoverflow.com/questions/16739712/topojson-object-in-topojson-v1">discovered</a> that because I was using v1 of topojson rather than v0, I had to change one part of the code, so that</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">.data(topojson.object(topology, topology.objects.countries)
-.geometries)</code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html">.data(topojson.object(topology, topology.objects.countries)
+.geometries)</code></pre></figure>
 
 <p>became</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">.data(topojson.feature(topology, topology.objects.countries)
-.features)</code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html">.data(topojson.feature(topology, topology.objects.countries)
+.features)</code></pre></figure>
 
 <p>Next, I tried to adapt <a href="http://bl.ocks.org/mbostock/2206489">click to center by projection example</a> for my own purposes, by bodging it together with the world map I had from the tutorial.</p>
 <p>I used this to make the map projection rotate when I clicked on a point, but with no understanding of what I was doing the rescaling may as well have been at random. I decided it was time to go back and understand more of the D3 syntax using <a href="http://alignedleft.com/tutorials/d3/">Scott Murray's introductory tutorials</a></p>
@@ -476,7 +471,7 @@ data: [[0, 3], [10, 3], [20, 7]]
 <h2>Tuesday 15th July</h2>
 <p>Success! I used a combination of the <a href="http://www.d3noob.org/2013/03/a-simple-d3js-map-explained.html">d3noob map tutorial</a> and the <a href="http://bl.ocks.org/mbostock/2206489">click-to-centre example</a> to create a Mercator projection map which recentres on a point you click on. The full script is below (<code>1_recenter.html</code>):</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://d3js.org/d3.v3.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;&lt;script </span><span class="na">src=</span><span class="s">&quot;http://d3js.org/topojson.v1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://d3js.org/d3.v3.min.js"</span><span class="nt">&gt;&lt;/script&gt;&lt;script </span><span class="na">src=</span><span class="s">"http://d3js.org/topojson.v1.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 
 <span class="nt">&lt;script&gt;</span>
 <span class="kd">var</span> <span class="nx">width</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span>
@@ -484,23 +479,23 @@ data: [[0, 3], [10, 3], [20, 7]]
 
 <span class="kd">var</span> <span class="nx">projection</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">geo</span><span class="p">.</span><span class="nx">mercator</span><span class="p">()</span>
 
-<span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span> 
-	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="nx">height</span><span class="p">);</span> <span class="c1">// set SVG window </span>
+<span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">"body"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">"svg"</span><span class="p">)</span> 
+	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="nx">height</span><span class="p">);</span> <span class="c1">// set SVG window </span>
 
 <span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">geo</span><span class="p">.</span><span class="nx">path</span><span class="p">()</span>
 	<span class="p">.</span><span class="nx">projection</span><span class="p">(</span><span class="nx">projection</span><span class="p">);</span> <span class="c1">// generate path </span>
 
-<span class="kd">var</span> <span class="nx">g</span> <span class="o">=</span> <span class="nx">svg</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">);</span> 
+<span class="kd">var</span> <span class="nx">g</span> <span class="o">=</span> <span class="nx">svg</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"g"</span><span class="p">);</span> 
 
-<span class="nx">d3</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="s2">&quot;world-110m2.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">topology</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">g</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">)</span>
+<span class="nx">d3</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="s2">"world-110m2.json"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">topology</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">g</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">"path"</span><span class="p">)</span>
 	<span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">topojson</span><span class="p">.</span><span class="nx">feature</span><span class="p">(</span><span class="nx">topology</span><span class="p">,</span> <span class="nx">topology</span><span class="p">.</span><span class="nx">objects</span><span class="p">.</span><span class="nx">countries</span><span class="p">)</span>
 	<span class="p">.</span><span class="nx">features</span><span class="p">)</span>
 	<span class="p">.</span><span class="nx">enter</span><span class="p">()</span>
-	<span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="nx">clicked</span><span class="p">);</span>
+	<span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"path"</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"d"</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="nx">clicked</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="kd">function</span> <span class="nx">clicked</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
@@ -511,12 +506,12 @@ data: [[0, 3], [10, 3], [20, 7]]
 
   <span class="c1">// Transition to the new projection.</span>
 
- 	<span class="nx">g</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">)</span>
+ 	<span class="nx">g</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">"path"</span><span class="p">)</span>
 	<span class="p">.</span><span class="nx">transition</span><span class="p">()</span>
       	<span class="p">.</span><span class="nx">duration</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-      	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span> 
+      	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"d"</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span> 
 <span class="p">}</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
+<span class="nt">&lt;/script&gt;</span></code></pre></figure>
 
 <p>It works nicely! <a href="http://bl.ocks.org/lucykeer/c96d7a43b75dba13c545">Here's a live version online.</a><br />
 I could think of a number of ways to improve or extend it, though, of varying difficulty:</p>
@@ -531,16 +526,16 @@ I could think of a number of ways to improve or extend it, though, of varying di
 <p>The main problem was getting the ordering of the clicks and mouseovers correct. The bit that took me ages to work out was adding <code>pointer-events:none</code> in the CSS for the cursor. Otherwise D3 didn't 'see through' the cursor to the map below, so the click-to-recentre wasn't working.</p>
 <p>Problem 2. turned out to be easy... once I knew how. I just needed to move <code>.on("click", clicked)</code> from the map data to the svg window itself, as below:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;mousemove&quot;</span><span class="p">,</span> <span class="nx">mousemove</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="nx">clicked</span><span class="p">);</span> <span class="c1">// new line</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">"body"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">"svg"</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"mousemove"</span><span class="p">,</span> <span class="nx">mousemove</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="nx">clicked</span><span class="p">);</span> <span class="c1">// new line</span></code></pre></figure>
 
 <p>I also had to rewrite the recentring, ending up with something simpler anyway, using the mouse click coordinates rather than the <code>path.centroid</code> coordinates:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">newcentre</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">mouse</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
-<span class="nx">projection</span><span class="p">.</span><span class="nx">rotate</span><span class="p">([</span><span class="o">-</span> <span class="nx">projection</span><span class="p">.</span><span class="nx">invert</span><span class="p">(</span><span class="nx">newcentre</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span> <span class="nx">projection</span><span class="p">.</span><span class="nx">invert</span><span class="p">(</span><span class="nx">newcentre</span><span class="p">)[</span><span class="mi">1</span><span class="p">]]);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">newcentre</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">mouse</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<span class="nx">projection</span><span class="p">.</span><span class="nx">rotate</span><span class="p">([</span><span class="o">-</span> <span class="nx">projection</span><span class="p">.</span><span class="nx">invert</span><span class="p">(</span><span class="nx">newcentre</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span> <span class="nx">projection</span><span class="p">.</span><span class="nx">invert</span><span class="p">(</span><span class="nx">newcentre</span><span class="p">)[</span><span class="mi">1</span><span class="p">]]);</span></code></pre></figure>
 
 <p>Anyway <a href="http://bl.ocks.org/lucykeer/d9128e307c426613c834">here is the final version!</a> Pretty pleased with that...</p>
 

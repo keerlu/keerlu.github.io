@@ -132,10 +132,13 @@ Images
 MathJax
 -------
 
-Final tidy up
--------------
+http://docs.mathjax.org/en/latest/tex.html
 
+Copy:
 
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+into `head.html` file in `_layouts` folder.
 
 Hosting on Github
 =================

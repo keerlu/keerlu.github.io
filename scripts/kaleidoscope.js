@@ -15,8 +15,6 @@ function randomColour() {
   return colours[randomRange(-1,4)];
 }
 
-var symbolTypes = d3.symbols;
-
 function randomSymbolType(){
   return d3.symbols[randomRange(1, d3.symbols.length - 1)];
 }
@@ -116,14 +114,15 @@ function allPointsInsideTriangle(coords){
 function generateKaleidoscope() {
 
   var symbols = [];
+  var svg = d3.select("#grouped-triangle");
+  var paths = document.getElementsByClassName("symbol");
+  var pathData = [];
 
   for(var i=0; i<randomRange(50,60); i++){
     symbols.push(randomSymbolData());
   }
 
-  var svg = d3.select("#grouped-triangle");
-
-  var shapes = svg.selectAll("path")
+  svg.selectAll("path")
     .data(symbols)
     .enter()
     .append("path")
@@ -140,27 +139,23 @@ function generateKaleidoscope() {
      return "translate(" + d.x + "," + d.y + ") rotate(" + randomRange(0,360) + ")";
     });
 
-  var paths = document.getElementsByClassName("symbol");
-
-  var pathData = [];
-
-  for(var i=0; i<paths.length; i++){
-    pathData.push(paths[i].getPathData());
-  };
-
   for(var j=0; j<paths.length; j++){
-    symbols[j]["allPointsInsideTriangle"] = allPointsInsideTriangle(getCoords(paths[j]));
-  };
+    pathData.push(paths[j].getPathData());
+  }
+
+  for(var k=0; k<paths.length; k++){
+    symbols[k]["allPointsInsideTriangle"] = allPointsInsideTriangle(getCoords(paths[k]));
+  }
 
   svg.selectAll(".symbol")
     .data(symbols)
     .attr("display", function(d) {            
-              if (!d.allPointsInsideTriangle) {return "none"} 
-         ;})
+              if (!d.allPointsInsideTriangle) {return "none";} 
+         })
     .attr("class", function(d) {
-       if(!d.allPointsInsideTriangle) {return "to-remove"}
-       else {return "symbol"}
-         ;});
+       if(!d.allPointsInsideTriangle) {return "to-remove";}
+       else{return "symbol";}
+         });
 
   svg.selectAll(".to-remove").remove();          
 

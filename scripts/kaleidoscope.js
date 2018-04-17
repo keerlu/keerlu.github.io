@@ -3,12 +3,12 @@ function randomRange(min, max) {
   return min + Math.floor(Math.random()*(max-min))+ 1;
 }
 
-colours = [
-           "#87984d", // olive green
+var colours = [
+           "#87b24e", // olive green
            "#1F6B63", // sea green
-           "#73343A", //dark burgundy
-           "#B82A39", // pinkish red
-           "#f2692d" // orange
+           "#772837", //dark burgundy
+           "#d10c30", // pinkish red
+           "#ff5900" // orange
 ]; 
 
 function randomColour() {

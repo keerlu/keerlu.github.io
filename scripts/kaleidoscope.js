@@ -19,8 +19,7 @@ function randomSymbolType(){
   return d3.symbols[randomRange(1, d3.symbols.length - 1)];
 }
 
-triangleCoords = [[0,130], [150, 130], [75, 0]];
-
+var triangleCoords = [[0,130], [150, 130], [75, 0]];
 
 function xcoord(u,v) {
 
@@ -101,8 +100,7 @@ function isInsideTriangle(x,y){
 
 function allPointsInsideTriangle(coords){
   var allPointsInside = true;
-  var i;
-  for (i=0; i<coords.length; i++){
+  for (var i=0; i<coords.length; i++){
     if(!(isInsideTriangle(coords[i].x, coords[i].y))) {
       allPointsInside = allPointsInside && false;
     }
@@ -157,7 +155,7 @@ function generateKaleidoscope() {
        else{return "symbol";}
          });
 
-  svg.selectAll(".to-remove").remove();          
+  svg.selectAll(".to-remove").remove();      
 
 }
 
@@ -167,7 +165,6 @@ document.getElementById("kaleidoscope-cover").addEventListener("click", function
   d3.selectAll(".symbol").remove();
   generateKaleidoscope();
 }, false);
-
 
 
 

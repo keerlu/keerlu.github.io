@@ -1,3 +1,5 @@
+'use strict';
+
 // generate integers in interval (min, max]
 function randomRange(min, max) {
   return min + Math.floor(Math.random()*(max-min))+ 1;
@@ -32,8 +34,8 @@ function ycoord(u,v) {
 }
 
 function randomSymbolData() {
-  u = Math.random();
-  v = (1-u)*Math.random();
+  var u = Math.random();
+  var v = (1-u)*Math.random();
   return {
            x:xcoord(u,v),
            y:ycoord(u,v)
@@ -43,6 +45,7 @@ function randomSymbolData() {
 function getCoords(path) {
     
   var coordsList = [];
+  var lastIndex;
 
   for (let seg of path.getPathData()) {
     if (seg.type === "M") {
@@ -77,7 +80,7 @@ function getCoords(path) {
 
   var rotate = (Math.PI / 180)*parseFloat(transform.slice(transform.indexOf("rotate(") + "rotate(".length, -1));
 
-  for(i=0; i< coordsList.length; i++){
+  for(let i=0; i< coordsList.length; i++){
 
     var x = coordsList[i].x;
     var y = coordsList[i].y;

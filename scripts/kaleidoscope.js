@@ -112,15 +112,18 @@ function allPointsInsideTriangle(coords){
 function generateKaleidoscope() {
 
   var symbols = [];
-  var svg = d3.select("#grouped-triangle");
-  var paths = document.getElementsByClassName("symbol");
   var pathData = [];
-
-  for(var i=0; i<randomRange(50,60); i++){
+  var paths;
+  var svg = d3.select("#grouped-triangle");
+  
+//  svg.append("g")
+//     .attr("class", "kaleidoscope-shapes");
+   
+  for(var i=0; i<randomRange(40,50); i++){
     symbols.push(randomSymbolData());
   }
 
-  svg.selectAll("path")
+  svg.selectAll(".kaleidoscope-shapes").selectAll("path")
     .data(symbols)
     .enter()
     .append("path")
@@ -136,6 +139,8 @@ function generateKaleidoscope() {
     .attr("transform", function(d) {
      return "translate(" + d.x + "," + d.y + ") rotate(" + randomRange(0,360) + ")";
     });
+    
+  paths = document.getElementsByClassName("symbol");
 
   for(var j=0; j<paths.length; j++){
     pathData.push(paths[j].getPathData());
@@ -161,8 +166,10 @@ function generateKaleidoscope() {
 
 generateKaleidoscope();
 
-document.getElementById("kaleidoscope-cover").addEventListener("click", function( event ) {
-  d3.selectAll(".symbol").remove();
+document.getElementById("kaleidoscope-container").addEventListener("click", function( event ) {
+  d3.selectAll(".kaleidoscope-shapes").remove();
+  d3.select("#grouped-triangle").append("g")
+    .attr("class", "kaleidoscope-shapes");
   generateKaleidoscope();
 }, false);
 

@@ -318,9 +318,12 @@ blockquote {
 }
 
 
-#kaleidoscope-cover:hover {
-  fill-opacity:0.1;
+#kaleidoscope-container:hover {
   cursor:pointer;
+}
+
+#description:hover {
+  cursor: auto;
 }
 
 svg {

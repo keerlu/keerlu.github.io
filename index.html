@@ -11,7 +11,7 @@ layout: default
   </div>
 
   <div id="kaleidoscope-container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 75 1500 844">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 75 1700 844">
       <defs>
         <g id="grouped-triangle">
           <polygon class="background-triangle" 
@@ -42,10 +42,10 @@ layout: default
       </defs>
 
       <g id="kaleidoscope">
-        <g id="centre" fill-opacity="0.7">
+        <g id="centre" fill-opacity="0.2">
           <use xlink:href="#hexagon" transform="translate(391, 375)"/>          
         </g>
-        <g id="ring1" fill-opacity="0.6" stroke-opacity="0.8">
+        <g id="ring1" fill-opacity="0.1" stroke-opacity="0.5">
           <use xlink:href="#hexagon" transform="translate(261, 150)"/>
           <use xlink:href="#hexagon" transform="translate(521, 150)"/>
           <use xlink:href="#hexagon" transform="translate(131, 375)"/>
@@ -53,7 +53,18 @@ layout: default
           <use xlink:href="#hexagon" transform="translate(261, 600)" />
           <use xlink:href="#hexagon" transform="translate(521, 600)" />
         </g>
-        <g id="ring2" fill-opacity="0.5" stroke-opacity="0.7">
+        <g id="centre2" fill-opacity="0.2" stroke-opacity="0.7">
+          <use xlink:href="#hexagon" transform="translate(1561, 600)"/>
+        </g>
+        <g id="ring2" fill-opacity="0.1" stroke-opacity="0.5">
+          <use xlink:href="#hexagon" transform="translate(1561, 600)"/>
+          <use xlink:href="#hexagon" transform="translate(1431, 825)"/>
+          <use xlink:href="#hexagon" transform="translate(1691, 825)"/>
+          <use xlink:href="#hexagon" transform="translate(1691, 375)"/>
+          <use xlink:href="#hexagon" transform="translate(1301, 600)"/>
+          <use xlink:href="#hexagon" transform="translate(1431, 375)"/>
+        </g>
+        <g id="other" fill-opacity="0" stroke-opacity="0.5">
           <use xlink:href="#hexagon" transform="translate(131, -75)"/>
           <use xlink:href="#hexagon" transform="translate(391, -75)"/>
           <use xlink:href="#hexagon" transform="translate(651, -75)"/>
@@ -64,9 +75,7 @@ layout: default
           <use xlink:href="#hexagon" transform="translate(781, 600)"/>
           <use xlink:href="#hexagon" transform="translate(131, 825)"/>
           <use xlink:href="#hexagon" transform="translate(391, 825)"/>
-          <use xlink:href="#hexagon" transform="translate(651, 825)"/> 
-        </g>
-        <g id="ring3" fill-opacity="0.4" stroke-opacity="0.6">
+          <use xlink:href="#hexagon" transform="translate(651, 825)"/>      
           <use xlink:href="#hexagon" transform="translate(911, -75)"/>
           <use xlink:href="#hexagon" transform="translate(1041, 150)"/>
           <use xlink:href="#hexagon" transform="translate(1171, 375)"/>
@@ -75,11 +84,18 @@ layout: default
           <use xlink:href="#hexagon" transform="translate(1, 1050)"/>
           <use xlink:href="#hexagon" transform="translate(261, 1050)"/>
           <use xlink:href="#hexagon" transform="translate(521, 1050)"/>
-          <use xlink:href="#hexagon" transform="translate(781, 1050)"/>
+          <use xlink:href="#hexagon" transform="translate(781, 1050)"/>    
+          <use xlink:href="#hexagon" transform="translate(1561, 150)"/>        
+          <use xlink:href="#hexagon" transform="translate(1561, 1050)"/>
+          <use xlink:href="#hexagon" transform="translate(1301, 1050)"/>
+          <use xlink:href="#hexagon" transform="translate(1041, 1050)"/>
+          <use xlink:href="#hexagon" transform="translate(1171, 825)"/>
+          <use xlink:href="#hexagon" transform="translate(1301, 150)"/>        
         </g>
+        
       </g>
       
-      <path id="kaleidoscope-cover" d="m 1,920 1006,0 34,-20 0,-150 130,-75 0,-150 130,-75 0,-150 -130,-75 0,-150 L 0,75 Z" fill="white" stroke="black" stroke-width="3" fill-opacity="0" />
+<!--      <path id="kaleidoscope-cover" d="m 1,920 1006,0 34,-20 0,-150 130,-75 0,-150 130,-75 0,-150 -130,-75 0,-150 L 0,75 Z" fill="white" stroke="black" stroke-width="3" fill-opacity="0" />-->
       
     </svg>
   </div>

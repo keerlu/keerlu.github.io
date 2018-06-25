@@ -191,7 +191,71 @@ function generateKaleidoscope() {
   svg.selectAll(".to-remove").remove();
 }
 
+function clone(selector) {
+  var node = d3.select(selector).node();
+  return d3.select(node.parentNode.insertBefore(node.cloneNode(true), node.nextSibling));
+}
+
 generateKaleidoscope();
+
+function newHexagon(xpos, ypos) {
+  var x = 0;
+  var y = 0;
+
+  if (ypos % 2 === 0) {
+    x = 260 * xpos;
+    y = 150 + 225 * ypos;
+  } else if (ypos % 2 === 1) {
+    x = 130 + 260 * xpos;
+    y = 375 + 225 * (ypos - 1);
+  }
+
+  var transform = "translate(" + x + "," + y + ") rotate(30)";
+  return clone("#hexagon").attr("transform", transform);
+}
+
+// Centre 1
+newHexagon(1, 1).attr("fill-opacity", "0.2").attr("stroke-opacity", "1");
+// Ring 1
+newHexagon(1, 0).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(2, 0).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(0, 1).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(2, 1).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(1, 2).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(2, 2).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+
+// Centre 2
+newHexagon(6, 2).attr("fill-opacity", "0.2").attr("stroke-opacity", "1");
+// Ring 2
+newHexagon(5, 1).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(6, 1).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(5, 2).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(5, 3).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(6, 3).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+
+// The rest
+
+for (var i = 3; i < 7; i++) {
+  newHexagon(i, 0);
+}
+
+for (var _i = 3; _i < 5; _i++) {
+  newHexagon(_i, 1);
+}
+
+newHexagon(0, 2);
+
+for (var _i2 = 3; _i2 < 5; _i2++) {
+  newHexagon(_i2, 2);
+}
+
+for (var _i3 = 0; _i3 < 5; _i3++) {
+  newHexagon(_i3, 3);
+}
+
+for (var _i4 = 0; _i4 < 7; _i4++) {
+  newHexagon(_i4, 4);
+}
 
 document.getElementById("kaleidoscope-container").addEventListener("click", function (event) {
   d3.selectAll(".kaleidoscope-shapes").remove();

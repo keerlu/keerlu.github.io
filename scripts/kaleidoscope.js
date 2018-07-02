@@ -241,6 +241,8 @@ document.getElementById("kaleidoscope-container").addEventListener("click", func
   generateKaleidoscope();
 }, false);
 
+svg4everybody();
+
 
 
 

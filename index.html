@@ -2,9 +2,9 @@
 layout: default
 ---
 
-<body id="homepage">
   <script src="//d3js.org/d3.v4.min.js"></script>
   <script src="scripts/svg4everybody.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser-polyfill.min.js"></script>
   
   <div id="description">
     <h1>Hello!</h1>
@@ -21,19 +21,19 @@ layout: default
                    stroke-width="1"
                    points="75,0
                          0,130
-                         150,130" />
+                         150,130" ></polygon>
           <g class="kaleidoscope-shapes">    
           </g>           
         </g>
         </defs>
 
         <g id="hexagon" transform="translate(0,150) rotate(30)" fill-opacity="0" stroke-opacity="0.5">
-          <use xlink:href="#grouped-triangle" transform="translate(-75)"/> 
-          <use xlink:href="#grouped-triangle" transform="rotate(120) translate(-75)"/>  
-          <use xlink:href="#grouped-triangle" transform="rotate(240) translate(-75)"/>
-          <use xlink:href="#grouped-triangle" transform="scale(-1,1) rotate(-60) translate(-75)"/>  
-          <use xlink:href="#grouped-triangle" transform="scale(-1,1) rotate(-180) translate(-75)"/>  
-          <use xlink:href="#grouped-triangle" transform="scale(-1,1) rotate(-300) translate(-75)"/>    
+          <use xlink:href="#grouped-triangle" transform="translate(-75)"></use> 
+          <use xlink:href="#grouped-triangle" transform="rotate(120) translate(-75)"></use>  
+          <use xlink:href="#grouped-triangle" transform="rotate(240) translate(-75)"></use>
+          <use xlink:href="#grouped-triangle" transform="scale(-1,1) rotate(-60) translate(-75)"></use>  
+          <use xlink:href="#grouped-triangle" transform="scale(-1,1) rotate(-180) translate(-75)"></use>  
+          <use xlink:href="#grouped-triangle" transform="scale(-1,1) rotate(-300) translate(-75)"></use>    
         </g>
        
     </svg>
@@ -42,5 +42,4 @@ layout: default
   <script src="scripts/path-data-polyfill-babel.js"></script>
   <script src="scripts/kaleidoscope-babel.js"></script>
 
-</body>
 

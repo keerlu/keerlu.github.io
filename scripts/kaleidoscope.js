@@ -240,13 +240,3 @@ document.getElementById("kaleidoscope-container").addEventListener("click", func
     .attr("class", "kaleidoscope-shapes");
   generateKaleidoscope();
 }, false);
-
-svg4everybody();
-
-
-
-
-
-
-
-

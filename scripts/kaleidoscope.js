@@ -118,9 +118,6 @@ function generateKaleidoscope() {
   var pathData = [];
   var paths;
   var svg = d3.select("#grouped-triangle");
-  
-//  svg.append("g")
-//     .attr("class", "kaleidoscope-shapes");
    
   for(var i=0; i<randomRange(40,50); i++){
     symbols.push(randomSymbolData());

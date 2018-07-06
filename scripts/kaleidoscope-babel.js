@@ -106,9 +106,9 @@ function getCoords(path) {
 
   var transform = path.getAttribute("transform");
 
-  var xtranslate = parseFloat(transform.slice(transform.indexOf("(") + 1, transform.indexOf(",")));
-
-  var ytranslate = parseFloat(transform.slice(transform.indexOf(",") + 1, transform.indexOf(")")));
+  var parts = /translate\(\s*([^\s,)]+)[ ,]([^\s,)]+)/.exec(transform);
+  var xtranslate = parseFloat(parts[1]);
+  var ytranslate = parseFloat(parts[2]);
 
   var rotate = Math.PI / 180 * parseFloat(transform.slice(transform.indexOf("rotate(") + "rotate(".length, -1));
 

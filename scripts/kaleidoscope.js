@@ -25,21 +25,45 @@ var triangleCoords = [[0,130], [150, 130], [75, 0]];
 
 function xcoord(u,v) {
 
-  return u*triangleCoords[0][0] + v*triangleCoords[1][0] + (1-u-v)*triangleCoords[2][0];
+  return u*(triangleCoords[0][0] - triangleCoords[2][0]) + v*(triangleCoords[1][0] - triangleCoords[2][0]) + 75;
 }
 
 function ycoord(u,v) {
 
-  return (u*triangleCoords[0][1] + v*triangleCoords[1][1] + (1-u-v)*triangleCoords[2][1]);
+  return u*(triangleCoords[0][1] - triangleCoords[2][1]) + v*(triangleCoords[1][1] - triangleCoords[2][1]);
+}
+
+function isInsideTriangle(x,y){
+  return (y <= 130) && (y >= 130 - (130*x/75)) && (y >= -130 + (130*x/75));
+}
+
+function allPointsInsideTriangle(coords){
+  var allPointsInside = true;
+  for (var i=0; i<coords.length; i++){
+    if(!(isInsideTriangle(coords[i].x, coords[i].y))) {
+      allPointsInside = allPointsInside && false;
+    }
+  }  
+
+  return allPointsInside;
 }
 
 function randomSymbolData() {
   var u = Math.random();
-  var v = (1-u)*Math.random();
-  return {
+  var v = Math.random();
+  
+  // To distribute uniformly, generate over parallelogram and then reflect 
+  // points that aren't inside original triangle
+  // See http://mathworld.wolfram.com/TrianglePointPicking.html
+  
+  var coords = {
            x:xcoord(u,v),
            y:ycoord(u,v)
          };
+  
+  if (isInsideTriangle(coords.x,coords.y)) { return coords; }
+  else { return {x:xcoord(u,v), y:(130 + (130 - ycoord(u,v)))}};
+                  
 }
 
 function getCoords(path) {
@@ -95,21 +119,6 @@ function getCoords(path) {
 
   return coordsList; 
 
-}
-
-function isInsideTriangle(x,y){
-  return (y <= 130) && (y >= 130 - (130*x/75)) && (y >= -130 + (130*x/75));
-}
-
-function allPointsInsideTriangle(coords){
-  var allPointsInside = true;
-  for (var i=0; i<coords.length; i++){
-    if(!(isInsideTriangle(coords[i].x, coords[i].y))) {
-      allPointsInside = allPointsInside && false;
-    }
-  }  
-
-  return allPointsInside;
 }
 
 function generateKaleidoscope() {

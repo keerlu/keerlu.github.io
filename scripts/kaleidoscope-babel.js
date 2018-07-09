@@ -27,20 +27,46 @@ var triangleCoords = [[0, 130], [150, 130], [75, 0]];
 
 function xcoord(u, v) {
 
-  return u * triangleCoords[0][0] + v * triangleCoords[1][0] + (1 - u - v) * triangleCoords[2][0];
+  return u * (triangleCoords[0][0] - triangleCoords[2][0]) + v * (triangleCoords[1][0] - triangleCoords[2][0]) + 75;
 }
 
 function ycoord(u, v) {
 
-  return u * triangleCoords[0][1] + v * triangleCoords[1][1] + (1 - u - v) * triangleCoords[2][1];
+  return u * (triangleCoords[0][1] - triangleCoords[2][1]) + v * (triangleCoords[1][1] - triangleCoords[2][1]);
+}
+
+function isInsideTriangle(x, y) {
+  return y <= 130 && y >= 130 - 130 * x / 75 && y >= -130 + 130 * x / 75;
+}
+
+function allPointsInsideTriangle(coords) {
+  var allPointsInside = true;
+  for (var i = 0; i < coords.length; i++) {
+    if (!isInsideTriangle(coords[i].x, coords[i].y)) {
+      allPointsInside = allPointsInside && false;
+    }
+  }
+
+  return allPointsInside;
 }
 
 function randomSymbolData() {
   var u = Math.random();
-  var v = (1 - u) * Math.random();
-  return {
+  var v = Math.random();
+
+  // To distribute uniformly, generate over parallelogram and then reflect 
+  // points that aren't inside original triangle
+  // See http://mathworld.wolfram.com/TrianglePointPicking.html
+
+  var coords = {
     x: xcoord(u, v),
     y: ycoord(u, v)
+  };
+
+  if (isInsideTriangle(coords.x, coords.y)) {
+    return coords;
+  } else {
+    return { x: xcoord(u, v), y: 130 + (130 - ycoord(u, v)) };
   };
 }
 
@@ -106,9 +132,9 @@ function getCoords(path) {
 
   var transform = path.getAttribute("transform");
 
-  var xtranslate = parseFloat(transform.slice(transform.indexOf("(") + 1, transform.indexOf(",")));
-
-  var ytranslate = parseFloat(transform.slice(transform.indexOf(",") + 1, transform.indexOf(")")));
+  var parts = /translate\(\s*([^\s,)]+)[ ,]([^\s,)]+)/.exec(transform);
+  var xtranslate = parseFloat(parts[1]);
+  var ytranslate = parseFloat(parts[2]);
 
   var rotate = Math.PI / 180 * parseFloat(transform.slice(transform.indexOf("rotate(") + "rotate(".length, -1));
 
@@ -127,21 +153,6 @@ function getCoords(path) {
   return coordsList;
 }
 
-function isInsideTriangle(x, y) {
-  return y <= 130 && y >= 130 - 130 * x / 75 && y >= -130 + 130 * x / 75;
-}
-
-function allPointsInsideTriangle(coords) {
-  var allPointsInside = true;
-  for (var i = 0; i < coords.length; i++) {
-    if (!isInsideTriangle(coords[i].x, coords[i].y)) {
-      allPointsInside = allPointsInside && false;
-    }
-  }
-
-  return allPointsInside;
-}
-
 function generateKaleidoscope() {
 
   var symbols = [];
@@ -149,10 +160,7 @@ function generateKaleidoscope() {
   var paths;
   var svg = d3.select("#grouped-triangle");
 
-  //  svg.append("g")
-  //     .attr("class", "kaleidoscope-shapes");
-
-  for (var i = 0; i < randomRange(40, 50); i++) {
+  for (var i = 0; i < randomRange(30, 40); i++) {
     symbols.push(randomSymbolData());
   }
 
@@ -191,7 +199,71 @@ function generateKaleidoscope() {
   svg.selectAll(".to-remove").remove();
 }
 
+function clone(selector) {
+  var node = d3.select(selector).node();
+  return d3.select(node.parentNode.insertBefore(node.cloneNode(true), node.nextSibling));
+}
+
 generateKaleidoscope();
+
+function newHexagon(xpos, ypos) {
+  var x = 0;
+  var y = 0;
+
+  if (ypos % 2 === 0) {
+    x = 260 * xpos;
+    y = 150 + 225 * ypos;
+  } else if (ypos % 2 === 1) {
+    x = 130 + 260 * xpos;
+    y = 375 + 225 * (ypos - 1);
+  }
+
+  var transform = "translate(" + x + "," + y + ") rotate(30)";
+  return clone("#hexagon").attr("transform", transform);
+}
+
+// Centre 1
+newHexagon(1, 1).attr("fill-opacity", "0.2").attr("stroke-opacity", "1");
+// Ring 1
+newHexagon(1, 0).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(2, 0).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(0, 1).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(2, 1).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(1, 2).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(2, 2).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+
+// Centre 2
+newHexagon(6, 2).attr("fill-opacity", "0.2").attr("stroke-opacity", "1");
+// Ring 2
+newHexagon(5, 1).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(6, 1).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(5, 2).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(5, 3).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+newHexagon(6, 3).attr("fill-opacity", "0.1").attr("stroke-opacity", "0.5");
+
+// The rest
+
+for (var i = 3; i < 7; i++) {
+  newHexagon(i, 0);
+}
+
+for (var _i = 3; _i < 5; _i++) {
+  newHexagon(_i, 1);
+}
+
+newHexagon(0, 2);
+
+for (var _i2 = 3; _i2 < 5; _i2++) {
+  newHexagon(_i2, 2);
+}
+
+for (var _i3 = 0; _i3 < 5; _i3++) {
+  newHexagon(_i3, 3);
+}
+
+for (var _i4 = 0; _i4 < 7; _i4++) {
+  newHexagon(_i4, 4);
+}
 
 document.getElementById("kaleidoscope-container").addEventListener("click", function (event) {
   d3.selectAll(".kaleidoscope-shapes").remove();

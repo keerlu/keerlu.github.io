@@ -75,11 +75,10 @@ figcaption {
 
 /**  Blockquotes  */
 blockquote {
-/*    color: gray;*/
-    border: 2px solid gray;
-    background: rgba(245,245,245, 0.3);
-    padding-left: 20px;
-    letter-spacing: -1px;
+  border-left: 4px solid gray;
+  background: rgba(245,245,245, 0.3);
+  padding: 10px;
+  letter-spacing: -1px;
 }
 
 /** Top bar */

@@ -50,17 +50,27 @@ a {
 /** Images */
 
 img {
-    max-width: 100%;
-    vertical-align: middle;
+  max-width: 100%;
+  vertical-align: middle;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 20px;
+
 }
 
 /** Figures  */
-figure > img {
-    display: block;
+figure  {
+  display: block;
 }
 
 figcaption {
-    font-size: 10pt;
+  display:block;
+  text-align: center;
+  font-style: italic;
+  color: 	#505050;
+/*  padding: 20px;*/
+/*  border: 2px solid gray;*/
 }
 
 /**  Blockquotes  */

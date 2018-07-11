@@ -1,5 +1,5 @@
 <!-- _includes/image.html -->
-<div class="image-wrapper" >
+<figure>
     {% if include.url %}
     <a href="{{ include.url }}" title="{{ include.title }}" target="_blank">
     {% endif %}
@@ -8,6 +8,7 @@
     </a>
     {% endif %}
     {% if include.caption %}
-        <p class="image-caption">{{ include.caption }}</p>
+        <figcaption>{{ include.caption }}</figcaption>
     {% endif %}
-</div>
+</figure>    
+

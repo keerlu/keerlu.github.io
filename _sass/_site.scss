@@ -146,6 +146,7 @@ blockquote {
   display: none;
 }
 
+
 /** Text containers */
 
 .text-container {
@@ -221,6 +222,14 @@ blockquote {
     border: none;
     cursor: pointer;
     float: right;
+  }
+  
+  .dropbtn img {
+    max-width: 100%;
+    vertical-align: middle;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
     padding: 6px 16px 5px 16px;
   }
 

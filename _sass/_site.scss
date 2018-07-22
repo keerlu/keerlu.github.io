@@ -352,9 +352,22 @@ blockquote {
   cursor: auto;
 }
 
-svg {
-  height: 100%;
+
+/* SVG background */
+
+@media (min-aspect-ratio: 1700/844) {
+  svg {
+    width:100%;
+  }
 }
+
+@media (max-aspect-ratio: 1700/844) {
+  svg {
+    height:100%;
+  }
+}
+
+
 
 /* Responsive sidenotes. From Tufte CSS https://edwardtufte.github.io/tufte-css/ */
 

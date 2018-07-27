@@ -47,29 +47,46 @@ a {
   color: #73343A;
 }
 
+.intro-para {
+  padding: 10px;
+}
+
+.intro-para p {
+  font-size: 1.2em;
+}
+
 /** Images */
 
 img {
-    max-width: 100%;
-    vertical-align: middle;
+  max-width: 100%;
+  vertical-align: middle;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 20px;
+
 }
 
 /** Figures  */
-figure > img {
-    display: block;
+figure  {
+  display: block;
 }
 
 figcaption {
-    font-size: 10pt;
+  display:block;
+  text-align: center;
+  font-style: italic;
+  color: 	#505050;
+/*  padding: 20px;*/
+/*  border: 2px solid gray;*/
 }
 
 /**  Blockquotes  */
 blockquote {
-/*    color: gray;*/
-    border: 2px solid gray;
-    background: rgba(245,245,245, 0.3);
-    padding-left: 20px;
-    letter-spacing: -1px;
+  border-left: 4px solid gray;
+  background: rgba(245,245,245, 0.3);
+  padding: 10px;
+  letter-spacing: -1px;
 }
 
 /** Top bar */
@@ -129,6 +146,7 @@ blockquote {
   display: none;
 }
 
+
 /** Text containers */
 
 .text-container {
@@ -150,6 +168,10 @@ blockquote {
 .post-list h2 a {
   text-decoration: none;  
   }
+  
+.post-meta {
+  font-style: italic;
+}
 
 /** Homepage */
 
@@ -200,6 +222,14 @@ blockquote {
     border: none;
     cursor: pointer;
     float: right;
+  }
+  
+  .dropbtn img {
+    max-width: 100%;
+    vertical-align: middle;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
     padding: 6px 16px 5px 16px;
   }
 
@@ -335,9 +365,22 @@ blockquote {
   cursor: auto;
 }
 
-svg {
-  height: 100%;
+
+/* SVG background */
+
+@media (min-aspect-ratio: 1700/844) {
+  svg {
+    width:100%;
+  }
 }
+
+@media (max-aspect-ratio: 1700/844) {
+  svg {
+    height:100%;
+  }
+}
+
+
 
 /* Responsive sidenotes. From Tufte CSS https://edwardtufte.github.io/tufte-css/ */
 

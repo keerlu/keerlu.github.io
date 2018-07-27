@@ -6,12 +6,12 @@ layout: default
   <div class="text-container-no-sidenotes">
   <h1>Notes</h1>
   
+  <p>Notes and examples for things I'm interested in.</p>
+  
     <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2><span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>       
+        <p><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> <span class="post-meta"> ({{ post.date | date: "%b %-d, %Y" }})</span>       </p>
       </li>
     {% endfor %}
   </ul>

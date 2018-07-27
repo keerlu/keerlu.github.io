@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="-130 75 260 450"
+   id="svg4136"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="background3.svg"
+   width="260"
+   height="450">
+  <metadata
+     id="metadata4174">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="3062"
+     inkscape:window-height="1752"
+     id="namedview4172"
+     showgrid="true"
+     units="mm"
+     fit-margin-bottom="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     inkscape:zoom="1.5678733"
+     inkscape:cx="375.38999"
+     inkscape:cy="188.33146"
+     inkscape:window-x="138"
+     inkscape:window-y="48"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4136">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4232"
+       originx="0"
+       originy="300" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4138">
+    <g
+       id="grouped-triangle">
+      <polygon
+         class="background-triangle"
+         points="75,0 0,130 150,130 "
+         id="polygon4141"
+         style="fill:#342338;stroke:#000000;stroke-width:1" />
+      <g
+         class="kaleidoscope-shapes"
+         id="g4143">
+        <path
+           class="symbol"
+           d="m 7.9733242,4.6034009 0,15.9466481 -15.9466484,0 0,-15.9466481 L -21.783527,-3.3699233 -13.810203,-17.180126 0,-9.2068017 13.810203,-17.180126 21.783527,-3.3699233 Z"
+           transform="matrix(-0.95105652,-0.30901699,0.30901699,-0.95105652,76.632949,75.041742)"
+           id="path4145"
+           inkscape:connector-curvature="0"
+           style="opacity:0.8;fill:#87b24e;stroke:#000000;stroke-width:1" />
+        <path
+           class="symbol"
+           d="m 7.8953099,4.5583593 0,15.7906197 -15.7906198,0 0,-15.7906197 -13.6750781,-7.8953099 7.89531,-13.6750784 L 0,-9.1167186 l 13.675078,-7.8953104 7.89531,13.6750784 z"
+           transform="matrix(0.52991926,0.8480481,-0.8480481,0.52991926,79.238138,48.550892)"
+           id="path4147"
+           inkscape:connector-curvature="0"
+           style="opacity:0.8;fill:#d10c30;stroke:#000000;stroke-width:1" />
+        <path
+           class="symbol"
+           d="M 0,-31.17179 17.997041,0 0,31.17179 -17.997041,0 Z"
+           transform="matrix(0.57357644,0.81915204,-0.81915204,0.57357644,70.96912,76.963386)"
+           id="path4149"
+           inkscape:connector-curvature="0"
+           style="opacity:0.8;fill:#87b24e;stroke:#000000;stroke-width:1" />
+        <path
+           class="symbol"
+           d="m -16.568042,-16.568042 33.136084,0 0,33.136084 -33.136084,0 z"
+           transform="matrix(0.48480962,0.87461971,-0.87461971,0.48480962,65.912295,82.850199)"
+           id="path4151"
+           inkscape:connector-curvature="0"
+           style="opacity:0.8;fill:#772837;stroke:#000000;stroke-width:1" />
+        <path
+           class="symbol"
+           d="m -15.083103,-15.083103 30.166206,0 0,30.166206 -30.166206,0 z"
+           transform="matrix(-0.76604444,0.64278761,-0.64278761,-0.76604444,73.674974,41.607566)"
+           id="path4153"
+           inkscape:connector-curvature="0"
+           style="opacity:0.8;fill:#772837;stroke:#000000;stroke-width:1" />
+        <path
+           class="symbol"
+           d="m 0,-32.462777 7.2883475,22.431227 23.5855885,0 L 11.792794,3.831711 19.081142,26.262938 0,12.399677 -19.081142,26.262938 -11.792794,3.831711 -30.873936,-10.03155 l 23.5855885,0 z"
+           transform="matrix(0.94551858,0.32556815,-0.32556815,0.94551858,76.088126,66.237107)"
+           id="path4155"
+           inkscape:connector-curvature="0"
+           style="opacity:0.8;fill:#ff5900;stroke:#000000;stroke-width:1" />
+        <path
+           class="symbol"
+           d="m -13.462912,-13.462912 26.925824,0 0,26.925824 -26.925824,0 z"
+           transform="matrix(-0.77714596,-0.62932039,0.62932039,-0.77714596,108.73494,97.390336)"
+           id="path4157"
+           inkscape:connector-curvature="0"
+           style="opacity:0.8;fill:#1f6b63;stroke:#000000;stroke-width:1" />
+      </g>
+    </g>
+  </defs>
+  <g
+     id="hexagon"
+     transform="matrix(0.8660254,0.5,-0.5,0.8660254,0,150)"
+     style="fill-opacity:0;stroke-opacity:0.5">
+    <use
+       xlink:href="#grouped-triangle"
+       transform="translate(-75,0)"
+       id="use4160"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       xlink:href="#grouped-triangle"
+       transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,37.5,-64.951905)"
+       id="use4162"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       xlink:href="#grouped-triangle"
+       transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,37.5,64.951905)"
+       id="use4164"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       xlink:href="#grouped-triangle"
+       transform="matrix(-0.5,-0.8660254,-0.8660254,0.5,37.5,64.951905)"
+       id="use4166"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       xlink:href="#grouped-triangle"
+       transform="matrix(1,0,0,-1,-75,0)"
+       id="use4168"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       xlink:href="#grouped-triangle"
+       transform="matrix(-0.5,0.8660254,0.8660254,0.5,37.5,-64.951905)"
+       id="use4170"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </g>
+  <g
+     transform="matrix(0.8660254,0.5,-0.5,0.8660254,0,600)"
+     id="g4218"
+     style="fill-opacity:0;stroke-opacity:0.5">
+    <use
+       id="use4220"
+       transform="translate(-75,0)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4222"
+       transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,37.5,-64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4224"
+       transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,37.5,64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4226"
+       transform="matrix(-0.5,-0.8660254,-0.8660254,0.5,37.5,64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4228"
+       transform="matrix(1,0,0,-1,-75,0)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4230"
+       transform="matrix(-0.5,0.8660254,0.8660254,0.5,37.5,-64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </g>
+  <g
+     transform="matrix(0.8660254,0.5,-0.5,0.8660254,-130,375)"
+     id="g4204"
+     style="fill-opacity:0;stroke-opacity:0.5">
+    <use
+       id="use4206"
+       transform="translate(-75,0)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4208"
+       transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,37.5,-64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4210"
+       transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,37.5,64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4212"
+       transform="matrix(-0.5,-0.8660254,-0.8660254,0.5,37.5,64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4214"
+       transform="matrix(1,0,0,-1,-75,0)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4216"
+       transform="matrix(-0.5,0.8660254,0.8660254,0.5,37.5,-64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </g>
+  <g
+     transform="matrix(0.8660254,0.5,-0.5,0.8660254,130,375)"
+     id="g4190"
+     style="fill-opacity:0;stroke-opacity:0.5">
+    <use
+       id="use4192"
+       transform="translate(-75,0)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4194"
+       transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,37.5,-64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4196"
+       transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,37.5,64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4198"
+       transform="matrix(-0.5,-0.8660254,-0.8660254,0.5,37.5,64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4200"
+       transform="matrix(1,0,0,-1,-75,0)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4202"
+       transform="matrix(-0.5,0.8660254,0.8660254,0.5,37.5,-64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </g>
+  <g
+     transform="matrix(0.8660254,0.5,-0.5,0.8660254,260,150)"
+     id="g4176"
+     style="fill-opacity:0;stroke-opacity:0.5">
+    <use
+       id="use4178"
+       transform="translate(-75,0)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4180"
+       transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,37.5,-64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4182"
+       transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,37.5,64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4184"
+       transform="matrix(-0.5,-0.8660254,-0.8660254,0.5,37.5,64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4186"
+       transform="matrix(1,0,0,-1,-75,0)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use4188"
+       transform="matrix(-0.5,0.8660254,0.8660254,0.5,37.5,-64.951905)"
+       xlink:href="#grouped-triangle"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </g>
+</svg>

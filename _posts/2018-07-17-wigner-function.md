@@ -5,7 +5,7 @@ title: The Wigner function
 
 
 
-The Wigner function is a key player in the phase space reformulation of quantum physics, which I'm currently trying to learn about. I had very little intuition for what it was, other than some vague idea that it was a sort of probability-distribution-like thing, so I've been trying to fix that.
+The Wigner function plays a major role in the phase space reformulation of quantum physics, which I'm currently trying to learn about. I had very little intuition for what it was, other than some vague idea that it was a sort of probability-distribution-like thing, so I've been trying to fix that.
 
 First I wondered if going back to the [original paper (pdf)][wigner] would be helpful. Turns out no. Wigner states that 'one may build the following expression', plonks it on the page, and then adds this helpful footnote:
 <label for="mn-wigner" class="margin-toggle">&#8853;</label>
@@ -17,25 +17,18 @@ I searched a bit, and it looks like Szilard may have never been involved - Wigne
 
 [wigner]:http://140.123.79.88/~yach932/CH3_Reference/51.PhysRev.40.749.pdf
 
+So I had to look elsewhere. One of my starting points was [these][riedel1] [two][riedel2] blog posts about the Wigner function by Jess Riedel, a physicist who also got annoyed by the usual way it’s introduced without explanation. The first post starts with the density function, which is used more frequently in quantum physics and is something like an autocorrelation function in statistics, and then applies two transformations to it, a Fourier transform and a coordinate rotation. This is strongly connected to the story I’m trying to tell above. 
 
+[riedel1]:http://blog.jessriedel.com/2014/04/01/wigner-function-fourier-transform-coordinate-rotation/
 
-So I had to do some digging.
+The key property of the Wigner function that every physics text talks about is the ability to reproduce the position and momentum distributions by integrating along the axes of phase space. Jess Riedel is dissatisfied with this and in his second blog post he points out that this is also true of the ‘Jigner function’, a pointless function he just made up... it’s not enough to pick it out uniquely.
 
-**!!TODO:** add intro/summary
-
-
-Now for the undigested infodump bit. There are a couple of other routes to the Wigner function that I found during my trawl for intuition - I don’t understand them too well yet but I’m going to just write down what I do know in vague sort of terms.
-
-
-One of my starting points was these two blog posts about the Wigner function by Jess Riedel, a physicist who also got annoyed by the usual way it’s introduced without explanation. The first post starts with the density function, which is used more frequently in quantum physics and is something like an autocorrelation function in statistics, and then applies two transformations to it, a Fourier transform and a coordinate rotation. This is strongly connected to the story I’m trying to tell above. 
-
-
+I was also dissatisfied with this! I've ended up exploring along a somewhat different path, but I'll get to Riedel's version at the end. I'm still in the process of doing this and you will notice a lot of **To do**s and **To add**s in this post.
 
 
 ## Time-frequency analysis and musical notation
 
-
-One thing I learnt that was completely new to me is that the Wigner function is also used in classical physics, in the field of [time-frequency analysis][timefreq]. Time and frequency are Fourier pairs in classical physics in the same way that position and momentum are in quantum physics. This means you can’t measure both of them precisely at the same time: a precisely localised position measurement will map to a fully spread out infinite sinusoid, and vice versa. So trying to plot time against frequency precisely for a signal is always going to be something of a bodge. 
+The first interesting thing I learnt when I started digging was that the Wigner function is also used in classical physics, in the field of [time-frequency analysis][timefreq]. Time and frequency are Fourier pairs in classical physics in the same way that position and momentum are in quantum physics. This means you can’t measure both of them precisely at the same time: a precisely localised position measurement will map to a fully spread out infinite sinusoid, and vice versa. So trying to plot time against frequency precisely for a signal is always going to be something of a bodge. 
 
 [timefreq]:https://en.wikipedia.org/wiki/Time%E2%80%93frequency_analysis
 
@@ -67,7 +60,7 @@ To do better than this, you can make a cleverer choice of window. The short time
 
 [gabor]:https://en.wikipedia.org/wiki/Gabor_transform
 
-This is still a ‘one size fits all’ window function, though. It seems plausible that you can often do better by using a window that’s based on the actual function that you are transforming. In the case of the Wigner function, it looks like you use something like the mirror image of the signal itself as the window function (see e.g. [here][mirror] for a paper considering the Wigner function as the expectationi value of the parity operator that reflects points in phase space. I say ‘something like’ as I think there might still be another coordinate change going on… I need to write it all out properly in the same notation and see…)
+This is still a ‘one size fits all’ window function, though. It seems plausible that you can often do better by using a window that’s based on the actual function that you are transforming. In the case of the Wigner function, it looks like you use something like the mirror image of the signal itself as the window function (see e.g. [here][mirror] for a paper considering the Wigner function as the expectation value of the parity operator that reflects points in phase space. I say ‘something like’ as I think there might still be another coordinate change going on… I need to write it all out properly in the same notation and see…)
 
 [mirror]:https://journals.aps.org/pra/abstract/10.1103/PhysRevA.15.449
 
@@ -82,14 +75,16 @@ This is still a ‘one size fits all’ window function, though. It seems plausi
 
 ## Wigner function from Galilean invariance
 
-There’s another route I want to go down before that, though, that’s more directly related to the van Enk model. The key property of the Wigner function that every physics text talks about is the ability to reproduce the position and momentum distributions by integrating along the axes of phase space. Jess Riedel is dissatisfied with this and points out that this is also true of the ‘Jigner function’, a shitty function he just made up… it’s not enough to pick it out uniquely.
+There’s another route I want to go down before that, though, that’s more directly related to the van Enk model. 
 
+!!fill in gaps
 
-This paper by Wootters explains that actually the Wigner function has a more elegant property, which goes something like this: you can integrate along any line in phase space and get a similar marginal distribution, but for an observable that’s some linear combination of position and momentum. I think this is the property you need for the Wigner function to respect Galilean invariance, and still get something that makes sense if you transform your position and velocity coordinates. Which means that there’s some group theoretic structure going on here, and probably that was what Wigner and Weyl were thinking about, given that they both had an unusual knowledge of group theory for physicists of the time.
+[This paper by Wootters][wootters] explains that actually the Wigner function has a more elegant property, which goes something like this: you can integrate along any line in phase space and get a similar marginal distribution, but for an observable that’s some linear combination of position and momentum. I think this is the property you need for the Wigner function to respect Galilean invariance, and still get something that makes sense if you transform your position and velocity coordinates. Which means that there’s some group theoretic structure going on here, and probably that was what Wigner and Weyl were thinking about, given that they both had an unusual knowledge of group theory for physicists of the time.
 
 
 The Wootters paper goes on to use this property to construct a finite analogue to the Wigner function. In the case of a 2x2 phase space this starts to look very familiar… here are some Wigner functions:
 
+[wootters]:https://www.sciencedirect.com/science/article/pii/000349168790176X
 
 ## Wigner function as 'convolutionary mean'
 

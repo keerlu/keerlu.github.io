@@ -75,14 +75,13 @@ This is still a ‘one size fits all’ window function, though. It seems plausi
 
 ## Wigner function from Galilean invariance
 
-There’s another route I want to go down before that, though, that’s more directly related to the van Enk model. 
+------------------------------------------------------------------
 
-!!fill in gaps
+**To do:** expand this section
 
-[This paper by Wootters][wootters] explains that actually the Wigner function has a more elegant property, which goes something like this: you can integrate along any line in phase space and get a similar marginal distribution, but for an observable that’s some linear combination of position and momentum. I think this is the property you need for the Wigner function to respect Galilean invariance, and still get something that makes sense if you transform your position and velocity coordinates. Which means that there’s some group theoretic structure going on here, and probably that was what Wigner and Weyl were thinking about, given that they both had an unusual knowledge of group theory for physicists of the time.
+------------------------------------------------------------------
 
-
-The Wootters paper goes on to use this property to construct a finite analogue to the Wigner function. In the case of a 2x2 phase space this starts to look very familiar… here are some Wigner functions:
+[This paper by Wootters][wootters] explains that actually the Wigner function has a more elegant property than just reproducing the position and momentum distributions, which goes something like this: you can integrate along *any* line in phase space and get a similar marginal distribution, but for an observable that’s some linear combination of position and momentum. I think this is the property you need for the Wigner function to respect Galilean invariance, and still get something that makes sense if you transform your position and velocity coordinates.
 
 [wootters]:https://www.sciencedirect.com/science/article/pii/000349168790176X
 

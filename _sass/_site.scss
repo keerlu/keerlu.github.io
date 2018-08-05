@@ -63,13 +63,13 @@ img {
   display:block;
   margin-left:auto;
   margin-right:auto;
-  padding: 20px;
-
 }
 
 /** Figures  */
 figure  {
   display: block;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 figcaption {
@@ -77,8 +77,7 @@ figcaption {
   text-align: center;
   font-style: italic;
   color: 	#505050;
-/*  padding: 20px;*/
-/*  border: 2px solid gray;*/
+  font-size: 14pt;
 }
 
 /**  Blockquotes  */
@@ -276,6 +275,19 @@ blockquote {
     margin: auto;
     margin-top: 0px;
     margin-bottom: 50px;
+  }
+  
+  figure {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  
+  figcaption {
+    font-size: 12px;
+  }
+  
+  img {
+    padding: 0px;
   }
 
 }

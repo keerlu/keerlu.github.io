@@ -87,6 +87,8 @@ figure  {
   display: block;
   margin-left: 0px;
   margin-right: 0px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 figcaption {
@@ -95,6 +97,7 @@ figcaption {
   font-style: italic;
   color: 	#505050;
   font-size: 14pt;
+  margin-top: 20px;
 }
 
 /**  Blockquotes  */
@@ -324,6 +327,8 @@ blockquote {
   figure {
     margin-left: 0px;
     margin-right: 0px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
   
   figcaption {

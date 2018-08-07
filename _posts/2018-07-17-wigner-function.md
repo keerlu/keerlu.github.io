@@ -17,7 +17,7 @@ I searched a bit, and it looks like Szilard may have never been involved - Wigne
 
 [wigner]:http://140.123.79.88/~yach932/CH3_Reference/51.PhysRev.40.749.pdf
 
-So I had to look elsewhere. One of my starting points was [these][riedel1] [two][riedel2] blog posts about the Wigner function by Jess Riedel, a physicist who also got annoyed by the usual way it’s introduced without explanation. The first post starts with the density function, which is used more frequently in quantum physics and is something like an autocorrelation function in statistics, and then applies two transformations to it, a Fourier transform and a coordinate rotation. This is strongly connected to the story I’m trying to tell above. 
+So I had to look elsewhere. One of my starting points was [these][riedel1] [two][riedel2] blog posts about the Wigner function by Jess Riedel, a physicist who also got annoyed by the usual way it’s introduced without explanation. The first post starts with the density function, which is used more frequently in quantum physics and is something like an autocorrelation function in statistics, and then applies two transformations to it, a Fourier transform and a coordinate rotation. 
 
 [riedel1]:http://blog.jessriedel.com/2014/04/01/wigner-function-fourier-transform-coordinate-rotation/
 

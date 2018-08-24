@@ -105,8 +105,8 @@ blockquote {
   border-left: 4px solid gray;
   background: rgba(245,245,245, 0.3);
   padding: 10px;
-  letter-spacing: -1px;
 }
+
 
 /** Top bar */
 
@@ -337,6 +337,16 @@ blockquote {
   
   img {
     padding: 0px;
+  }
+  
+  /** Equations */
+
+  .mjx-chtml {
+    overflow-x: auto;
+  }
+
+  .MJXc-display {
+    overflow-x: auto;
   }
 
 }

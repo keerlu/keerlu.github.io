@@ -48,13 +48,7 @@ So I had to look elsewhere. One of my starting points was [these][riedel1] [two]
 
 [riedel1]:http://blog.jessriedel.com/2014/04/01/wigner-function-fourier-transform-coordinate-rotation/
 
-
-
-
-
-This pages is supposed to be notes-in-progress rather than a finished 
-
-I've ended up exploring along a somewhat different path, but I'll get to Riedel's version at the end. I'm still in the process of doing this and you will notice a lot of **To do**s and **To add**s in this post.
+I've ended up exploring along a somewhat different path, but I'll get to Riedel's version at the end. This page is supposed to be notes-in-progress rather than a finished post - I'm still in the process of doing this and you will notice a lot of **To do**s and **To add**s in this post.
 
 
 

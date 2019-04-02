@@ -40,7 +40,7 @@ First I wondered if going back to the [original paper][wigner] would be helpful.
 <span class="marginnote">
 I searched a bit, and it looks like Szilard may have never been involved - Wigner just wanted to boost Szilard’s career when he got out of Germany in the 30s. Haven’t found the original source yet, but see e.g. <a href="https://books.google.co.uk/books/about/The_Nature_of_Light.html?id=Z6hWmaHZFigC&printsec=frontcover&source=kp_read_button&redir_esc=y#v=snippet&q=szilard&f=false">here</a>. The reference is to 'R. F. O'Connell (private communication)'.</span>
 
-{% include image.html img="assets/wigner-szilard.png" caption="‘Me and my mate thought of it once, but we won’t tell you where or how.’ Thanks, Wigner!" title="This expression was found by L.Szilard and the present author some years ago for another purpose" %}
+{% include image.html img="assets/2018-07-17-wigner-function/wigner-szilard.png" caption="‘Me and my mate thought of it once, but we won’t tell you where or how.’ Thanks, Wigner!" title="This expression was found by L.Szilard and the present author some years ago for another purpose" %}
 
 [wigner]:http://140.123.79.88/~yach932/CH3_Reference/51.PhysRev.40.749.pdf
 
@@ -60,12 +60,11 @@ The first interesting thing I learnt was that the Wigner function is also used i
 
 Terence Tao [teaches a course][tao] on time-frequency harmonic analysis, and in the introduction he points out that actually people do try to plot frequency and time at once. Despite being slightly fake mathematically, it has a long history and is very useful:
 
-{% include image.html img="assets/musical_scale.png" title="Musical scale" %}
-
+{% include image.html img="assets/2018-07-17-wigner-function/musical_scale.png" title="Musical scale" %}
 
 I had never thought about this before! Musical notation is just time along the x axis and frequency up the y axis:
 
-{% include image.html img="assets/time_frequency_music.svg" title="Musical scale" max-width="80%" %}
+{% include image.html img="assets/2018-07-17-wigner-function/time_frequency_music.svg" title="Musical scale" max-width="80%" %}
 
 We would normally say that that first middle C has a frequency of 256 Hz, and strictly that only applies if you play it for all of time, to get an infinite sinusoid. In reality, though, all you want is for the waveform to be reasonably periodic at 256 Hz for the half a second or so that the note is supposed to last. The musical score does a good job of summarising the information you actually want, and that you won’t get from just looking at a position or frequency plot on its own.
 
@@ -102,7 +101,7 @@ For the musical example above, if your window covers the duration of the middle 
 
 [boxcar]:https://en.wikipedia.org/wiki/Boxcar_function
 
-{% include image.html img="assets/short_time_fourier.svg" title="Short time Fourier series" caption="Sketch of the basic idea of a short time Fourier series. The original time series is at the top, and short windows of it are mapped to frequency curves. Think of each frequency curve as sticking up out of the page." max-width="80%" %}
+{% include image.html img="assets/2018-07-17-wigner-function/short_time_fourier.svg" title="Short time Fourier series" caption="Sketch of the basic idea of a short time Fourier series. The original time series is at the top, and short windows of it are mapped to frequency curves. Think of each frequency curve as sticking up out of the page." max-width="80%" %}
 
 There’s an underlying symmetry in the Fourier transform, so that you could instead start in the frequency domain and take short windows of that, and transform to the time domain. This would be a pretty stupid choice in music, I think, because the signals we want to listen to tend to have spread-out, periodic behaviour in time rather than frequency. (On the other hand there are some important features in music that are narrow in time but wide in frequency, like the ‘attack’ at the start of a bowed string note, where it might be better?) But really it’s a trade off... you either end up with good time resolution or good frequency resolution.
 

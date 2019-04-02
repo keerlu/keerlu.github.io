@@ -71,6 +71,15 @@ We would normally say that that first middle C has a frequency of 256 Hz, and st
 
 [tao]:https://www.math.ucla.edu/~tao/254a.1.01w/blurb.html
 
+I found a nice description of this in [this 1967 paper][bruijn] by de Bruijn:
+
+> For example, if $$f$$ represents a piece of music, then the composer does not produce $$f$$ itself; he does not even define it. He may try to prescribe the exact frequency and the exact time interval of a note (although the uncertainty principle says that he can never be completely successful in this effort), but he does not try to prescribe the phase. The composer does not deal with $$f$$; it is only the gramophone company which produces and sells an $$f$$. On the other hand, the composer certainly does not want to describe the Fourier transform. This Fourier transform is very useful for solving mathematical and physical problems, but it gives an absolutely unreadable picture of the given piece of music.
+>
+> What the composer really does, or thinks he does, or should think he does, is something entirely different from describing either $$f$$ or $$\mathcal{F}f$$. Instead, he constructs a function of two variables. The variables are the time and the frequency, the function describes the intensity of the sound. He describes the function by a complicated set of dots on score paper. His way of
+describing time is slightly different from what a mathematician would do, but certainly vertical lines denote constant time, and horizontal lines denote constant frequency.
+
+[bruijn]:https://pure.tue.nl/ws/portalfiles/portal/2304890/597595.pdf
+
 
 ### The short time Fourier transform
 

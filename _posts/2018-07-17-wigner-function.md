@@ -82,8 +82,7 @@ describing time is slightly different from what a mathematician would do, but ce
 
 ### The short time Fourier transform
 
-
-There’s lots of theory in signal processing on different ways to do this. The simplest option is the short term Fourier transform. <label for="mn-yanny" class="margin-toggle">&#8853;</label>
+There’s lots of theory in signal processing on different ways to produce functions that are something like a mathematical version of the composer's score, functions that show how the signal behaves in both frequency and time. The simplest option is the short term Fourier transform. <label for="mn-yanny" class="margin-toggle">&#8853;</label>
 <input type="checkbox" id="mn-yanny" class="margin-toggle"/>
 <span class="marginnote">
 This sort of spectrogram <a href="https://www.nytimes.com/interactive/2018/05/16/upshot/audio-clip-yanny-laurel-debate.html">got some unexpected publicity</a> in mid-2018 while I was researching this!

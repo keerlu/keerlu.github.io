@@ -1,10 +1,21 @@
 ---
 layout: post
-title: The Spekkens toy model
+title: The Spekkens toy model, and van Enk's extension
 ---
 
+I spent a lot of time in January distractedly cycling through my various odd obsessions looking for a decent, tractable topic, and I eventually found a good one. I want to do something with this paper, ‘A toy model for quantum mechanics’ by S. J. van Enk.
 
+This paper is a response to the Spekkens toy model, which I’ll talk about another time. This model is fascinating, does’t require any particular knowledge to understand (the basic system is literally just a set of four boxes that may or may not be coloured in) and recreates a surprising number of the odd features of quantum mechanics. Not all of them, though… it doesn’t violate Bell’s inequality. I’m not going to go into this here, but violating Bell’s inequality is kind of the gold standard of quantum weirdness and a toy model that is truly ‘like quantum mechanics’ would need to have an analogue of this.
 
+The van Enk paper extends Spekkens a bit, and it does have a Bell analogue… so calling it ‘a toy model for quantum mechanics’ isn’t too much of a stretch. But the last sentence of the abstract is:
+
+Negative probabilities are found to arise naturally within the model, and can be used to explain the Bell-CHSH inequality violations.
+
+So you still have something pretty weird and unintuitive. Which is not surprising… there’s a central core of quantum mechanics that really is sort of irreducibly weird, and any toy model is going to have the weirdness somewhere.
+
+I think the word ‘explain’ in the abstract is pushing it though. It’s true that it doesn’t just ‘put in negative probabilities by hand’… he puts in some measurements you can actually do, which all have positive probabilities, and the negative probabilities are all for things which you can’t get at directly. On the other hand, there’s no real interpretation offered for the negative probabilities. They’re just… there.
+
+Anyway I do have some vague ideas for how to go about finding an interpretation, which is why I’m so interested in this particular paper. And even if I get nowhere with that, which is extremely plausible, there are a whole bunch of interesting adjacent topics that would be worth writing up online.
 
 Last time I talked a bit about this paper by van Enk that I’m concentrating on understanding this year. This paper is an extension of a more well-known paper by Robert Spekkens, which is a favourite of mine. It introduces a very simple toy model - literally just four boxes and a rule about how much knowledge we can obtain - which reproduces a number of the counterintuitive features of quantum mechanics (not all of them though). This month I’m just going to introduce the basic setup of the model that’s needed to understand the van Enk model - I won’t really get on to what you can do with it. I will however include a sidenote to demonstrate what they are.<label for="test-sidenote" class="margin-toggle sidenote-number"></label><input type="checkbox" id="test-sidenote" class="margin-toggle"/><span class="sidenote">This is a sidenote.</span>
 

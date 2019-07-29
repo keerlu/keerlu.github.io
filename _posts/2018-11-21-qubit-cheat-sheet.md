@@ -127,8 +127,8 @@ $$
 \vert y_+\rangle\langle y_+ \vert =
 \frac{1}{2}\left(
 \begin{array}{cc}
-1 && i \\
-i && -1 \\
+1 && -i \\
+i && 1 \\
 \end{array}
 \right)
 \end{equation}
@@ -139,8 +139,8 @@ $$
 \vert y_-\rangle\langle y_-\vert =
 \frac{1}{2}\left(
 \begin{array}{cc}
-1 && -i \\
--i && -1 \\
+1 && i \\
+-i && 1 \\
 \end{array}
 \right)
 \end{equation}

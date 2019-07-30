@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Spekkens toy model, and van Enk's extension
+contents: false
 ---
 
 I spent a lot of time in January distractedly cycling through my various odd obsessions looking for a decent, tractable topic, and I eventually found a good one. I want to do something with this paper, ‘A toy model for quantum mechanics’ by S. J. van Enk.

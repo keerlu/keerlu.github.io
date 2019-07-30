@@ -13,10 +13,12 @@ layout: default
 <!--  </header>-->
 
   <article class="post-content">
+    {% if page.contents %}
     <hr>
     <h3> Contents: </h3>
     {% include toc.html html=content %}
     <hr>
+    {% endif %}
     {{ content }}
   </article>
   </div>

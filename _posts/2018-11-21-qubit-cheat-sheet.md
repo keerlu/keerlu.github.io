@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Qubit cheat sheet
+contents: true
 ---
 
 I always end up looking up or recalculating these things, so it's easier to have them in one place.

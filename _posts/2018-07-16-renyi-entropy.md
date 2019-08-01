@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Rényi entropy
+contents: false
 ---
 
 (I got interested in this when a funny entropy measure, the collision entropy, popped up in [a paper][enk] I was reading.)

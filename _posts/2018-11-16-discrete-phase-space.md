@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Discrete phase space
+contents: true
 ---
 
 Some very rough notes on discrete phase space, specifically the simplest case of 2 position and 2 momentum states forming a 2x2 grid like this: 

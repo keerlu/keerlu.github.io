@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Wigner function
+contents: true
 ---
 
 

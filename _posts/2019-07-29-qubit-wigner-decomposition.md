@@ -4,7 +4,10 @@ title: Decomposition of the Wigner function for a qubit
 contents: false
 ---
 
-This is something like an 'appendix' to two blog posts I wrote, going into some technical details. It won't make a lot of sense without that context - read them first!
+This is something like an 'appendix' to two [blog][post1] [posts][post2] I wrote, going into some technical details. It won't make a lot of sense without that context - read them first!
+
+[post1]:https://drossbucket.wordpress.com/2019/08/01/negative-probability/
+[post2]:https://drossbucket.wordpress.com/2019/08/01/negative-probability-now-with-added-equations/
 
 I want to show that the procedure I outlined in those posts for calculating the Wigner function of a qubit matches the normal calculation method described in e.g. [Wootters 1987][wootters].
 

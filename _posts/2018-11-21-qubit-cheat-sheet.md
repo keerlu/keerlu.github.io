@@ -171,55 +171,6 @@ $$
 \end{equation}
 $$
 
-# Phase point operators
-
-$$
-\begin{equation}
-A_{00} =
-\frac{1}{2}\left(
-\begin{array}{cc}
-2 && 1-i \\
-1+i && 0 \\
-\end{array}
-\right)
-\end{equation}
-$$
-
-$$
-\begin{equation}
-A_{01} =
-\frac{1}{2}\left(
-\begin{array}{cc}
-2 && -1+i \\
--1-i && 0 \\
-\end{array}
-\right)
-\end{equation}
-$$
-
-$$
-\begin{equation}
-A_{10} =
-\frac{1}{2}\left(
-\begin{array}{cc}
-0 && 1+i \\
-1-i && 2 \\
-\end{array}
-\right)
-\end{equation}
-$$
-
-$$
-\begin{equation}
-A_{11} =
-\frac{1}{2}\left(
-\begin{array}{cc}
-0 && -1-i \\
--1+i && 2 \\
-\end{array}
-\right)
-\end{equation}
-$$
 
 # Two point discrete Fourier transform
 

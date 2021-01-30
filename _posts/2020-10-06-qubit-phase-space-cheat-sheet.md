@@ -112,43 +112,7 @@ W_{11} = \frac{1}{4}\left[1 - \cos\theta - \sin\theta(\cos\phi - \sin\phi) \righ
 \end{equation}
 $$
 
-
-## Qs
-
-I'm not sure if these have a default notation, but I call them $$Q_i$$. I mean the quantities that the rows, columns and diagonals of the Wigner function add up to. Maybe an image would help:
-
-{% include image.html img="assets/2020-10-06-qubit-phase-space-cheat-sheet/phase_space.jpg" title="Phase space" max-width="50%" %}
-
-
-$$
-\begin{equation}
-Q_i = \frac{1}{2} - \frac{1}{2}\langle\psi | \sigma_i | \psi \rangle .
-\end{equation}
-$$
-
-For a general qubit these are:
-
-$$
-\begin{equation}
-Q_z = \frac{1}{2} - \frac{1}{2}\cos\theta.
-\end{equation}
-$$
-
-$$
-\begin{equation}
-Q_x = \frac{1}{2} - \frac{1}{2}\sin\theta\cos\phi.
-\end{equation}
-$$
-
-$$
-\begin{equation}
-Q_y = \frac{1}{2} - \frac{1}{2}\sin\theta\sin\phi.
-\end{equation}
-$$
-
-# Examples
-
-Here are some examples of Wigner functions, written in the form
+It's common to write these in a 2x2 box:
 
 $$
 \begin{equation}
@@ -162,7 +126,46 @@ W_{00} & W_{10} \\
 \end{equation}
 $$
 
-(as in the Wootters paper).
+
+## Marginal probabilities
+
+These are the probabilities that the rows, columns and diagonals of the Wigner function add up to when written in the box form above. Maybe an image would help:
+
+{% include image.html img="assets/2020-10-06-qubit-phase-space-cheat-sheet/phase_space_general.png" title="Phase space" max-width="50%" %}
+
+I'm using $$a$$ and $$b$$ for the axes in that image to fit in with what I needed for a blog post. It would be more normal to call them $$x$$ and $$z$$ respectively, but I can't be bothered to redraw the figure.
+
+These satisfy the formula
+
+$$
+\begin{equation}
+p_i = \frac{1}{2} - \frac{1}{2}\langle\psi | \sigma_i | \psi \rangle .
+\end{equation}
+$$
+
+where $$ p_z = p(a)$$, $$ p_x = p(b)$$, $$p_y = p(a\oplus b)$$. For a general qubit these are:
+
+$$
+\begin{equation}
+p_z = \frac{1}{2} - \frac{1}{2}\cos\theta.
+\end{equation}
+$$
+
+$$
+\begin{equation}
+p_x = \frac{1}{2} - \frac{1}{2}\sin\theta\cos\phi.
+\end{equation}
+$$
+
+$$
+\begin{equation}
+p_y = \frac{1}{2} - \frac{1}{2}\sin\theta\sin\phi.
+\end{equation}
+$$
+
+# Examples
+
+Here are some examples of Wigner functions.
 
 ## Pauli matrix eigenstates
 
@@ -252,6 +255,8 @@ $$
 
 ## Examples with negative probabilities
 
+Note that the marginal probabilities are still always positive.
+
 +1 eigenstate of $$\frac{1}{\sqrt{2}} (\sigma_z + \sigma_x) $$:
 
 $$
@@ -266,21 +271,21 @@ $$
 \end{equation}
 $$
 
-One with the most negative possible value. Think this is an eigenstate of $$\frac{1}{\sqrt{3}} (\sigma_z + \sigma_x + \sigma_y)  $$ or something, but need to check:
+-1 eigenstate of $$\frac{1}{\sqrt{3}} (\sigma_z + \sigma_x + \sigma_y)  $$:
 
 $$
 \begin{equation}
 \left[
 \begin{array}{c|c}
-\frac{1 + \sqrt{3}}{4} & \frac{1}{4} \\
+\frac{1}{4}\left(1+ \frac{1}{\sqrt{3}}\right) & \frac{1}{4}\left(1+ \frac{1}{\sqrt{3}}\right) \\
 \hline
-\frac{1 - \sqrt{3}}{4} & \frac{1}{4} \\
+\frac{1}{4}\left(1 - \sqrt{3}\right) & \frac{1}{4}\left(1+ \frac{1}{\sqrt{3}}\right) \\
 \end{array}
 \right]
 \end{equation}
 $$
 
-
+The bottom left value is the most negative possible for a qubit.
 
 
 

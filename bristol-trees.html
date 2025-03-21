@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base target="_top" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bristol Tree Map</title>
+    <meta
+      name="description"
+      content="Interactive map of trees in Bristol with data from the Bristol Open Data API"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <!-- Add Proj4js for coordinate conversion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.0/proj4.js"></script>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Make the map container take up the full viewport */
+      #map {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+      }
+
+      /* Better styling for popups */
+      .leaflet-popup-content {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .leaflet-popup-content strong {
+        font-size: 16px;
+        color: #336633;
+      }
+
+      /* Loading indicator */
+      #loading {
+        position: absolute;
+        top: 20px;
+        right: 100px; /* Moved further right to avoid zoom controls */
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #333;
+        padding: 8px 12px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-weight: bold;
+        display: none;
+      }
+
+      /* Info button */
+      #info-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        width: 36px;
+        height: 36px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-style: italic;
+        cursor: pointer;
+        font-family: serif;
+        font-size: 20px;
+        color: #333;
+        border: none;
+      }
+
+      #info-button:hover {
+        background-color: #f4f4f4;
+      }
+
+      /* Location button */
+      #location-button {
+        position: absolute;
+        bottom: 70px;
+        right: 20px;
+        z-index: 1000;
+        width: 36px;
+        height: 36px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        font-size: 18px;
+      }
+
+      #location-button:hover {
+        background-color: #f4f4f4;
+      }
+
+      #location-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      #info-popup {
+        position: absolute;
+        bottom: 70px;
+        right: 20px;
+        z-index: 1000;
+        background-color: white;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        display: none;
+        max-height: 70vh;
+        overflow-y: auto;
+      }
+
+      #info-popup a {
+        color: #0078a8;
+        text-decoration: none;
+      }
+
+      #info-popup a:hover {
+        text-decoration: underline;
+      }
+
+      /* Tree color key styling */
+      .color-key {
+        margin-top: 15px;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+      }
+
+      .color-key h4 {
+        margin: 0 0 8px 0;
+      }
+
+      .tree-type {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+        font-size: 12px;
+      }
+
+      .color-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        border: 1px solid #000;
+      }
+
+      /* Location permission message */
+      #location-permission {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: white;
+        padding: 12px 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        display: none;
+      }
+
+      /* Position zoom controls in the top right */
+      .leaflet-control-zoom {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      #location-permission button {
+        background-color: #0078a8;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 8px;
+      }
+
+      #location-permission button:hover {
+        background-color: #005d85;
+      }
+
+      /* Responsive adjustments */
+      @media screen and (max-width: 600px) {
+        #loading {
+          top: 10px;
+          right: 80px; /* Adjusted for mobile as well */
+          padding: 5px 8px;
+          font-size: 12px;
+        }
+
+        .leaflet-popup-content {
+          font-size: 12px;
+        }
+
+        .leaflet-popup-content strong {
+          font-size: 14px;
+        }
+
+        #info-button {
+          bottom: 15px;
+          right: 15px;
+          width: 30px;
+          height: 30px;
+          font-size: 16px;
+        }
+
+        #location-button {
+          bottom: 60px;
+          right: 15px;
+          width: 30px;
+          height: 30px;
+          font-size: 14px;
+        }
+
+        #info-popup {
+          bottom: 55px;
+          right: 15px;
+          padding: 10px;
+          max-width: 250px;
+          font-size: 12px;
+          max-height: 60vh;
+        }
+
+        #location-permission {
+          top: 10px;
+          left: 10px;
+          padding: 8px 10px;
+          font-size: 12px;
+        }
+      }
+
+      /* Larger screens */
+      @media screen and (min-width: 1200px) {
+        .leaflet-popup-content {
+          font-size: 16px;
+        }
+
+        .leaflet-popup-content strong {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="loading">Loading trees...</div>
+    <button id="info-button">i</button>
+    <button id="location-button" title="Center on my location" disabled>
+      📍
+    </button>
+    <div id="info-popup">
+      Made by Claude with some help by
+      <a href="https://lucykeer.com/about/" target="_blank">me</a>
+      :)<br /><br />
+      Tree data from
+      <a href="https://opendata.bristol.gov.uk/" target="_blank"
+        >Open Data Bristol</a
+      >
+
+      <div class="color-key">
+        <h4>Tree Types</h4>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #8bc34a"></div>
+          Lime (Tilia)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #2e7d32"></div>
+          Pine (Pinus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #e94b9d"></div>
+          Cherry (Prunus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #b8860b"></div>
+          Plane (Platanus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #a9a9a9"></div>
+          Silver Birch (Betula)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #5d4037"></div>
+          Oak (Quercus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #d32f2f"></div>
+          Maple (Acer)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #2f4f4f"></div>
+          Cypress (Cupressus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #dda0dd"></div>
+          Magnolia
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #fbcce7"></div>
+          Apple (Malus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #f5f5f5"></div>
+          Hawthorn (Crataegus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #ffd700"></div>
+          Laburnum
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #ff8c00"></div>
+          Beech (Fagus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #aaaa77"></div>
+          Ash (Fraxinus)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #4dccbd"></div>
+          Willow (Salix)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #8b4513"></div>
+          Chestnut (Castanea)
+        </div>
+        <div class="tree-type">
+          <div class="color-dot" style="background-color: #3cb371"></div>
+          Other trees
+        </div>
+      </div>
+    </div>
+    <div id="location-permission">
+      <div>Enable location tracking to see your position on the map</div>
+      <button id="enable-location">Enable Location</button>
+    </div>
+    <script>
+      // Define the coordinate systems
+      proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
+      proj4.defs(
+        "EPSG:27700",
+        "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs"
+      );
+
+      // Initialize the map with zoomControl: false (we'll add it in a custom position)
+      const map = L.map("map", {
+        zoomControl: false,
+      }).setView([51.46128, -2.54739], 17);
+
+      // Add zoom control in the top right
+      L.control
+        .zoom({
+          position: "topright",
+        })
+        .addTo(map);
+
+      // Add the base tile layer
+      const tiles = L.tileLayer(
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }
+      ).addTo(map);
+
+      // Create a layer group for the trees
+      const treeLayer = L.layerGroup().addTo(map);
+
+      // Variables for location tracking
+      let userLocationMarker = null;
+      let userLocationCircle = null;
+      let watchID = null;
+      let hasLocationPermission = false;
+
+      // Function to convert WGS84 (lon/lat) to British National Grid (eastings/northings)
+      function convertToEastingNorthing(lon, lat) {
+        return proj4("EPSG:4326", "EPSG:27700", [lon, lat]);
+      }
+
+      // Function to fetch tree data from the Bristol API
+      async function fetchTreeData() {
+        // Show loading indicator
+        document.getElementById("loading").style.display = "block";
+
+        // Get the current map bounds
+        const bounds = map.getBounds();
+        const sw = bounds.getSouthWest();
+        const ne = bounds.getNorthEast();
+
+        // Convert the bounds to eastings/northings
+        const swEN = convertToEastingNorthing(sw.lng, sw.lat);
+        const neEN = convertToEastingNorthing(ne.lng, ne.lat);
+
+        // Build the API URL with the converted coordinates
+        const apiUrl = `https://maps2.bristol.gov.uk/server2/rest/services/ext/ll_environment_and_planning/MapServer/32/query?where=1%3D1&outFields=*&outSR=4326&f=json&geometryType=esriGeometryEnvelope&geometry=${Math.floor(
+          swEN[0]
+        )},${Math.floor(swEN[1])},${Math.ceil(neEN[0])},${Math.ceil(neEN[1])}`;
+
+        try {
+          // Fetch the data from the API
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+
+          // Convert the ESRI JSON format to GeoJSON
+          const geojson = {
+            type: "FeatureCollection",
+            features: data.features.map((feature) => {
+              return {
+                type: "Feature",
+                id: feature.attributes.OBJECTID,
+                geometry: {
+                  type: "Point",
+                  coordinates: [feature.geometry.x, feature.geometry.y],
+                },
+                properties: feature.attributes,
+              };
+            }),
+          };
+
+          // Clear the current tree layer and add the new trees
+          treeLayer.clearLayers();
+          L.geoJSON(geojson, {
+            pointToLayer: function (feature, latlng) {
+              // Customize the marker based on tree type
+              let markerColor = "#3cb371"; // Default green
+
+              // Determine color based on tree type
+              if (feature.properties.LATIN_NAME) {
+                const latinName = feature.properties.LATIN_NAME.toLowerCase();
+                if (latinName.includes("tilia")) {
+                  markerColor = "#8bc34a"; // Lime green for Lime trees
+                } else if (latinName.includes("pinus")) {
+                  markerColor = "#2e7d32"; // Darker green for Pine
+                } else if (latinName.includes("prunus")) {
+                  markerColor = "#E94B9D"; // Deeper pink for Cherry
+                } else if (latinName.includes("platanus")) {
+                  markerColor = "#B8860B"; // Golden brown for Plane trees
+                } else if (latinName.includes("betula")) {
+                  markerColor = "#A9A9A9"; // Silver gray for Silver Birch
+                } else if (latinName.includes("quercus")) {
+                  markerColor = "#5D4037"; // Deep oak brown for Oak trees
+                } else if (latinName.includes("acer")) {
+                  markerColor = "#D32F2F"; // Bright red for Maple trees
+                } else if (
+                  latinName.includes("cupressus") ||
+                  latinName.includes("chamaecyparis")
+                ) {
+                  markerColor = "#2F4F4F"; // Dark slate gray for Cypress trees
+                } else if (latinName.includes("magnolia")) {
+                  markerColor = "#DDA0DD"; // Plum/light purple for Magnolia trees
+                } else if (latinName.includes("malus")) {
+                  markerColor = "#FBCCE7"; // Light pink for Apple trees (blossom color)
+                } else if (latinName.includes("crataegus")) {
+                  markerColor = "#F5F5F5"; // Off-white for Hawthorn trees (blossom color)
+                } else if (latinName.includes("laburnum")) {
+                  markerColor = "#FFD700"; // Gold/yellow for Laburnum (golden chain) trees
+                } else if (latinName.includes("fagus")) {
+                  markerColor = "#FF8C00"; // Bright orange for Beech trees
+                } else if (latinName.includes("fraxinus")) {
+                  markerColor = "#AAAA77"; // Olive green-gray for Ash trees
+                } else if (latinName.includes("salix")) {
+                  markerColor = "#4DCCBD"; // Watery greenish-blue for Willow trees
+                } else if (latinName.includes("castanea")) {
+                  markerColor = "#8B4513"; // Classic chestnut brown for Chestnut trees
+                }
+              }
+
+              return L.circleMarker(latlng, {
+                radius: 10, // Fixed radius for all markers
+                fillColor: markerColor,
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8,
+              });
+            },
+            onEachFeature: function (feature, layer) {
+              // Create a popup with tree information
+              let popupContent = "";
+              if (feature.properties.LATIN_NAME) {
+                popupContent += `<strong>${feature.properties.LATIN_NAME}</strong><br>`;
+              }
+              if (feature.properties.COMMON_NAME) {
+                popupContent += `Common name: ${feature.properties.COMMON_NAME}<br>`;
+              }
+              if (
+                feature.properties.FULL_COMMON_NAME &&
+                feature.properties.FULL_COMMON_NAME !==
+                  feature.properties.COMMON_NAME
+              ) {
+                popupContent += `Full name: ${feature.properties.FULL_COMMON_NAME}<br>`;
+              }
+              if (feature.properties.CROWN_HEIGHT) {
+                popupContent += `Height: ${feature.properties.CROWN_HEIGHT}<br>`;
+              }
+              if (feature.properties.CROWN_WIDTH) {
+                popupContent += `Width: ${feature.properties.CROWN_WIDTH}<br>`;
+              }
+              if (feature.properties.DBH) {
+                popupContent += `Diameter: ${feature.properties.DBH}<br>`;
+              }
+              if (feature.properties.ASSET_ID) {
+                popupContent += `<small>ID: ${feature.properties.ASSET_ID}</small>`;
+              }
+              layer.bindPopup(popupContent);
+            },
+          }).addTo(treeLayer);
+
+          // Hide loading indicator
+          document.getElementById("loading").style.display = "none";
+        } catch (error) {
+          console.error("Error fetching tree data:", error);
+          document.getElementById("loading").style.display = "none";
+        }
+      }
+
+      // Function to handle user location updates
+      function onLocationUpdate(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const accuracy = position.coords.accuracy;
+
+        // If this is the first location update, center the map
+        if (!userLocationMarker) {
+          map.setView([latitude, longitude], 17);
+        }
+
+        // Update or create the user location marker
+        if (userLocationMarker) {
+          userLocationMarker.setLatLng([latitude, longitude]);
+          userLocationCircle.setLatLng([latitude, longitude]);
+          userLocationCircle.setRadius(accuracy);
+        } else {
+          // Create a marker for the user's location
+          userLocationMarker = L.marker([latitude, longitude], {
+            icon: L.divIcon({
+              html: '<div style="background-color:#2196F3;width:16px;height:16px;border-radius:50%;border:2px solid white;"></div>',
+              className: "user-location-marker",
+              iconSize: [20, 20],
+              iconAnchor: [10, 10],
+            }),
+            // Make the marker non-interactive to prevent clicks
+            interactive: false,
+          }).addTo(map);
+
+          // Create an accuracy circle
+          userLocationCircle = L.circle([latitude, longitude], {
+            radius: accuracy,
+            fillColor: "#2196F3",
+            fillOpacity: 0.15,
+            color: "#2196F3",
+            weight: 1,
+            // Make the circle non-interactive to prevent clicks
+            interactive: false,
+          }).addTo(map);
+        }
+
+        // Enable the location button
+        document.getElementById("location-button").disabled = false;
+      }
+
+      // Function to handle location errors
+      function onLocationError(error) {
+        console.error("Location error:", error.message);
+
+        if (error.code === 1) {
+          // Permission denied
+          // Show the location permission dialog
+          document.getElementById("location-permission").style.display =
+            "block";
+        } else {
+          alert(`Error getting your location: ${error.message}`);
+        }
+      }
+
+      // Function to start location tracking
+      function startLocationTracking() {
+        if (navigator.geolocation) {
+          // Watch the user's position
+          watchID = navigator.geolocation.watchPosition(
+            onLocationUpdate,
+            onLocationError,
+            {
+              enableHighAccuracy: true,
+              timeout: 10000,
+              maximumAge: 0,
+            }
+          );
+
+          hasLocationPermission = true;
+          document.getElementById("location-permission").style.display = "none";
+        } else {
+          alert("Geolocation is not supported by your browser");
+        }
+      }
+
+      // Function to center the map on the user's location
+      function centerOnUserLocation() {
+        if (userLocationMarker) {
+          map.setView(userLocationMarker.getLatLng(), 17);
+        } else if (hasLocationPermission) {
+          // If we have permission but no marker yet, try to get a one-time location
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              map.setView(
+                [position.coords.latitude, position.coords.longitude],
+                17
+              );
+            },
+            onLocationError,
+            {
+              enableHighAccuracy: true,
+              timeout: 10000,
+              maximumAge: 0,
+            }
+          );
+        } else {
+          // If we don't have permission, show the permission dialog
+          document.getElementById("location-permission").style.display =
+            "block";
+        }
+      }
+
+      // Initial data load
+      fetchTreeData();
+
+      // Update data when the map is moved or zoomed
+      // Use a debounce function to prevent too many API calls
+      let timeoutId;
+      map.on("moveend", function () {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(fetchTreeData, 500);
+      });
+
+      // Info button functionality
+      document
+        .getElementById("info-button")
+        .addEventListener("click", function () {
+          const infoPopup = document.getElementById("info-popup");
+          if (infoPopup.style.display === "block") {
+            infoPopup.style.display = "none";
+          } else {
+            infoPopup.style.display = "block";
+          }
+        });
+
+      // Location button functionality
+      document
+        .getElementById("location-button")
+        .addEventListener("click", centerOnUserLocation);
+
+      // Enable location button
+      document
+        .getElementById("enable-location")
+        .addEventListener("click", startLocationTracking);
+
+      // Close info popup when clicking elsewhere on the map
+      map.on("click", function () {
+        document.getElementById("info-popup").style.display = "none";
+        document.getElementById("location-permission").style.display = "none";
+      });
+
+      // Check for location permission on page load
+      if (navigator.geolocation) {
+        navigator.permissions
+          .query({ name: "geolocation" })
+          .then(function (result) {
+            if (result.state === "granted") {
+              // If permission is already granted, start tracking
+              startLocationTracking();
+            } else if (result.state === "prompt") {
+              // Show the location permission dialog
+              document.getElementById("location-permission").style.display =
+                "block";
+            }
+            // If permission is denied, the error handler will show the dialog when needed
+          });
+      }
+    </script>
+  </body>
+</html>
